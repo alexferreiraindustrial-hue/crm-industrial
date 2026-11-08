@@ -96,13 +96,13 @@ O ajuste seguinte sai da observação do turno: o que o colaborador não acha, o
 
 ## Fotos
 
-Cheqlist do dia. A lista aberta, o que ainda falta e o que já foi concluído.
+Cheqlist do dia. A lista aberta, o que ainda falta, o que já foi concluído e o andamento ao lado.
 
-![Cheqlist com a lista do dia e as tarefas](fotos/cheqlist-tarefas.jpg)
+![Cheqlist com a lista do dia, as tarefas e o andamento](fotos/cheqlist-tarefas.jpg)
 
-Andamento. Os números são a conta das tarefas que existem.
+Conversas. O atendimento fica reunido, com o histórico e a ficha de quem está do outro lado.
 
-![Andamento do Cheqlist com listas, pendências e progresso](fotos/cheqlist-andamento.jpg)
+![Conversas com o histórico e a ficha do contato](fotos/conversas.jpg)
 
 ## Código
 
