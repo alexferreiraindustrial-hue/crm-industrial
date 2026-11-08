@@ -1,8 +1,22 @@
 # CRM Industrial
 
-Comunicação entre setores tratada como melhoria contínua. O CRM reúne o pedido que chega de fora, a demanda de quem executa e o registro do que já foi feito. O projeto está em evolução, aplicado a uma operação real, e o código da aplicação permanece fechado.
+Comunicação entre setores tratada como melhoria contínua. Elaborado em conjunto por **Antonio Alex Silva Ferreira**, profissional de chão de fábrica e estudante de engenharia, e **Bruna Raphaela de Paula**, profissional de logística e estudante de bacharelado em Administração.
+
+O CRM reúne o pedido que chega de fora, a demanda de quem executa e o registro do que já foi feito. O projeto está em evolução, aplicado a uma operação real, e o código da aplicação permanece fechado.
 
 Este repositório guarda o raciocínio, a estrutura, a segurança e fotos do sistema. As fotos usam dados de demonstração. Conversas de clientes não são publicadas.
+
+## Simplificar em vez de complicar
+
+Os maiores erros costumam estar em complicar o que era para ser simples. O ramo industrial tem desafios reais de organização e, muitas vezes, poucos recursos para enfrentá-los. Com a tecnologia de hoje, quem conhece o processo consegue construir o que o processo pede, sem depender de um sistema caro e genérico.
+
+O que este projeto procura mostrar:
+
+- **Ler o processo antes da ferramenta.** Cada função parte de um desperdício observado: pergunta repetida, tarefa esquecida, prazo perdido.
+- **Decidir com recursos reduzidos.** Base aberta, servidor próprio e mudanças pequenas, no lugar de uma licença cara de prateleira.
+- **Testar antes de mexer na operação.** Ambiente separado, cópia de segurança e caminho de volta em cada publicação.
+- **Unir áreas.** Produção e logística desenharam o fluxo juntas, e cada uma enxerga o que a outra precisa.
+- **Usar programação e IA como ferramentas.** O objetivo continua sendo a organização do trabalho.
 
 ## O problema que a ferramenta ataca
 
@@ -39,7 +53,7 @@ O Kanban foi feito para servir a qualquer tipo de empresa. Os nomes dos itens, d
 O projeto junta produção industrial e logística. A organização do trabalho é o método. O CRM é o meio.
 
 **Antonio Alex Silva Ferreira**  
-Estudante de Engenharia e Tecnologia de Gestão da Produção Industrial. O desenho parte da melhoria contínua digital: padronizar a informação, tornar a demanda visível e medir o que a equipe realmente cumpre.
+Profissional de chão de fábrica, com 10 anos em fabricação de lentes ópticas industriais, e estudante de Engenharia e Tecnologia de Gestão da Produção Industrial. O desenho parte da melhoria contínua digital: padronizar a informação, tornar a demanda visível e medir o que a equipe realmente cumpre. Busca estágio em PCP, processos e qualidade, no Vale do Paraíba.
 
 [LinkedIn](https://www.linkedin.com/in/antonio-alex-silva-ferreira-65434a298/)
 
@@ -153,6 +167,10 @@ Calendário. Prazos de cards e atividades em um só lugar.
 Conversas. O atendimento fica reunido, com o histórico e a identificação de quem enviou.
 
 ![Conversas com o histórico](fotos/conversas.jpg)
+
+## Empresa
+
+O projeto está ligado à **ANTONIO ALEX SILVA FERREIRA LTDA**, empresa de licenciamento e construção de sistemas e software personalizado. A estrutura e a segurança descritas aqui apoiam o objetivo de habilitar a empresa como Tech Provider da Meta.
 
 ## Código
 
