@@ -1932,3 +1932,197 @@ html body .conversation-panel [data-bubble-name="video"] video {
   max-width: min(300px, 100%);
   max-height: 380px;
 }
+
+/* Quadro pessoal: tarefas, andamento e atividades — visual de mesa operacional. */
+html body [data-crm-checklist] {
+  --task-ink: #0f2a33;
+  --task-mist: #e8f3f0;
+  --task-steel: #1a78b8;
+  --task-glow: rgba(0, 168, 132, 0.18);
+}
+html body.dark [data-crm-checklist] {
+  --task-ink: #e8f0f2;
+  --task-mist: rgba(6, 40, 46, 0.9);
+  --task-glow: rgba(33, 181, 115, 0.2);
+}
+html body.crm-shell section[data-crm-checklist]:has(> .crm-performance) {
+  background:
+    radial-gradient(1200px 420px at 12% -10%, var(--task-glow), transparent 60%),
+    radial-gradient(900px 360px at 92% 0%, rgba(26, 120, 184, 0.12), transparent 55%),
+    var(--ci-surface) !important;
+}
+html body [data-crm-checklist] > .crm-performance.is-personal {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px 16px !important;
+  border-left: 1px solid var(--ci-line) !important;
+  background: linear-gradient(180deg, rgba(255,255,255,0.55), transparent 40%), var(--ci-surface) !important;
+}
+html body.dark [data-crm-checklist] > .crm-performance.is-personal {
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent 45%), var(--ci-surface) !important;
+}
+.crm-performance-kicker {
+  margin: 0;
+  color: var(--ci-green);
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.crm-performance-focus {
+  margin: 0 0 4px !important;
+  color: var(--task-ink, var(--ci-text));
+  font-size: 22px !important;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.crm-rate-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--ci-line);
+  font-size: 13px;
+  color: var(--ci-text-2);
+}
+.crm-rate-row:last-child { border-bottom: 0; }
+.crm-rate-row b {
+  color: var(--ci-text);
+  font-size: 18px;
+  font-variant-numeric: tabular-nums;
+}
+.crm-heat {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 4px;
+}
+.crm-heat-cell {
+  display: block;
+  aspect-ratio: 1;
+  border-radius: 3px;
+  background: var(--ci-track, rgba(134, 150, 160, 0.22));
+}
+.crm-heat-cell[data-level="1"] { background: #9ecae1; }
+.crm-heat-cell[data-level="2"] { background: #6baed6; }
+.crm-heat-cell[data-level="3"] { background: #3182bd; }
+.crm-heat-cell[data-level="4"] { background: #08519c; }
+.crm-performance-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--ci-line);
+  font-size: 13px;
+}
+.crm-performance-row:last-child { border-bottom: 0; }
+.crm-performance-row span:last-child { color: var(--ci-text-2); font-size: 12px; }
+.crm-performance-row[data-kind="carry"] span:first-child { color: var(--rem-late); font-weight: 600; }
+.crm-performance-row[data-kind="fixed"] span:last-child { color: var(--task-steel); }
+
+html body [data-crm-checklist] > div.min-w-0 li:has(input[type="checkbox"]) {
+  position: relative;
+  transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+}
+html body [data-crm-checklist] > div.min-w-0 li:has(input[type="checkbox"]):hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(15, 42, 51, 0.06) !important;
+}
+html body [data-crm-checklist] > div.min-w-0 li:has(input[type="checkbox"]:checked) {
+  opacity: 0.78;
+}
+html body [data-crm-checklist] li > input[type="checkbox"] {
+  accent-color: var(--ci-green);
+  transition: transform 0.16s ease;
+}
+html body [data-crm-checklist] li > input[type="checkbox"]:checked {
+  transform: scale(1.08);
+}
+
+.crm-rem-kicker {
+  margin: 0 0 2px;
+  color: var(--ci-green);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.crm-reminders {
+  background:
+    radial-gradient(900px 320px at 8% -8%, rgba(0, 168, 132, 0.14), transparent 55%),
+    radial-gradient(700px 280px at 100% 0%, rgba(75, 159, 224, 0.1), transparent 50%);
+}
+.crm-rem-head h1 {
+  letter-spacing: -0.03em;
+}
+.crm-rem {
+  transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+}
+.crm-rem:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(15, 42, 51, 0.07);
+}
+.crm-rem-side {
+  background:
+    linear-gradient(180deg, rgba(0, 168, 132, 0.08), transparent 28%),
+    var(--ci-surface-2);
+}
+.crm-rem-chips {
+  backdrop-filter: blur(8px);
+}
+.crm-rem-list .crm-rem {
+  animation: crm-task-in 0.34s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.crm-rem-list .crm-rem:nth-child(2) { animation-delay: 0.03s; }
+.crm-rem-list .crm-rem:nth-child(3) { animation-delay: 0.06s; }
+.crm-rem-list .crm-rem:nth-child(4) { animation-delay: 0.09s; }
+.crm-rem-list .crm-rem:nth-child(5) { animation-delay: 0.12s; }
+@keyframes crm-task-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .crm-rem, html body [data-crm-checklist] > div.min-w-0 li:has(input[type="checkbox"]),
+  .crm-rem-list .crm-rem { animation: none; transition: none; transform: none; }
+}
+
+/* Vue board: classes próprias quando o rebuild estiver no ar */
+.crm-task-board {
+  --tb-green: #00a884;
+  --tb-line: rgba(134, 150, 160, 0.28);
+  --tb-surface: var(--ci-surface, #fff);
+  background:
+    radial-gradient(1000px 380px at 0% -10%, rgba(0, 168, 132, 0.14), transparent 55%),
+    var(--n-background, var(--tb-surface));
+}
+.crm-task-board__aside {
+  background: linear-gradient(180deg, rgba(0, 168, 132, 0.06), transparent 24%), var(--tb-surface);
+}
+.crm-task-board__rate {
+  border: 1px solid var(--tb-line);
+  border-radius: 14px;
+  background: var(--ci-surface-2, #f6f8f9);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.4);
+}
+.crm-task-board__item {
+  border: 1px solid var(--tb-line);
+  border-left: 3px solid var(--rem-today, #e8a33d);
+  border-radius: 12px;
+  background: linear-gradient(90deg, rgba(232, 163, 61, 0.08), transparent 70%), var(--ci-surface-2, #fff);
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
+}
+.crm-task-board__item:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(15, 42, 51, 0.06);
+}
+.crm-task-board__item.is-done {
+  border-left-color: var(--rem-done, #21b573);
+  background: linear-gradient(90deg, rgba(33, 181, 115, 0.08), transparent 70%), var(--ci-surface-2, #fff);
+  opacity: 0.82;
+}
+.crm-task-board__item.is-carry {
+  border-left-color: var(--rem-late, #e5484d);
+  background: linear-gradient(90deg, rgba(229, 72, 77, 0.1), transparent 70%), var(--ci-surface-2, #fff);
+}

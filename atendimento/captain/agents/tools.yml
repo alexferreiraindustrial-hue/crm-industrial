@@ -1,41 +1,83 @@
-######  Captain Agent Tools Configuration #######
+######  Captain Agent Tools — Estagiário Bruna Logística #######
 # id: Tool identifier used to resolve the class (Captain::Tools::{PascalCase(id)}Tool)
 # title: Human-readable tool name for frontend display
 # description: Brief description of what the tool does
 # icon: Icon name for frontend display (frontend icon system)
+#
+# Política deste assistente:
+# - Leitura de conversas + organização interna (notas, labels, prioridade, FAQ, handoff).
+# - Criar tarefa/atividade INTERNAS + alimentar Alertas de prazo (crm_reminders).
+# - SEM envio de mensagens ao cliente / canais externos.
+# - Propostas à Bruna ficam na UI do Assistente (não são tool de envio).
+# - resolve_conversation desabilitado.
+#
+# Alertas de prazo (ver ALERTAS-PRAZO.md):
+# - Store: tabela crm_reminders, fonte KanbanItem|WorkActivity com due_on.
+# - UI: sino .kb-bell (kanban.js) via GET /crm_reminders.
+# - create_deadline_alert = contrato; wiring Ruby ainda pendente no runtime CrmAi.
 #######################################################
+
+# --- Leitura de conversas (Chatwoot, read-only) ---
+
+- id: list_recent_conversations
+  title: 'List Recent Conversations'
+  description: 'List recent open/pending conversations the user can see in Chatwoot (metadata only: id, contact, inbox, labels, priority, last activity). Read-only.'
+  icon: 'chat'
+
+- id: read_conversation
+  title: 'Read Conversation'
+  description: 'Read messages of one conversation by id (within the user permission scope) for summary, urgency, commitment detection, and task/alert proposals. Read-only on the contact channel; never sends replies to the contact.'
+  icon: 'mail'
+
+# --- Tarefas / atividades / alertas internos ---
+
+- id: create_task
+  title: 'Create Task'
+  description: 'Create an internal checklist/task for Bruna (task bar). Use after she confirms a commitment proposal, or when she asked to organize/create tasks. Never notifies the contact.'
+  icon: 'checklist'
+
+- id: create_activity
+  title: 'Create Activity'
+  description: 'Create an internal work activity with due_on when the commitment stated a date. Feeds Alertas de prazo via CrmRemindersBuilder (today/tomorrow). Never sends outbound messages.'
+  icon: 'calendar-event'
+
+- id: create_deadline_alert
+  title: 'Create Deadline Alert'
+  description: 'Post into Alertas de prazo (crm_reminders / .kb-bell) for Bruna by ensuring a WorkActivity or KanbanItem source with due_on and a reminder row for her user. Requires a real due date from the commitment. Internal only; no contact messaging. Prefer after her confirmation unless she asked to organize now.'
+  icon: 'bell'
+
+# --- Organização interna ---
 
 - id: add_contact_note
   title: 'Add Contact Note'
-  description: 'Add a note to a contact profile'
+  description: 'Add an internal note to a contact profile (never visible as outbound message)'
   icon: 'note-add'
 
 - id: add_private_note
   title: 'Add Private Note'
-  description: 'Add a private note to a conversation (internal only)'
+  description: 'Add a private note to a conversation (internal only; not sent to the contact)'
   icon: 'eye-off'
 
 - id: update_priority
   title: 'Update Priority'
-  description: 'Update conversation priority level'
+  description: 'Update conversation priority level for Bruna to triage'
   icon: 'exclamation-triangle'
 
 - id: add_label_to_conversation
   title: 'Add Label to Conversation'
-  description: 'Add a label to a conversation'
+  description: 'Add an organization label (e.g. frete, prazo, coleta, entrega, urgente)'
   icon: 'tag'
 
 - id: faq_lookup
   title: 'FAQ Lookup'
-  description: 'Search FAQ responses using semantic similarity'
+  description: 'Search internal FAQ / knowledge (read-only lookup)'
   icon: 'search'
-
-- id: resolve_conversation
-  title: 'Resolve Conversation'
-  description: 'Resolve a conversation when the issue has been addressed'
-  icon: 'checkmark'
 
 - id: handoff
   title: 'Handoff to Human'
-  description: 'Hand off the conversation to a human agent'
+  description: 'Hand off to Bruna or another human when a decision is needed'
   icon: 'user-switch'
+
+# --- Desabilitadas neste assistente ---
+# resolve_conversation — estagiário não resolve/fecha conversa sem pedido explícito
+# Qualquer tool de send/reply/template/broadcast — proibido (sem outbound a terceiros)

@@ -59,7 +59,41 @@
     return container.querySelector('.left-bubble, .right-bubble');
   }
 
-  // Selo embaixo da mensagem: emojis de quem reagiu (você e os contatos) e, se mais de um, quantos.
+  function displayReactorName(who) {
+    if (who === '__eu') return 'Você';
+    return String(who || '').replace(/\s*\([^)]*@[^)]*\)\s*$/, '').trim() || 'Contato';
+  }
+
+  function reactorInitial(who) {
+    var name = displayReactorName(who);
+    if (who === '__eu') {
+      var me = currentUserFace();
+      return me.initial;
+    }
+    var parts = name.split(/\s+/).filter(Boolean);
+    if (!parts.length) return '?';
+    var first = parts[0].charAt(0);
+    var last = parts.length > 1 ? parts[parts.length - 1].charAt(0) : '';
+    return (first + last).toUpperCase();
+  }
+
+  function currentUserFace() {
+    var store = vueStore();
+    var user = null;
+    try { user = store && store.getters.getCurrentUser; } catch (error) { user = null; }
+    var name = (user && (user.available_name || user.name)) || 'Você';
+    var parts = String(name).split(/\s+/).filter(Boolean);
+    var initial = parts.length
+      ? (parts[0].charAt(0) + (parts.length > 1 ? parts[parts.length - 1].charAt(0) : '')).toUpperCase()
+      : 'V';
+    return {
+      name: name,
+      initial: initial,
+      photo: (user && (user.avatar_url || user.thumbnail)) || '',
+    };
+  }
+
+  // Selo estilo WhatsApp: um chip por emoji com avatar/inicial de quem reagiu; hover mostra os nomes.
   // `entries` é { quem: emoji }. Também aceita um emoji só (reação sua, antes de confirmar).
   function paintBadge(bubble, entries) {
     if (typeof entries === 'string') entries = entries ? { __eu: entries } : {};
@@ -69,27 +103,70 @@
       if (badge) badge.remove();
       return;
     }
-    var emojis = [];
-    names.forEach(function (who) { if (emojis.indexOf(entries[who]) === -1) emojis.push(entries[who]); });
-    var text = emojis.slice(0, 3).join('') + (names.length > 1 ? '|' + names.length : '');
-    var title = names.map(function (who) { return (who === '__eu' ? 'Você' : who.replace(/\s*\([^)]*@[^)]*\)\s*$/, '')) + ': ' + entries[who]; }).join('\n');
-    if (badge && badge.getAttribute('data-value') === text) return;
+    var groups = {};
+    var order = [];
+    names.forEach(function (who) {
+      var emoji = entries[who];
+      if (!groups[emoji]) {
+        groups[emoji] = [];
+        order.push(emoji);
+      }
+      groups[emoji].push(who);
+    });
+    var signature = order.map(function (emoji) {
+      return emoji + ':' + groups[emoji].map(displayReactorName).sort().join(',');
+    }).join('|');
+    if (badge && badge.getAttribute('data-value') === signature) return;
     var isNew = !badge;
     if (!badge) {
       badge = document.createElement('span');
       badge.className = 'crm-reaction-badge';
       bubble.appendChild(badge);
     }
-    badge.setAttribute('data-value', text);
-    badge.title = title;
-    badge.setAttribute('aria-label', 'Reações: ' + title.replace(/\n/g, ', '));
-    badge.textContent = emojis.slice(0, 3).join('');
-    if (names.length > 1) {
-      var count = document.createElement('span');
-      count.className = 'crm-reaction-count';
-      count.textContent = String(names.length);
-      badge.appendChild(count);
-    }
+    badge.setAttribute('data-value', signature);
+    badge.removeAttribute('title');
+    badge.innerHTML = '';
+    var me = currentUserFace();
+    var ariaParts = [];
+    order.forEach(function (emoji) {
+      var people = groups[emoji];
+      var tip = people.map(displayReactorName).join(', ');
+      ariaParts.push(emoji + ' ' + tip);
+      var chip = document.createElement('span');
+      chip.className = 'crm-reaction-chip';
+      chip.title = tip;
+      chip.setAttribute('aria-label', tip);
+      var emojiEl = document.createElement('span');
+      emojiEl.className = 'crm-reaction-emoji';
+      emojiEl.textContent = emoji;
+      chip.appendChild(emojiEl);
+      var faces = document.createElement('span');
+      faces.className = 'crm-reaction-faces';
+      people.slice(0, 3).forEach(function (who) {
+        var face = document.createElement('span');
+        face.className = 'crm-reaction-face';
+        var photo = who === '__eu' ? me.photo : '';
+        var initial = who === '__eu' ? me.initial : reactorInitial(who);
+        if (photo) {
+          var img = document.createElement('img');
+          img.src = photo;
+          img.alt = '';
+          face.appendChild(img);
+        } else {
+          face.textContent = initial.charAt(0);
+        }
+        faces.appendChild(face);
+      });
+      if (people.length > 3) {
+        var more = document.createElement('span');
+        more.className = 'crm-reaction-face is-more';
+        more.textContent = '+' + (people.length - 3);
+        faces.appendChild(more);
+      }
+      chip.appendChild(faces);
+      badge.appendChild(chip);
+    });
+    badge.setAttribute('aria-label', 'Reações: ' + ariaParts.join('; '));
     if (!isNew) return;
     badge.classList.remove('crm-reaction-badge');
     void badge.offsetWidth;
@@ -171,10 +248,38 @@
     });
   }
 
+  // A reação privada dispara ADD_MESSAGE → SCROLL_TO_MESSAGE; prende a bolha no lugar.
+  var holdScrollToken = null;
+
+  function holdConversationScroll(messageId) {
+    var panel = document.querySelector('.conversation-panel');
+    var target = document.querySelector(
+      '.conversation-panel .message-bubble-container[data-message-id="' + messageId + '"]'
+    );
+    if (!panel || !target) return function () {};
+    var top = target.getBoundingClientRect().top;
+    var token = {};
+    holdScrollToken = token;
+    function restore() {
+      if (holdScrollToken !== token) return;
+      var el = document.querySelector(
+        '.conversation-panel .message-bubble-container[data-message-id="' + messageId + '"]'
+      );
+      var scrollPanel = document.querySelector('.conversation-panel');
+      if (!el || !scrollPanel) return;
+      scrollPanel.scrollTop += el.getBoundingClientRect().top - top;
+    }
+    [0, 16, 50, 100, 200, 400, 800].forEach(function (ms) {
+      window.setTimeout(restore, ms);
+    });
+    return restore;
+  }
+
   function sendReaction(messageId, emoji) {
     var ids = conversationIds();
     var headers = authHeaders();
     if (!ids || !headers) return Promise.reject(new Error('sem sessao'));
+    holdConversationScroll(messageId);
     var url =
       '/api/v1/accounts/' +
       ids.accountId +
@@ -195,6 +300,7 @@
       }),
     }).then(function (response) {
       if (!response.ok) throw new Error('reacao');
+      holdConversationScroll(messageId);
       return response.json();
     });
   }

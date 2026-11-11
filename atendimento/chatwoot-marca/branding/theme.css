@@ -680,9 +680,11 @@ aside a[href*="/search"] {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 4px;
   min-width: 28px;
-  height: 28px;
-  padding: 0 6px;
+  min-height: 28px;
+  height: auto;
+  padding: 2px 4px;
   border: 1px solid rgba(17, 27, 33, 0.08);
   border-radius: 999px;
   background: #fff;

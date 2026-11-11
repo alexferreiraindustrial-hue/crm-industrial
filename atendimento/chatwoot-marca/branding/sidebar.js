@@ -353,6 +353,46 @@
       hits + marks + labels + '</svg>';
   }
 
+  function heatCell(count) {
+    var level = !count ? 0 : count === 1 ? 1 : count === 2 ? 2 : count <= 4 ? 3 : 4;
+    return '<i class="crm-heat-cell" data-level="' + level + '" title="' + count + '"></i>';
+  }
+
+  function boardPerformanceMarkup(board, stats) {
+    var pending = board.pending || [];
+    var fixed = board.fixed || [];
+    var adhoc = board.adhoc || [];
+    var done = board.done || [];
+    var open = pending.length + fixed.length + adhoc.length;
+    var day = (stats && stats.rates && stats.rates.day) || { rate: 0, completed: 0, total: 0 };
+    var week = (stats && stats.rates && stats.rates.week) || { rate: 0 };
+    var month = (stats && stats.rates && stats.rates.month) || { rate: 0 };
+    var streak = stats && stats.streak ? stats.streak : 0;
+    var heatmap = ((stats && stats.heatmap) || []).slice(-35).map(function (cell) {
+      return heatCell(cell.count || 0);
+    }).join('');
+    var preview = pending.concat(fixed, adhoc).slice(0, 6).map(function (item) {
+      return '<div class="crm-performance-row" data-kind="' + escapeHtml(item.kind || 'adhoc') + '"><span>' +
+        escapeHtml(item.title) + '</span><span>' + escapeHtml(item.kind === 'fixed' ? 'Fixa' : item.kind === 'carry' ? 'Atrasada' : 'Do dia') +
+        '</span></div>';
+    }).join('');
+    var today = new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: 'short' });
+    var focus = open ? plural(open, 'tarefa sua para hoje', 'tarefas suas para hoje') : 'Seu dia está em dia';
+    return '<section class="crm-performance is-personal" data-open="' + open + '">' +
+      '<div class="crm-performance-head"><p class="crm-performance-kicker">Seu andamento</p><p class="crm-performance-label">' +
+      escapeHtml(today) + '</p></div><p class="crm-performance-focus">' + focus + '</p>' +
+      '<div class="crm-dash-hero">' + ringMarkup(day.rate || 0, day.completed || 0, day.total || open + done.length) +
+      '<dl class="crm-dash-stats"><div><dt>Em aberto</dt><dd>' + open + '</dd></div><div><dt>Concluídas hoje</dt><dd>' +
+      (day.completed || 0) + '</dd></div><div><dt>Sequência</dt><dd>' + streak + 'd</dd></div></dl></div>' +
+      '<div class="crm-dash-card"><div class="crm-dash-head"><p class="crm-dash-title">Taxas</p></div>' +
+      '<div class="crm-rate-row"><span>Dia</span><b>' + (day.rate || 0) + '%</b></div>' +
+      '<div class="crm-rate-row"><span>Semana</span><b>' + (week.rate || 0) + '%</b></div>' +
+      '<div class="crm-rate-row"><span>Mês</span><b>' + (month.rate || 0) + '%</b></div></div>' +
+      (heatmap ? '<div class="crm-dash-card"><div class="crm-dash-head"><p class="crm-dash-title">Últimas 5 semanas</p></div><div class="crm-heat">' + heatmap + '</div></div>' : '') +
+      (preview ? '<div class="crm-dash-card"><div class="crm-dash-head"><p class="crm-dash-title">Na sua fila</p></div>' + preview + '</div>' : '') +
+      '</section>';
+  }
+
   function performanceMarkup(lists) {
     var items = [];
     lists.forEach(function (list) {
@@ -385,30 +425,21 @@
       return '<div class="crm-performance-row"><span>' + escapeHtml(item.title) +
         '</span><span>' + escapeHtml(item.listName) + '</span></div>';
     }).join('');
-    var bars = lists.map(function (list) {
-      var total = (list.items || []).length;
-      var finished = (list.items || []).filter(function (item) { return item.done; }).length;
-      var listRate = total ? Math.round((finished / total) * 100) : 0;
-      return '<div class="crm-dash-list" data-tip="' + escapeHtml(list.name) + ': ' + listRate + '%"><p><span>' + escapeHtml(list.name) + '</span><span>' +
-        (total ? finished + ' de ' + total : 'sem tarefas') + '</span></p>' +
-        '<div class="crm-performance-track"><div class="crm-performance-fill" style="width:' + listRate + '%"></div></div></div>';
-    }).join('');
     var weekBlock = dated
       ? weekChartMarkup(items) + '<p class="crm-dash-note">' + plural(doneNow, 'concluída', 'concluídas') + ' em 7 dias, ' + weekDelta(doneNow, donePrevious) + '.</p>'
       : '<p class="crm-performance-empty">O gráfico aparece conforme as tarefas são criadas e concluídas.</p>';
     var today = new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: 'short' });
     var focus = open.length
-      ? plural(open.length, 'tarefa para fazer', 'tarefas para fazer')
-      : 'Tudo em dia';
-    return '<section class="crm-performance" data-open="' + open.length + '">' +
-      '<div class="crm-performance-head"><p class="crm-performance-kicker">Andamento</p><p class="crm-performance-label">' +
+      ? plural(open.length, 'tarefa sua para fazer', 'tarefas suas para fazer')
+      : 'Seu dia está em dia';
+    return '<section class="crm-performance is-personal" data-open="' + open.length + '">' +
+      '<div class="crm-performance-head"><p class="crm-performance-kicker">Seu andamento</p><p class="crm-performance-label">' +
       escapeHtml(today) + '</p></div><p class="crm-performance-focus">' + focus + '</p>' +
       '<div class="crm-dash-hero">' + ringMarkup(rate, done, items.length) +
-      '<dl class="crm-dash-stats"><div><dt>Em aberto</dt><dd>' + open.length + '</dd></div><div><dt>Concluídas</dt><dd>' + done + '</dd></div><div><dt>Listas</dt><dd>' + lists.length + '</dd></div></dl></div>' +
+      '<dl class="crm-dash-stats"><div><dt>Em aberto</dt><dd>' + open.length + '</dd></div><div><dt>Concluídas</dt><dd>' + done + '</dd></div><div><dt>Suas listas</dt><dd>' + lists.length + '</dd></div></dl></div>' +
       '<div class="crm-dash-card"><div class="crm-dash-head"><p class="crm-dash-title">Últimos 7 dias</p>' +
       (dated ? '<div class="crm-dash-legend"><span><i class="created"></i>Criadas</span><span><i class="done"></i>Concluídas</span></div>' : '') +
       '</div>' + weekBlock + '</div>' +
-      (bars ? '<div class="crm-dash-card"><div class="crm-dash-head"><p class="crm-dash-title">Progresso por lista</p></div>' + bars + '</div>' : '') +
       (pending ? '<div class="crm-dash-card"><div class="crm-dash-head"><p class="crm-dash-title">Pendências</p></div>' + pending + '</div>' : '') +
       '</section>';
   }
@@ -536,18 +567,33 @@
     var request = performanceRequest + 1;
     performanceRequest = request;
     var accountId = base.split('/').pop();
-    fetch('/api/v1/accounts/' + accountId + '/checklist_lists', {
-      credentials: 'same-origin',
-      headers: headers,
-    }).then(function (response) {
-      if (!response.ok) throw new Error('listas');
-      return response.json();
-    }).then(function (lists) {
+    var day = spDate();
+    Promise.all([
+      fetch('/api/v1/accounts/' + accountId + '/checklist_board?day=' + encodeURIComponent(day), { credentials: 'same-origin', headers: headers }),
+      fetch('/api/v1/accounts/' + accountId + '/checklist_stats?on=' + encodeURIComponent(day) + '&range=day', { credentials: 'same-origin', headers: headers }),
+    ]).then(function (responses) {
+      if (!responses[0].ok || !responses[1].ok) throw new Error('board');
+      return Promise.all([responses[0].json(), responses[1].json()]);
+    }).then(function (payload) {
       if (request !== performanceRequest) return;
-      performanceCache = Array.isArray(lists) ? lists : [];
+      performanceCache = payload;
       performanceSignature = signature;
       performanceLoading = false;
-      placePerformance(page, performanceMarkup(performanceCache));
+      placePerformance(page, boardPerformanceMarkup(payload[0] || {}, payload[1] || {}));
+    }).catch(function () {
+      return fetch('/api/v1/accounts/' + accountId + '/checklist_lists', {
+        credentials: 'same-origin',
+        headers: headers,
+      }).then(function (response) {
+        if (!response.ok) throw new Error('listas');
+        return response.json();
+      }).then(function (lists) {
+        if (request !== performanceRequest) return;
+        performanceCache = Array.isArray(lists) ? lists : [];
+        performanceSignature = signature;
+        performanceLoading = false;
+        placePerformance(page, performanceMarkup(performanceCache));
+      });
     }).catch(function () {
       if (request !== performanceRequest) return;
       performanceLoading = false;
@@ -665,13 +711,20 @@
     return [activity.title, activity.contact_name, activity.assignee && activity.assignee.name].join(' ').toLowerCase().indexOf(term) !== -1;
   }
 
+  function conversationHref(activity) {
+    var base = accountBase();
+    var href = base + '/conversations/' + encodeURIComponent(activity.conversation_id);
+    if (activity.message_id) href += '?messageId=' + encodeURIComponent(activity.message_id);
+    return href;
+  }
+
   function reminderRow(activity, base, bucket) {
     var priority = activityLabel('', activity.priority);
     var origin = [activityLabel('', activity.origin), activity.contact_name].filter(Boolean).join(' • ');
     var owner = activity.assignee && activity.assignee.name;
     var due = activity.due_on ? String(activity.due_on).slice(0, 10) : '';
     var late = bucket === 'late' ? dayGap(due, spDate()) : 0;
-    var href = base + '/conversations/' + encodeURIComponent(activity.conversation_id);
+    var href = conversationHref(activity);
     return '<article class="crm-rem" data-bucket="' + bucket + '" data-priority="' + escapeHtml(activity.priority || '') + '">' +
       '<div class="crm-rem-main"><p class="crm-rem-title" data-rem-files="' + activity.id + '" title="Ver atividade">' + escapeHtml(activity.title) + '</p><p class="crm-rem-meta">' +
       (priority ? '<span class="crm-rem-prio">' + escapeHtml(priority) + '</span>' : '') +
@@ -801,12 +854,12 @@
   function createRemindersView(page) {
     var root = document.createElement('section');
     root.className = 'crm-reminders';
-    root.innerHTML = '<div class="crm-rem-page"><header class="crm-rem-head"><div><h1>Lembretes</h1><p data-rem-sub></p></div>' +
+    root.innerHTML = '<div class="crm-rem-page"><header class="crm-rem-head"><div><p class="crm-rem-kicker">Atividades</p><h1>Lembretes do dia</h1><p data-rem-sub></p></div>' +
       '<div class="crm-rem-tools"><select class="crm-rem-select" data-rem-owner aria-label="Responsável">' + reminderOwnerOptions() + '</select>' +
       '<select class="crm-rem-select" data-rem-priority aria-label="Prioridade">' + [['all', 'Todas as prioridades'], ['high', 'Prioridade alta'], ['medium', 'Prioridade média'], ['low', 'Prioridade baixa']].map(function (option) {
         return '<option value="' + option[0] + '"' + (reminders.priority === option[0] ? ' selected' : '') + '>' + option[1] + '</option>';
       }).join('') + '</select>' +
-      '<label class="crm-rem-search">' + icon('M21 21l-4.35-4.35M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16z') + '<input type="search" data-rem-search placeholder="Buscar" aria-label="Buscar lembretes"></label></div></header>' +
+      '<label class="crm-rem-search">' + icon('M21 21l-4.35-4.35M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16z') + '<input type="search" data-rem-search placeholder="Buscar lembrete" aria-label="Buscar lembretes"></label></div></header>' +
       '<div class="crm-rem-chips" data-rem-chips></div><div class="crm-rem-list" data-rem-list><p class="crm-rem-empty is-main">Carregando...</p></div></div><aside class="crm-rem-side" data-rem-side></aside>';
     root.addEventListener('input', function (event) {
       if (!event.target.hasAttribute('data-rem-search')) return;
@@ -2155,9 +2208,10 @@
     return undefined;
   }
 
-  // Assistente de IA: painel lateral aberto pelo menu do perfil. Só consulta; a conversa fica só nesta tela.
-  var ai = { layer: null, turns: [], busy: false, info: null };
+  // Assistente de IA: painel lateral (menu Configurações, rail e perfil). Só consulta; a conversa fica só nesta tela.
+  var ai = { layer: null, turns: [], busy: false, info: null, briefed: false };
   var AI_SUGGESTIONS = ['O que está atrasado hoje?', 'Quantas conversas estão sem responsável?', 'Quais cartões estão parados há mais de uma semana?', 'Quais são as minhas atividades de hoje?'];
+  var AI_BRIEFING = 'Resuma o que está urgente agora: conversas abertas sem responsável, atrasos de prazo e cartões parados. Liste tarefas sugeridas para a Bruna (só internas; não envie mensagem a cliente).';
 
   function aiAnswerHtml(text) {
     var base = accountBase();
@@ -2196,14 +2250,23 @@
     crmApi('GET', '/crm_ai_assistant').then(function (data) {
       ai.info = data;
       paintAssistantNote();
+      // Iniciativa leve: na primeira abertura da sessão, já traz o briefing de urgências (só leitura).
+      if (!ai.briefed && !ai.turns.length && data && data.key_configured) {
+        ai.briefed = true;
+        askAssistant(AI_BRIEFING);
+      }
     }).catch(function () {});
     var input = layer.querySelector('[data-ai-input]');
     if (window.matchMedia('(min-width: 768px)').matches) input.focus();
+    var side = document.querySelector('.crm-side');
+    if (side) { side.removeAttribute('data-sig'); renderSide(side); }
   }
 
   function closeAssistant() {
     if (ai.layer) ai.layer.remove();
     ai.layer = null;
+    var side = document.querySelector('.crm-side');
+    if (side) { side.removeAttribute('data-sig'); renderSide(side); }
   }
 
   function paintAssistantNote() {
@@ -2672,13 +2735,15 @@
       path.indexOf('/portals') !== -1 || path.indexOf('/inbox-view') !== -1;
     var calendarOn = document.body.getAttribute('data-crm-calendar') === 'open';
     var kanbanOn = hash.indexOf('#kanban') === 0;
+    var assistantOn = !!ai.layer;
+    var assistantEnabled = window.crmModules.enabled('assistente_ia');
     if (calendarOn || kanbanOn) {
       activitiesOn = false;
       checklistOn = false;
       chatOn = false;
     }
     var unreadChats = railCounts.conversations;
-    var signature = [path, hash, settingsMenuOpen ? '1' : '0', openTasks, unreadChats, railCounts.email, railCounts.emailConnected ? '1' : '0', person.name, person.photo, calendarOn ? '1' : '0', crmModules.list.length].join('|');
+    var signature = [path, hash, settingsMenuOpen ? '1' : '0', openTasks, unreadChats, railCounts.email, railCounts.emailConnected ? '1' : '0', person.name, person.photo, calendarOn ? '1' : '0', assistantOn ? '1' : '0', assistantEnabled ? '1' : '0', crmModules.list.length].join('|');
     if (side.getAttribute('data-sig') === signature) return;
     side.setAttribute('data-sig', signature);
     var settings = [
@@ -2705,8 +2770,16 @@
     var photo = person.photo
       ? '<img class="photo" src="' + escapeHtml(person.photo) + '" alt="">'
       : '<span class="photo">' + escapeHtml(initials(person.name)) + '</span>';
+    // logo-tools: utilitários discretos (Assistente + tema + recolher). Calculadora e alertas de prazo
+    // são injetados pelo kanban.js no mesmo span, antes do botão de tema.
+    var logoTools =
+      (assistantEnabled
+        ? '<button type="button" class="crm-fold' + (assistantOn ? ' is-on' : '') + '" data-crm-assistente="true" title="Assistente de IA" aria-label="Assistente de IA" aria-pressed="' + (assistantOn ? 'true' : 'false') + '">' + icon('M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8') + '</button>'
+        : '') +
+      '<button type="button" class="crm-fold" data-crm-tema="true" aria-label="Alternar tema"></button>' +
+      '<button type="button" class="crm-fold" data-crm-fold="true" aria-label="Recolher menu">' + icon('M15 18l-6-6 6-6') + '</button>';
     side.innerHTML =
-      '<div class="logo"><img src="/brand-assets/logo-mark.png?' + BRAND_VERSION + '" alt=""><div><strong>Bruna Logística</strong><small>Logística • Produção • Resultados</small></div><span class="logo-tools"><button type="button" class="crm-fold" data-crm-tema="true" aria-label="Alternar tema"></button><button type="button" class="crm-fold" data-crm-fold="true" aria-label="Recolher menu">' + icon('M15 18l-6-6 6-6') + '</button></span></div>' +
+      '<div class="logo"><img src="/brand-assets/logo-mark.png?' + BRAND_VERSION + '" alt=""><div><strong>Bruna Logística</strong><small>Logística • Produção • Resultados</small></div><span class="logo-tools">' + logoTools + '</span></div>' +
       '<a class="nv' + (checklistOn ? ' on' : '') + '" title="Tarefas e Checklist" href="' + base + '/task-checklist"><span class="ic">' + icon('M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11') + '</span><span class="lbl">Tarefas e Checklist</span>' +
       (openTasks ? '<span class="badge">' + openTasks + '</span>' : '') + '</a>' +
       '<a class="nv' + (activitiesOn ? ' on' : '') + '" title="Atividades" href="' + base + '/task-checklist#atividades"><span class="ic">' + icon('M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01') + '</span><span class="lbl">Atividades</span></a>' +
@@ -2747,6 +2820,15 @@
       side.setAttribute('aria-label', 'Menu principal');
       host.insertBefore(side, aside);
       side.addEventListener('click', function (event) {
+        var assistente = event.target.closest('[data-crm-assistente]');
+        if (assistente) {
+          event.preventDefault();
+          if (window.crmModules.enabled('assistente_ia')) {
+            if (ai.layer) closeAssistant();
+            else openAssistant();
+          }
+          return;
+        }
         var tema = event.target.closest('[data-crm-tema]');
         if (tema) {
           event.preventDefault();
@@ -2795,6 +2877,11 @@
         if (link && (link.getAttribute('href') || '') === '#calendario') {
           event.preventDefault();
           openCalendar();
+          return;
+        }
+        if (link && (link.getAttribute('href') || '') === '#assistente') {
+          event.preventDefault();
+          if (window.crmModules.enabled('assistente_ia')) openAssistant();
           return;
         }
         if (link && (link.getAttribute('href') || '').charAt(0) === '#') {
@@ -3372,7 +3459,7 @@
         if (key < isoDate(new Date())) lateCount += 1;
         datedCount += 1;
       }
-      byDay[key].push('<a class="ev act' + (finished ? ' is-done' : '') + '" data-priority="' + escapeHtml(activity.priority || '') + '" title="' + (finished ? 'Concluída: ' : '') + escapeHtml(activity.title) + '" href="' + base + '/conversations/' + encodeURIComponent(activity.conversation_id) + '">' + escapeHtml(activity.title) + '</a>');
+      byDay[key].push('<a class="ev act' + (finished ? ' is-done' : '') + '" data-priority="' + escapeHtml(activity.priority || '') + '" title="' + (finished ? 'Concluída: ' : '') + escapeHtml(activity.title) + '" href="' + conversationHref(activity) + '">' + escapeHtml(activity.title) + '</a>');
     });
     var cardPriorities = ['', 'low', 'medium', 'high'];
     var addCard = function (card, key, prefix) {

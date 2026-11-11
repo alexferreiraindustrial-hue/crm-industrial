@@ -1,0 +1,16 @@
+          end
+          resource :crm_health, only: [:show], controller: 'crm_health'
+          resources :crm_modules, only: [:index, :update]
+          resources :crm_api_tokens, only: [:index, :create, :destroy]
+          resource :crm_pix_settings, only: [:show, :update]
+          resources :crm_participant_photos, only: [:index]
+          resource :crm_ai_assistant, only: [:show, :update], controller: 'crm_ai_assistant' do
+            post :ask
+          end
+          resources :crm_team_rooms, only: [:index, :create, :update] do
+            collection do
+              get :summary
+              post :direct
+            end
+            member do
+              post :read

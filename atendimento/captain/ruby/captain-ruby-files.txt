@@ -1,0 +1,14 @@
+/app/lib/captain/base_task_service.rb
+/app/lib/captain/summary_service.rb
+/app/lib/captain/tool_instrumentation.rb
+/app/lib/captain/responses_config.rb
+/app/lib/captain/overview_summary_service.rb
+/app/lib/captain/reply_suggestion_service.rb
+/app/lib/captain/follow_up_service.rb
+/app/lib/captain/rewrite_service.rb
+/app/lib/captain/csat_utility_analysis_service.rb
+/app/app/services/captain/conversation_classifier_service.rb
+/app/app/services/captain/conversation_transcript.rb
+/app/app/services/captain/customer_context.rb
+/app/app/services/captain/jev_client.rb
+/app/app/services/captain/automation_condition_service.rb
