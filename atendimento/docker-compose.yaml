@@ -1,0 +1,118 @@
+# CRM Industrial - Atendimento: Chatwoot (caixas de entrada) + WAHA (WhatsApp) + conector
+# Base: docker-compose oficial do WAHA para Chatwoot, adaptado:
+# - WAHA Core (gratuito) em vez do Plus; painel em http://localhost:3040
+# - Chatwoot em http://localhost:3009
+# - Postgres e Redis sem porta aberta no PC; senhas em .env (gerado por configurar.ps1)
+# - conector: cada sessao aberta no WAHA vira uma caixa de entrada no Chatwoot
+name: crm-industrial-atendimento
+
+services:
+  waha:
+    restart: always
+    image: devlikeapro/waha
+    ports:
+      - '127.0.0.1:3040:3000/tcp'
+    volumes:
+      - './sessions:/app/.sessions'
+      - './media:/app/.media'
+    env_file:
+      - .waha.env
+    depends_on:
+      - redis
+      - chatwoot
+      - chatwoot-sidekiq
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '100m'
+        max-file: '10'
+
+  conector:
+    image: node:22-alpine
+    restart: always
+    working_dir: /app
+    command: ['node', 'conector.mjs']
+    volumes:
+      - './conector:/app:ro'
+    env_file:
+      - path: .waha.env
+      - path: .conector.env
+        required: false
+    depends_on:
+      - waha
+      - chatwoot
+
+  base: &base
+    # Fork do Chatwoot v4.19.1 Community (MIT) com provedor WAHA + marca CRM Industrial
+    # Base: ..\..\crm-industrial-chatwoot (construir-chatwoot.ps1)
+    image: crm-industrial-chatwoot:v4.19.1
+    build:
+      context: ./chatwoot-marca
+      args:
+        CHATWOOT_BASE: crm-industrial-chatwoot-base:v4.19.1
+    env_file: .chatwoot.env
+    volumes:
+      - chatwoot_storage:/app/storage
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '100m'
+        max-file: '10'
+
+  chatwoot:
+    <<: *base
+    depends_on:
+      - postgres
+      - redis
+    ports:
+      - '127.0.0.1:3009:3009'
+    environment:
+      - NODE_ENV=production
+      - RAILS_ENV=production
+      - INSTALLATION_ENV=docker
+    entrypoint: docker/entrypoints/rails.sh
+    command: ['bundle', 'exec', 'rails', 's', '-p', '3009', '-b', '0.0.0.0']
+    restart: always
+
+  chatwoot-sidekiq:
+    <<: *base
+    ports: []
+    depends_on:
+      - postgres
+      - redis
+    environment:
+      - NODE_ENV=production
+      - RAILS_ENV=production
+      - INSTALLATION_ENV=docker
+    command: ['bundle', 'exec', 'sidekiq', '-C', 'config/sidekiq.yml']
+    restart: always
+
+  postgres:
+    image: pgvector/pgvector:pg16
+    restart: always
+    volumes:
+      - chatwoot_pg_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=chatwoot
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:?rode configurar.ps1}
+
+  redis:
+    image: redis:alpine
+    restart: always
+    command:
+      - 'sh'
+      - '-c'
+      - >
+        redis-server --bind 0.0.0.0 --port 6379 --requirepass
+        ${REDIS_PASSWORD:?rode configurar.ps1} --timeout 300 --tcp-keepalive 60 --save 900 1
+        --save 300 10 --save 60 10000 --appendonly yes --appendfsync everysec
+    volumes:
+      - chatwoot_redis:/data
+
+volumes:
+  chatwoot_pg_data: {}
+  chatwoot_redis: {}
+  chatwoot_storage: {}

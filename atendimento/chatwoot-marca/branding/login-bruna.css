@@ -1,0 +1,54 @@
+/* Tela de entrada da Bruna. O restante do atendimento permanece como esta no servidor. */
+[data-testid="submit_button"] {
+  background: #1a78b8 !important;
+  color: #fff !important;
+  border: 0 !important;
+  border-radius: 8px !important;
+}
+
+[data-testid="submit_button"]:hover {
+  background: #2494d6 !important;
+}
+
+main.min-h-screen {
+  background: radial-gradient(920px 520px at 50% -8%, #1a78b8 0%, #0c4e8c 46%, #06264f 100%) !important;
+}
+
+main.min-h-screen h2,
+main.min-h-screen label,
+main.min-h-screen p {
+  color: #f3f8fd !important;
+}
+
+main.min-h-screen a,
+main.min-h-screen a.text-link,
+main.min-h-screen a.text-n-brand,
+:is(html.dark, body.dark) main.min-h-screen a.text-link,
+:is(html.dark, body.dark) main.min-h-screen a.text-n-brand {
+  color: #d7ebff !important;
+}
+
+main.min-h-screen > section.p-11 {
+  background: rgba(5, 32, 68, 0.42) !important;
+  box-shadow: none !important;
+}
+
+main.min-h-screen input {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #f3f8fd !important;
+  border-color: rgba(255, 255, 255, 0.28) !important;
+}
+
+main.min-h-screen > section img {
+  height: 168px;
+  width: auto;
+  max-width: min(320px, 88vw);
+  object-fit: contain;
+  background: #e7f3fb;
+  border-radius: 16px;
+  padding: 12px 16px;
+}
+
+main.min-h-screen > section h2 {
+  display: none;
+}

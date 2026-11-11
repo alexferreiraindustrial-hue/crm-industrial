@@ -1,0 +1,1934 @@
+/* WhatsApp Web: cores e medidas tiradas de captura em 1359px. Carregar por último.
+   Só desktop: o celular continua com as regras de theme-v3.css. */
+
+html body.crm-shell {
+  --wa-rail: var(--ci-surface-2);
+  --wa-rail-on: var(--ci-line-2);
+  --wa-hover: var(--ci-surface-3);
+  --wa-active: var(--ci-surface-2);
+  --wa-pill: var(--ci-surface);
+  --wa-search: var(--ci-surface-2);
+  --wa-chip-on: #d9fdd3;
+  --wa-chip-on-text: #0b5340;
+  --wa-badge-text: #ffffff;
+}
+
+html body.dark.crm-shell {
+  --slate-1: 22 23 23; --slate-2: 36 38 38; --slate-3: 46 47 47; --slate-4: 36 38 38;
+  --slate-5: 52 54 54; --slate-6: 78 80 80; --slate-7: 120 122 122; --slate-8: 130 132 132;
+  --slate-9: 165 165 165; --slate-10: 165 165 165; --slate-11: 186 190 190; --slate-12: 222 225 225;
+  --blue-6: 33 192 99; --blue-7: 33 192 99; --blue-8: 33 192 99; --blue-9: 33 192 99;
+  --blue-10: 33 192 99; --blue-11: 33 192 99; --blue-12: 222 225 225;
+  --teal-9: 33 192 99; --teal-10: 33 192 99; --teal-11: 33 192 99;
+  --background-color: 22 23 23;
+  --surface-1: 22 23 23; --surface-2: 36 38 38; --surface-active: 46 47 47;
+  --solid-1: 22 23 23; --solid-2: 36 38 38; --solid-3: 46 47 47; --solid-active: 46 47 47;
+  --solid-blue: 20 77 55; --solid-blue-2: 36 38 38; --solid-iris: 20 77 55;
+  --card-color: 22 23 23; --button-color: 36 38 38; --label-background: 46 47 47;
+  --border-container: 52 54 54; --border-strong: 52 54 54; --border-weak: 46 47 47;
+  --background-input-box: 46, 47, 47, 1;
+  --text-blue: 222 225 225;
+  --alpha-1: 222, 225, 225, 0.04; --alpha-2: 222, 225, 225, 0.08; --alpha-3: 22, 23, 23, 0.96;
+
+  --ci-bg: #161717; --ci-glow: #161717; --ci-surface: #161717; --ci-surface-2: #2e2f2f;
+  --ci-surface-3: #242626; --ci-bg2: #161717; --ci-input: #242626; --ci-header: #161717;
+  --ci-line: #343636; --ci-line-2: #343636;
+  /* Mais suave que o #fafafa do WhatsApp, a pedido: o branco puro cansava a vista. */
+  --ci-text: #dee1e1; --ci-text-2: #a5a5a5; --ci-text-3: #8a8a8a;
+  --ci-green: #21c063; --ci-green-2: #21c063; --ci-on-green: #0b0b0b; --ci-ink: #21c063;
+  --ci-green-soft: #103529; --ci-green-line: rgba(33, 192, 99, 0.4);
+  --ci-chip-ok-bg: #103529; --ci-chip-ok-t: #21c063;
+  --ci-sent: #144d37; --ci-recv: #242626; --ci-chat: #161717; --ci-meta: #a5a5a5;
+  --ci-cv-on: #2e2f2f; --ci-track: #2e2f2f; --ci-done-a: #161717; --ci-done-b: #161717;
+  --ci-focus: rgba(33, 192, 99, 0.28);
+
+  --wa-rail: #1d1f1f;
+  --wa-rail-on: #343636;
+  --wa-hover: #242626;
+  --wa-active: #2e2f2f;
+  --wa-pill: #242626;
+  --wa-search: #2e2f2f;
+  --wa-chip-on: #103529;
+  --wa-chip-on-text: #d9fdd3;
+  --wa-badge-text: #0b0b0b;
+}
+
+/* --bl-* é a paleta antiga, esverdeada, que ainda pinta calendário, tarefas e janelas. */
+html body.dark.crm-shell {
+  --bl-bg: #161717; --bl-panel: #161717; --bl-chat: #161717; --bl-recv: #242626; --bl-sent: #144d37;
+  --bl-green: #21c063; --bl-on-green: #0b0b0b; --bl-text: #dee1e1; --bl-text2: #a5a5a5; --bl-text3: #8a8a8a;
+  --bl-line: #343636; --bl-line2: #343636; --bl-blue: #21c063; --bl-blue-h: #1aa556;
+  --bl-hover: #242626; --bl-sel: #2e2f2f; --bl-rail-h: #242626; --bl-rail-sel: #343636;
+  --bl-input: #242626; --bl-card: #1f2121; --bl-pill-on: #103529; --bl-pill-on-t: #d9fdd3;
+  --bl-focus: rgba(33, 192, 99, 0.28);
+  --crm-card: #1f2121;
+  --crm-chart-created: #5096cf;
+  --crm-chart-done: #1aa556;
+  --crm-amber: #e8b44a;
+  --crm-red: #f15c6d;
+}
+
+/* Modo claro igual ao WhatsApp Web: cores medidas em captura enviada pelo Alex em 2026-11-09. */
+html body.crm-shell:not(.dark) {
+  --slate-1: 255 255 255; --slate-2: 247 245 243; --slate-3: 239 237 234; --slate-4: 246 245 244;
+  --slate-5: 229 229 229; --slate-6: 222 220 218; --slate-7: 190 188 186; --slate-8: 140 140 140;
+  --slate-9: 140 140 140; --slate-10: 102 102 102; --slate-11: 102 102 102; --slate-12: 10 10 10;
+  --blue-9: 29 170 97; --blue-10: 21 96 62; --blue-11: 21 96 62; --blue-12: 10 10 10;
+  --teal-9: 29 170 97; --teal-10: 21 96 62; --teal-11: 21 96 62;
+  --background-color: 255 255 255;
+  --surface-1: 255 255 255; --surface-2: 247 245 243; --surface-active: 246 245 244;
+  --solid-1: 255 255 255; --solid-2: 247 245 243; --solid-3: 246 245 244; --solid-active: 239 237 234;
+  --solid-blue: 217 253 211; --solid-blue-2: 246 245 244; --solid-iris: 217 253 211;
+  --card-color: 255 255 255; --button-color: 255 255 255; --label-background: 246 245 244;
+  --border-container: 229 229 229; --border-strong: 229 229 229; --border-weak: 229 229 229;
+  --background-input-box: 255, 255, 255, 1;
+  --text-blue: 10 10 10;
+
+  --ci-bg: #ffffff; --ci-glow: #ffffff; --ci-surface: #ffffff; --ci-surface-2: #f6f5f4; --ci-surface-3: #f6f5f4;
+  --ci-bg2: #f7f5f3; --ci-input: #ffffff; --ci-header: #ffffff;
+  --ci-line: #e5e5e5; --ci-line-2: #dedcda;
+  --ci-text: #0a0a0a; --ci-text-2: #666666; --ci-text-3: #8c8c8c;
+  --ci-green: #1daa61; --ci-green-2: #1daa61; --ci-on-green: #ffffff; --ci-ink: #15603e;
+  --ci-green-soft: #d9fdd3; --ci-green-line: rgba(29, 170, 97, 0.35);
+  --ci-chip-ok-bg: #d9fdd3; --ci-chip-ok-t: #15603e;
+  --ci-sent: #d9fdd3; --ci-recv: #ffffff; --ci-chat: #f5f1eb; --ci-meta: #666666;
+  --ci-cv-on: #f6f5f4; --ci-track: #efedea; --ci-done-a: #f7f5f3; --ci-done-b: #f7f5f3;
+  --ci-focus: rgba(29, 170, 97, 0.25);
+
+  --bl-bg: #f7f5f3; --bl-panel: #ffffff; --bl-chat: #f5f1eb; --bl-recv: #ffffff; --bl-sent: #d9fdd3;
+  --bl-green: #1daa61; --bl-on-green: #ffffff; --bl-text: #0a0a0a; --bl-text2: #666666; --bl-text3: #8c8c8c;
+  --bl-line: #e5e5e5; --bl-line2: #dedcda; --bl-blue: #1daa61; --bl-blue-h: #15603e;
+  --bl-hover: #f6f5f4; --bl-sel: #f6f5f4; --bl-rail-h: #efedea; --bl-rail-sel: #efedea;
+  --bl-input: #f6f5f4; --bl-card: #ffffff; --bl-pill-on: #d9fdd3; --bl-pill-on-t: #15603e;
+
+  --wa-rail: #f7f5f3;
+  --wa-rail-on: #efedea;
+  --wa-hover: #f6f5f4;
+  --wa-active: #f6f5f4;
+  --wa-pill: #ffffff;
+  --wa-search: #f6f5f4;
+  --wa-chip-on: #d9fdd3;
+  --wa-chip-on-text: #15603e;
+  --wa-badge-text: #ffffff;
+
+  --crm-card: #ffffff;
+  --crm-chart-created: #3a7fc0;
+  --crm-chart-done: #1daa61;
+  --crm-amber: #9a6a00;
+  --crm-red: #c23a44;
+  background: #ffffff !important;
+  color: #0a0a0a;
+}
+
+/* Janela de atividade: cabe numa tela baixa sem rolar. */
+html body dialog[data-crm-activity-dialog="true"] {
+  width: min(420px, calc(100vw - 24px)) !important;
+  max-height: calc(100dvh - 24px) !important;
+  border-radius: 14px !important;
+}
+html body dialog[data-crm-activity-dialog="true"] form {
+  gap: 10px !important;
+  padding: 18px !important;
+  background: var(--bl-panel) !important;
+}
+html body dialog[data-crm-activity-dialog="true"] form::before { content: none !important; }
+html body dialog[data-crm-activity-dialog="true"] label { gap: 4px !important; font-size: 13px; }
+html body dialog[data-crm-activity-dialog="true"] input,
+html body dialog[data-crm-activity-dialog="true"] select {
+  height: 36px !important;
+  margin: 0 !important;
+  padding: 0 10px !important;
+  border-radius: 8px !important;
+  font-size: 14px !important;
+}
+html body dialog[data-crm-activity-dialog="true"] form > div:last-child button {
+  height: 36px !important;
+  min-height: 36px !important;
+}
+
+/* Painel de andamento com gráficos */
+.crm-dash-hero,
+.crm-dash-card {
+  padding: 14px;
+  border-radius: 12px;
+  background: var(--crm-card);
+}
+.crm-dash-hero {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.crm-dash-ring {
+  position: relative;
+  flex: 0 0 112px;
+  width: 112px;
+  height: 112px;
+}
+.crm-dash-ring svg { display: block; width: 100%; height: 100%; }
+.crm-dash-ring circle { fill: none; stroke-width: 12; }
+.crm-dash-ring .t { stroke: var(--ci-track); }
+.crm-dash-ring .v {
+  stroke: var(--crm-chart-done);
+  stroke-linecap: round;
+  animation: crm-ring 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.crm-dash-ring .c {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.crm-dash-ring b {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--ci-text);
+  font-variant-numeric: tabular-nums;
+}
+.crm-dash-ring span { margin-top: 3px; font-size: 11px; color: var(--ci-text-2); }
+.crm-dash-stats { flex: 1; min-width: 0; margin: 0; }
+.crm-dash-stats div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--ci-line);
+}
+.crm-dash-stats div:last-child { border-bottom: 0; }
+.crm-dash-stats dt { font-size: 13px; color: var(--ci-text-2); }
+.crm-dash-stats dd {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ci-text);
+  font-variant-numeric: tabular-nums;
+}
+.crm-dash-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.crm-dash-title { margin: 0; font-size: 13px; font-weight: 600; color: var(--ci-text); }
+.crm-dash-legend { display: flex; gap: 12px; font-size: 11.5px; color: var(--ci-text-2); }
+.crm-dash-legend span { display: inline-flex; align-items: center; gap: 5px; }
+.crm-dash-legend i { width: 9px; height: 9px; border-radius: 3px; }
+.crm-dash-legend .created,
+.crm-dash-chart .created { background: var(--crm-chart-created); fill: var(--crm-chart-created); }
+.crm-dash-legend .done,
+.crm-dash-chart .done { background: var(--crm-chart-done); fill: var(--crm-chart-done); }
+.crm-dash-chart { display: block; width: 100%; height: auto; }
+.crm-dash-chart text { font-size: 10.5px; fill: var(--ci-text-2); font-variant-numeric: tabular-nums; }
+.crm-dash-chart text.today { font-weight: 700; fill: var(--ci-text); }
+.crm-dash-chart line { stroke: var(--ci-line); stroke-width: 1; }
+.crm-dash-chart .created,
+.crm-dash-chart .done {
+  transform-box: fill-box;
+  transform-origin: bottom;
+  animation: crm-grow 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.crm-dash-chart .hit { fill: transparent; }
+.crm-dash-chart .hit:hover { fill: var(--ci-track); fill-opacity: 0.45; }
+.crm-dash-note { margin: 6px 0 0; font-size: 12px; color: var(--ci-text-2); }
+.crm-dash-list { margin-top: 8px; }
+.crm-dash-list:first-of-type { margin-top: 0; }
+.crm-dash-list p {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 0 0 4px;
+  font-size: 13px;
+  color: var(--ci-text);
+}
+.crm-dash-list p span:last-child { color: var(--ci-text-2); font-variant-numeric: tabular-nums; }
+.crm-tip {
+  position: fixed;
+  z-index: 9999;
+  max-width: 240px;
+  padding: 5px 8px;
+  border-radius: 6px;
+  background: #0f1010;
+  color: #e6e8e8;
+  font-size: 12px;
+  line-height: 1.35;
+  white-space: nowrap;
+  pointer-events: none;
+}
+@keyframes crm-ring { from { stroke-dasharray: 0 400; } }
+@keyframes crm-grow { from { transform: scaleY(0); } }
+@media (prefers-reduced-motion: reduce) {
+  .crm-dash-ring .v, .crm-dash-chart .created, .crm-dash-chart .done { animation: none; }
+}
+
+/* O tema global de campos inflava a caixa de seleção da lista expandida. */
+html body .conversations-list .conversation input[type="checkbox"] {
+  width: 16px !important;
+  height: 16px !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border-radius: 4px !important;
+}
+html body .conversations-list .conversation input[type="checkbox"]:not(:checked) {
+  background: transparent !important;
+}
+
+.crm-wa-search { display: none; }
+
+@media (min-width: 768px) {
+  /* Barra de ícones */
+  html body.crm-shell .crm-side,
+  html body.dark.crm-shell .crm-side {
+    background: var(--wa-rail) !important;
+    border-right: 1px solid var(--ci-line) !important;
+  }
+  html body.crm-shell[data-crm-menu="fechado"] .crm-side {
+    width: 65px !important;
+    min-width: 65px !important;
+    flex: 0 0 65px !important;
+    align-items: center;
+    gap: 8px !important;
+    padding: 10px 0 !important;
+  }
+  html body.crm-shell[data-crm-menu="fechado"] .crm-side .sp {
+    display: block !important;
+    flex: 1 1 auto;
+    order: 1;
+  }
+  html body.crm-shell[data-crm-menu="fechado"] .crm-side .logo { order: 2; }
+  html body.crm-shell[data-crm-menu="fechado"] .crm-side .me { order: 3; }
+  html body.crm-shell[data-crm-menu="fechado"] .crm-side .logo img { display: none; }
+  html body.crm-shell[data-crm-menu="fechado"] .crm-side .crm-fold {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: var(--ci-text-2);
+  }
+  html body.crm-shell[data-crm-menu="fechado"] .crm-side .nv {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  html body.crm-shell[data-crm-menu="fechado"] .crm-side .nv .ic {
+    color: var(--ci-text);
+  }
+  html body.crm-shell[data-crm-menu="fechado"] .crm-side .nv:hover {
+    background: var(--wa-hover) !important;
+  }
+  html body.crm-shell[data-crm-menu="fechado"] .crm-side .nv.on {
+    background: var(--wa-rail-on) !important;
+  }
+  html body.crm-shell[data-crm-menu="fechado"] .crm-side .nv.on .ic {
+    color: var(--ci-text) !important;
+  }
+  html body.crm-shell[data-crm-menu="fechado"] .crm-side .badge {
+    top: -2px;
+    right: -4px;
+    width: auto;
+    min-width: 20px;
+    height: 18px;
+    padding: 0 5px;
+    border-radius: 9px;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 18px;
+    background: var(--ci-green) !important;
+    color: var(--wa-badge-text) !important;
+  }
+
+  /* Lista: 30% da janela */
+  html body.crm-shell .conversations-list-wrap:not(.basis-full) {
+    width: clamp(340px, 30vw, 560px) !important;
+    min-width: clamp(340px, 30vw, 560px) !important;
+    max-width: clamp(340px, 30vw, 560px) !important;
+    flex: 0 0 clamp(340px, 30vw, 560px) !important;
+    background: var(--ci-surface) !important;
+    border-right: 1px solid var(--ci-line) !important;
+  }
+  html body.crm-shell .conversations-list-wrap > div:first-child {
+    height: auto !important;
+    min-height: 0 !important;
+    flex-wrap: wrap !important;
+    align-content: flex-start;
+    gap: 0 8px;
+    padding: 0 20px !important;
+    background: var(--ci-surface) !important;
+  }
+  html body.crm-shell .conversations-list-wrap > div:first-child > div {
+    min-height: 68px;
+  }
+  html body.crm-shell .conversations-list-wrap h1 {
+    font-size: 22px !important;
+    font-weight: 700 !important;
+    line-height: 28px;
+  }
+  html body.crm-shell .crm-wa-search {
+    display: flex;
+    flex: 0 0 100%;
+    order: 3;
+    align-items: center;
+    gap: 12px;
+    height: 40px;
+    margin: 0 0 10px;
+    padding: 0 16px;
+    border-radius: 20px;
+    background: var(--wa-search);
+    color: var(--ci-text-2);
+    font-size: 15px;
+    text-decoration: none;
+  }
+  html body.crm-shell .crm-wa-search svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  /* Abas em pílula */
+  html body.crm-shell .conversations-list-wrap > div:nth-child(2) {
+    height: auto !important;
+    min-height: 0 !important;
+    gap: 8px;
+    padding: 0 20px 10px !important;
+    border: 0 !important;
+  }
+  html body.crm-shell .conversations-list-wrap > div:nth-child(2) > div {
+    height: auto !important;
+    border: 0 !important;
+  }
+  html body.crm-shell .conversations-list-wrap > div:nth-child(2) button {
+    height: 32px !important;
+    padding: 0 12px !important;
+    border: 1px solid var(--ci-line) !important;
+    border-radius: 16px !important;
+    background: transparent !important;
+    color: var(--ci-text-2) !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+  }
+  html body.crm-shell .conversations-list-wrap > div:nth-child(2) button[class*="border-[#008069]"],
+  html body.crm-shell .conversations-list-wrap > div:nth-child(2) > div[class*="border-[#008069]"] button,
+  html body.crm-shell .conversations-list-wrap > div:nth-child(2) > div[class*="border-n-brand"] button {
+    border: 1px solid var(--wa-chip-on) !important;
+    border-bottom-width: 1px !important;
+    background: var(--wa-chip-on) !important;
+    color: var(--wa-chip-on-text) !important;
+  }
+  html body.crm-shell .conversations-list-wrap > div:nth-child(2) > button:last-child {
+    flex: 0 0 32px;
+    width: 32px;
+    padding: 0 !important;
+    border-radius: 50% !important;
+  }
+
+  /* Linhas */
+  html body.crm-shell .conversations-list .conversation {
+    min-height: 72px;
+    margin: 0 10px;
+    padding: 0 12px !important;
+    border-bottom: 0 !important;
+    border-radius: 12px;
+    background: transparent;
+  }
+  html body.crm-shell .conversations-list .conversation:hover {
+    background: var(--wa-hover) !important;
+  }
+  html body.crm-shell .conversations-list .conversation.active,
+  html body.crm-shell .conversations-list .conversation.selected {
+    background: var(--wa-active) !important;
+    box-shadow: none !important;
+  }
+  html body.crm-shell .conversation .conversation--user {
+    margin-left: 14px !important;
+    font-size: 16px !important;
+    font-weight: 400 !important;
+    text-transform: none;
+  }
+  html body.crm-shell .conversation .conversation--user + div {
+    margin-left: 14px !important;
+    font-size: 14px !important;
+  }
+  html body.crm-shell .conversation [class*="ltr:ml-2"] {
+    margin-left: 14px !important;
+  }
+  html body.crm-shell .conversation .text-xxs {
+    font-size: 12px !important;
+  }
+  html body.crm-shell .conversation:has(span.bg-n-teal-9) .ml-auto.text-xxs,
+  html body.crm-shell .conversation:has(span.bg-n-teal-9) .ml-auto.text-xxs * {
+    color: var(--ci-green) !important;
+  }
+  html body.crm-shell .conversation span.bg-n-teal-9 {
+    height: 20px;
+    min-width: 20px;
+    max-width: none;
+    padding: 0 6px;
+    border-radius: 10px;
+    background: var(--ci-green) !important;
+    color: var(--wa-badge-text) !important;
+    font-size: 12px !important;
+    font-weight: 600;
+    line-height: 20px;
+    text-align: center;
+  }
+
+  /* Conversa */
+  html body.crm-shell .conversation-details-wrap > div:first-child,
+  html body.crm-shell .conversation-details-wrap > div:first-child.flex {
+    flex: 0 0 68px !important;
+    flex-direction: row !important;
+    height: 68px !important;
+    min-height: 68px !important;
+    gap: 8px;
+    padding: 0 16px !important;
+    background: var(--ci-header) !important;
+    border-bottom: 1px solid var(--ci-line) !important;
+  }
+  html body.crm-shell .conversation-details-wrap > div:first-child > div {
+    width: auto;
+  }
+  html body.crm-shell .conversation-details-wrap > div:first-child > div:first-child {
+    flex: 1 1 auto;
+  }
+  html body.crm-shell .conversation-details-wrap > div:first-child span[class*="group/avatar"],
+  html body.crm-shell .conversation-details-wrap > div:first-child span[class*="group/avatar"] > span,
+  html body.crm-shell .conversation-details-wrap > div:first-child span[class*="group/avatar"] img {
+    width: 40px !important;
+    height: 40px !important;
+  }
+  html body.crm-shell .conversation-details-wrap > div:first-child .text-sm {
+    font-size: 16px !important;
+    font-weight: 500 !important;
+  }
+  html body.crm-shell .conversation-details-wrap > div:first-child .header-actions-wrap {
+    align-items: center !important;
+  }
+  html body.crm-shell .conversation-details-wrap > div:first-child label {
+    align-items: center !important;
+    height: 32px;
+    margin: 0 !important;
+  }
+  html body.crm-shell .conversation-details-wrap > div:first-child select {
+    height: 32px !important;
+    margin: 0 !important;
+    border: 0 !important;
+    border-radius: 8px !important;
+    background: var(--wa-search) !important;
+    color: var(--ci-text) !important;
+  }
+
+  html body.crm-shell .conversation-panel {
+    padding: 16px clamp(16px, 7%, 63px) 12px !important;
+  }
+  html body.dark.crm-shell .conversation-panel {
+    background-color: #161717 !important;
+    background-image: linear-gradient(rgba(22, 23, 23, 0.8), rgba(22, 23, 23, 0.8)), url("/crm-industrial/chat-escuro.jpg") !important;
+  }
+  html body.crm-shell .message-bubble-container {
+    margin-top: 2px !important;
+    margin-bottom: 2px !important;
+  }
+  html body.crm-shell .left-bubble:not([data-bubble-name="activity"]),
+  html body.dark.crm-shell .left-bubble:not([data-bubble-name="activity"]),
+  html body.crm-shell .right-bubble:not([data-bubble-name="activity"]),
+  html body.dark.crm-shell .right-bubble:not([data-bubble-name="activity"]) {
+    padding: 6px 9px 8px !important;
+    font-size: 14.2px !important;
+    line-height: 19px !important;
+    max-width: 100% !important;
+    box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.13) !important;
+  }
+
+  /* Caixa de resposta: pílula única; Responder/Nota privada fica fina acima dela */
+  html body.crm-shell .reply-box,
+  html body.crm-shell .reply-box:not(.is-private),
+  html body.dark.crm-shell .reply-box:not(.is-private),
+  html body.crm-shell .reply-box.is-private,
+  html body.dark.crm-shell .reply-box.is-private {
+    display: grid !important;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center !important;
+    margin: 2px 12px 12px !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+  }
+  html body.crm-shell .reply-box::before {
+    content: "";
+    grid-area: 2 / 1 / 3 / 4;
+    align-self: stretch;
+    min-height: 52px;
+    border-radius: 26px;
+    background: var(--wa-pill);
+  }
+  html body.crm-shell .reply-box.is-private::before {
+    background: #fff3c4;
+  }
+  html body.crm-shell .reply-box > div.flex.justify-between:first-child,
+  html body.dark.crm-shell .reply-box > div.flex.justify-between:first-child {
+    grid-area: 1 / 1 / 2 / 4;
+    width: 100% !important;
+    height: 32px !important;
+    min-height: 32px !important;
+    padding: 0 12px !important;
+    border-bottom: 0 !important;
+    color: var(--ci-text-2);
+  }
+  html body.crm-shell .reply-box:not(.is-private) > div:first-child::after {
+    content: none;
+  }
+  html body.crm-shell .reply-box .reply-box__top,
+  html body.dark.crm-shell .reply-box .reply-box__top {
+    position: relative;
+    z-index: 1;
+    grid-area: 2 / 2 / 3 / 3;
+    min-height: 52px !important;
+    padding: 0 4px !important;
+    border-bottom: 0 !important;
+  }
+  html body.crm-shell .reply-box .ProseMirror,
+  html body.crm-shell .reply-box [contenteditable="true"] {
+    min-height: 24px !important;
+    max-height: 140px !important;
+    padding: 14px 0 !important;
+    font-size: 15px !important;
+    line-height: 24px !important;
+  }
+  html body.crm-shell .reply-box > div.flex.justify-between:not(:first-child) {
+    display: contents !important;
+  }
+  html body.crm-shell .reply-box .left-wrap {
+    position: relative;
+    z-index: 1;
+    grid-area: 2 / 1 / 3 / 2;
+    align-self: center;
+    padding-left: 8px;
+  }
+  html body.crm-shell .reply-box .right-wrap {
+    position: relative;
+    z-index: 1;
+    grid-area: 2 / 3 / 3 / 4;
+    align-self: center;
+    margin: 0 !important;
+    padding-right: 6px;
+  }
+  html body.crm-shell .reply-box .right-wrap::before,
+  html body.crm-shell .reply-box .right-wrap button.flex-shrink-0::after {
+    content: none;
+  }
+  html body.crm-shell .reply-box .right-wrap button.flex-shrink-0 {
+    width: 40px !important;
+    min-width: 40px !important;
+    max-width: 40px !important;
+    height: 40px !important;
+    min-height: 40px !important;
+    padding: 0 !important;
+    border-radius: 50% !important;
+  }
+  html body.crm-shell .reply-box:not(.is-private) .right-wrap button.flex-shrink-0 {
+    background: var(--ci-green) !important;
+  }
+  html body.crm-shell .reply-box .right-wrap button.flex-shrink-0::before {
+    flex: 0 0 18px;
+    width: 18px;
+    height: 18px;
+  }
+  html body.dark.crm-shell .reply-box:not(.is-private) .right-wrap button.flex-shrink-0::before {
+    background: #0b0b0b;
+  }
+  html body.dark.crm-shell .reply-box.is-private .left-wrap button {
+    color: #6b5200 !important;
+  }
+
+  /* Sem conversa aberta a lista mantém a largura e o painel vazio aparece, como no WhatsApp. */
+  html body.crm-shell main.crm-col section.flex > .conversations-list-wrap.basis-full {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    flex: 1 1 100% !important;
+    border-right: 0 !important;
+  }
+  html body.crm-shell main.crm-col section.flex > .conversations-list-wrap:not(.basis-full) {
+    width: clamp(340px, 30vw, 560px) !important;
+    max-width: clamp(340px, 30vw, 560px) !important;
+    flex: 0 0 clamp(340px, 30vw, 560px) !important;
+  }
+  html body.crm-shell main.crm-col section.flex > .conversations-list-wrap + .conversation-details-wrap {
+    display: flex !important;
+  }
+
+  /* theme-v3 casa rtl:rounded-l-none no botão principal e o espreme em 28px. */
+  html body.crm-shell .conversation-details-wrap > div:first-child .resolve-actions button[class*="ltr:rounded-r-none"] {
+    width: auto !important;
+    min-width: 0 !important;
+    padding: 0 12px !important;
+    border-radius: 8px 0 0 8px !important;
+  }
+  html body.crm-shell .conversation-details-wrap > div:first-child .resolve-actions,
+  html body.crm-shell .conversation-details-wrap > div:first-child .actions--container {
+    flex: 0 0 auto !important;
+  }
+
+  html body.crm-shell .reply-box .reply-box__top .ProseMirror,
+  html body.crm-shell .reply-box .reply-box__top .ProseMirror:focus,
+  html body.crm-shell .reply-box .reply-box__top .ProseMirror:focus-visible {
+    border: 0 !important;
+    border-radius: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+  }
+
+  /* Atividades abre em tela própria, a partir da barra de ícones. */
+  html body.crm-shell[data-crm-view="atividades"] [data-crm-checklist] > :not(.crm-performance) {
+    display: none !important;
+  }
+  html body.crm-shell[data-crm-view="atividades"] [data-crm-checklist] > .crm-performance {
+    flex: 1 1 auto;
+    width: 100% !important;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  html body.crm-shell[data-crm-view="atividades"] .crm-performance > :not(.crm-activities) {
+    display: none !important;
+  }
+  html body.dark.crm-shell[data-crm-view="atividades"] [data-crm-checklist],
+  html body.dark.crm-shell[data-crm-view="atividades"] [data-crm-checklist] > .crm-performance,
+  html body.dark.crm-shell[data-crm-view="atividades"] .crm-activities {
+    background: #161717 !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+
+  html body.dark.crm-shell .crm-message-tools .crm-reaction-trigger,
+  html body.dark.crm-shell .crm-message-tools .crm-activity-trigger {
+    color: var(--ci-text-2);
+  }
+  html body.dark.crm-shell .crm-message-tools .crm-reaction-trigger:hover,
+  html body.dark.crm-shell .crm-message-tools .crm-activity-trigger:hover {
+    background: var(--wa-hover);
+    color: var(--ci-text);
+  }
+
+  html body.crm-shell .reply-box .reply-box__top .ProseMirror p {
+    margin: 0 !important;
+    line-height: 24px !important;
+  }
+
+  /* theme.css pinta estes blocos com seletores :is(html.dark, body.dark), de peso maior. */
+  html body.dark.crm-shell .conversations-list-wrap > div:nth-child(2).flex,
+  html body.dark.crm-shell .conversations-list-wrap > div:first-child.flex,
+  html body.dark.crm-shell .conversations-list {
+    background: #161717 !important;
+    color: var(--ci-text);
+  }
+  html body.dark.crm-shell .conversation-details-wrap > div:first-child.flex.flex-col,
+  html body.dark.crm-shell .conversation-details-wrap .flex.relative.flex-col:not(.conversation-panel) {
+    background: #161717 !important;
+    color: var(--ci-text);
+  }
+  html body.dark.crm-shell .conversation-details-wrap > div:first-child.flex.flex-col {
+    border-color: #222424 !important;
+  }
+  html body.dark.crm-shell .conversations-list .conversation {
+    background: transparent !important;
+    color: var(--ci-text);
+  }
+  html body.dark.crm-shell .conversations-list .conversation:hover {
+    background: #242626 !important;
+  }
+  html body.dark.crm-shell .conversations-list .conversation.active,
+  html body.dark.crm-shell .conversations-list .conversation.selected {
+    background: #2e2f2f !important;
+    box-shadow: none !important;
+  }
+  html body.dark.crm-shell .conversations-list .conversation .conversation--user {
+    color: var(--ci-text) !important;
+  }
+
+  /* Hora na linha do nome e contador na linha da prévia: nada se sobrepõe. */
+  html body.crm-shell .conversations-list .conversation > .border-line {
+    position: relative;
+    padding: 8px 0 !important;
+  }
+  html body.crm-shell .conversations-list .conversation > .border-line > .absolute {
+    right: 0 !important;
+    left: auto !important;
+    align-items: flex-end;
+  }
+  html body.crm-shell .conversations-list .conversation > .border-line > .absolute.top-8 { top: 26px !important; }
+  html body.crm-shell .conversations-list .conversation > .border-line > .absolute.top-4 { top: 10px !important; }
+  html body.crm-shell .conversation:has(span.bg-n-teal-9) .conversation--user + div {
+    padding-right: 34px !important;
+  }
+  html body.dark.crm-shell .conversations-list .work-activity-pin--compact .work-activity-pin__label {
+    color: var(--ci-text-2) !important;
+  }
+
+  /* Modo claro */
+  html body.crm-shell:not(.dark) .conversation-panel {
+    background-color: #f5f1eb !important;
+    background-image: linear-gradient(rgba(245, 241, 235, 0.82), rgba(245, 241, 235, 0.82)), url("/crm-industrial/chat-claro.jpg") !important;
+  }
+  html body.crm-shell:not(.dark) .conversation-details-wrap .flex.relative.flex-col:not(.conversation-panel) {
+    background: var(--ci-header) !important;
+  }
+  html body.crm-shell:not(.dark) .conversations-list,
+  html body.crm-shell:not(.dark) .conversations-list-wrap > div:nth-child(2).flex {
+    background: var(--ci-surface) !important;
+  }
+  html body.crm-shell:not(.dark) .conversations-list .conversation {
+    background: transparent !important;
+  }
+  html body.crm-shell:not(.dark) .conversations-list .conversation:hover {
+    background: var(--wa-hover) !important;
+  }
+  html body.crm-shell:not(.dark) .conversations-list .conversation.active,
+  html body.crm-shell:not(.dark) .conversations-list .conversation.selected {
+    background: var(--wa-active) !important;
+  }
+
+  /* Calendário */
+  html body.crm-shell .crm-calendar {
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: var(--ci-surface) !important;
+  }
+  html body.crm-shell .crm-cal-body {
+    height: 100%;
+    grid-template-columns: minmax(0, 1fr) 288px;
+    grid-template-rows: auto minmax(0, 1fr);
+    background: var(--ci-surface) !important;
+  }
+  html body.crm-shell .crm-cal-body > header {
+    padding: 16px 24px 14px;
+    border-bottom: 1px solid var(--ci-line);
+  }
+  html body.crm-shell .crm-cal-body h1 { font-size: 22px; font-weight: 700; }
+  html body.crm-shell .crm-cal-body header p { margin-top: 2px; font-size: 13px; }
+  html body.crm-shell .crm-cal-body .nav { gap: 4px; }
+  html body.crm-shell .crm-cal-body .nav strong {
+    order: -1;
+    min-width: 0;
+    margin-right: 10px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  html body.crm-shell .crm-cal-body .nav button {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--ci-text-2);
+    font-size: 20px;
+    line-height: 1;
+  }
+  html body.crm-shell .crm-cal-body .nav button:hover {
+    background: var(--wa-hover);
+    color: var(--ci-text);
+  }
+  html body.crm-shell .crm-cal-body .nav [data-crm-cal="today"] {
+    width: auto;
+    margin-left: 6px;
+    padding: 0 14px;
+    border: 1px solid var(--ci-line);
+    border-radius: 18px;
+    color: var(--ci-text);
+    font-size: 13px;
+  }
+  html body.crm-shell .crm-cal-body .sheet {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    overflow: auto;
+  }
+  html body.crm-shell .crm-cal-body .week {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 0;
+    background: var(--ci-surface);
+    border-bottom: 1px solid var(--ci-line);
+  }
+  html body.crm-shell .crm-cal-body .week span {
+    padding: 8px 10px;
+    color: var(--ci-text-2);
+    font-size: 12px;
+    font-weight: 500;
+    text-align: start;
+  }
+  html body.crm-shell .crm-cal-body .grid {
+    flex: 1 1 auto;
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    grid-auto-rows: minmax(76px, 1fr);
+    gap: 0;
+  }
+  html body.crm-shell .crm-cal-body .day {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+    min-height: 0;
+    padding: 6px;
+    overflow: hidden;
+    border: 0;
+    border-right: 1px solid var(--ci-line);
+    border-bottom: 1px solid var(--ci-line);
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+  html body.crm-shell .crm-cal-body .day:nth-child(7n) { border-right: 0; }
+  html body.crm-shell .crm-cal-body .day:nth-child(7n),
+  html body.crm-shell .crm-cal-body .day:nth-child(7n - 1) { background: var(--wa-hover); }
+  html body.crm-shell .crm-cal-body .day.is-today {
+    border-color: var(--ci-line);
+    background: color-mix(in srgb, var(--ci-green) 9%, transparent);
+    box-shadow: none;
+  }
+  html body.crm-shell .crm-cal-body .day .n {
+    display: inline-flex;
+    flex: 0 0 24px;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--ci-text);
+    font-size: 12.5px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+  html body.crm-shell .crm-cal-body .day.is-out .n { color: var(--ci-text-3); font-weight: 400; }
+  html body.crm-shell .crm-cal-body .day.is-today .n {
+    background: var(--ci-green);
+    color: var(--ci-on-green);
+  }
+  html body.crm-shell .crm-cal-body .ev {
+    display: block;
+    flex: none;
+    height: 20px;
+    padding: 0 6px;
+    overflow: hidden;
+    border: 0;
+    border-left: 3px solid var(--ci-text-3);
+    border-radius: 4px;
+    background: var(--ci-surface-2);
+    color: var(--ci-text);
+    font-size: 11.5px;
+    font-weight: 500;
+    line-height: 20px;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  html body.crm-shell .crm-cal-body .ev[data-priority="low"] { border-left-color: var(--ci-green); }
+  html body.crm-shell .crm-cal-body .ev[data-priority="medium"] { border-left-color: var(--crm-amber); }
+  html body.crm-shell .crm-cal-body .ev[data-priority="high"] { border-left-color: var(--crm-red); }
+  html body.crm-shell .crm-cal-body .more { color: var(--ci-text-2); font-size: 11px; }
+  html body.crm-shell .crm-cal-body > aside,
+  html body.dark.crm-shell .crm-cal-body > aside {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 16px;
+    overflow-y: auto;
+    border: 0 !important;
+    border-left: 1px solid var(--ci-line) !important;
+    background: var(--ci-surface) !important;
+    color: var(--ci-text) !important;
+  }
+  html body.crm-shell .crm-cal-body > aside h2 { font-size: 14px; font-weight: 600; }
+  html body.crm-shell .crm-cal-body > aside span,
+  html body.dark.crm-shell .crm-cal-body > aside span { color: inherit; }
+  html body.crm-shell .crm-cal-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+  }
+  html body.crm-shell .crm-cal-stats div {
+    padding: 10px 8px;
+    border-radius: 10px;
+    background: var(--crm-card);
+  }
+  html body.crm-shell .crm-cal-stats b {
+    display: block;
+    color: var(--ci-text);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+  }
+  html body.crm-shell .crm-cal-stats b.late { color: var(--crm-red); }
+  html body.crm-shell .crm-cal-stats small { color: var(--ci-text-2); font-size: 11.5px; }
+  html body.crm-shell .crm-cal-body > aside ul {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin: 8px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  html body.crm-shell .crm-cal-body > aside li {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px;
+    border: 0;
+    border-radius: 10px;
+    background: var(--crm-card);
+    font-size: 13px;
+    text-align: start;
+  }
+  html body.crm-shell .crm-cal-body > aside input {
+    height: 34px;
+    margin: 0;
+    padding: 0 10px;
+    border: 0;
+    border-radius: 8px;
+    background: var(--wa-search);
+    color: var(--ci-text);
+    font-size: 13px;
+  }
+  html body.crm-shell .crm-cal-body .mail {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px solid var(--ci-line);
+  }
+  html body.crm-shell .crm-cal-body .mail p { margin: 0; font-size: 12.5px; line-height: 1.4; }
+  html body.crm-shell .crm-cal-body .mail .row { display: flex; gap: 6px; }
+  html body.crm-shell .crm-cal-body .mail button {
+    height: 34px;
+    padding: 0 14px;
+    border: 1px solid var(--ci-line);
+    border-radius: 17px;
+    background: transparent;
+    color: var(--ci-text);
+    font-size: 13px;
+  }
+
+  /* Tarefas e checklist */
+  html body.crm-shell section[data-crm-checklist]:has(> .crm-performance) {
+    gap: 0 !important;
+  }
+  html body.crm-shell section[data-crm-checklist]:has(> .crm-performance) > aside,
+  html body.crm-shell section[data-crm-checklist]:has(> .crm-performance) > div,
+  html body.crm-shell section[data-crm-checklist]:has(> .crm-performance) > .crm-performance {
+    border: 0 !important;
+    border-right: 1px solid var(--ci-line) !important;
+    border-radius: 0 !important;
+    background: var(--ci-surface) !important;
+    box-shadow: none !important;
+    color: var(--ci-text) !important;
+  }
+  html body.crm-shell section[data-crm-checklist]:has(> .crm-performance) > .crm-performance {
+    width: 400px !important;
+    padding: 18px 16px !important;
+    border-right: 0 !important;
+    gap: 10px;
+  }
+  html body.crm-shell[data-crm-view="atividades"] section[data-crm-checklist] > .crm-performance {
+    width: 100% !important;
+  }
+  html body.crm-shell section[data-crm-checklist] .crm-performance-focus {
+    margin: 2px 0 2px;
+    font-size: 20px !important;
+  }
+  html body.crm-shell section[data-crm-checklist] .crm-performance-kicker {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  html body.crm-shell section[data-crm-checklist] > aside > div > button {
+    height: 44px !important;
+    margin: 2px 10px !important;
+    padding: 0 12px !important;
+    width: calc(100% - 20px) !important;
+    border: 0 !important;
+    border-radius: 10px !important;
+    font-size: 14.5px !important;
+    box-shadow: none !important;
+  }
+  html body.crm-shell section[data-crm-checklist] > aside > div > button.bg-n-alpha-2 {
+    background: var(--wa-active) !important;
+    color: var(--ci-text) !important;
+  }
+  html body.crm-shell section[data-crm-checklist] > aside > div > button.bg-n-alpha-2 > span:last-child {
+    border: 0;
+    padding: 0;
+    background: transparent;
+    color: var(--ci-text-2) !important;
+    font-size: 13px !important;
+  }
+  html body.crm-shell section[data-crm-checklist] form input {
+    height: 40px !important;
+    border: 0 !important;
+    border-radius: 20px !important;
+    background: var(--wa-search) !important;
+    font-size: 14.5px !important;
+  }
+  html body.crm-shell section[data-crm-checklist] form button {
+    height: 40px !important;
+    padding: 0 18px !important;
+    border-radius: 20px !important;
+    font-size: 14px !important;
+  }
+  html body.crm-shell section[data-crm-checklist] > div > header {
+    padding: 16px 24px 14px !important;
+  }
+  html body.crm-shell section[data-crm-checklist] > div > header h2 {
+    font-size: 20px !important;
+  }
+  html body.crm-shell section[data-crm-checklist] > div > header p {
+    font-size: 13px !important;
+  }
+  html body.crm-shell section[data-crm-checklist] > div > header > button {
+    height: 32px;
+    padding: 0 12px;
+    border: 0;
+    border-radius: 16px;
+    background: transparent;
+    color: var(--ci-text-2) !important;
+    font-size: 13px !important;
+  }
+  html body.crm-shell section[data-crm-checklist] > div > div {
+    padding: 4px 12px !important;
+  }
+  html body.crm-shell section[data-crm-checklist] > div > div ul { gap: 0 !important; }
+  html body.crm-shell section[data-crm-checklist] > div > div li,
+  html body.crm-shell section[data-crm-checklist] > div > div .mt-6 li {
+    min-height: 52px;
+    padding: 8px 12px !important;
+    gap: 12px !important;
+    border: 0 !important;
+    border-bottom: 1px solid var(--ci-line) !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  html body.crm-shell section[data-crm-checklist] > div > div li:hover {
+    background: var(--wa-hover) !important;
+    box-shadow: none !important;
+  }
+  html body.crm-shell section[data-crm-checklist]:has(> .crm-performance) > div > div li > span:nth-of-type(1) {
+    font-size: 15px !important;
+    font-weight: 400 !important;
+  }
+  html body.crm-shell section[data-crm-checklist]:has(> .crm-performance) li > input[type="checkbox"] {
+    width: 20px !important;
+    height: 20px !important;
+    border-radius: 50% !important;
+    background-size: 13px !important;
+  }
+  html body.crm-shell section[data-crm-checklist] .crm-chip.is-pend,
+  html body.crm-shell section[data-crm-checklist] .crm-chip.is-ok {
+    height: 22px;
+    gap: 6px;
+    padding: 0;
+    border: 0 !important;
+    background: transparent !important;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  html body.crm-shell section[data-crm-checklist] .crm-chip.is-pend { color: var(--crm-amber) !important; }
+  html body.crm-shell section[data-crm-checklist] .crm-chip.is-ok { color: var(--ci-ink) !important; }
+  html body.crm-shell section[data-crm-checklist] .crm-chip::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+}
+
+/* Lista de contatos no ritmo do WhatsApp: linha de 72px, sem caixas. Vale também no celular. */
+html body:not(.crm-sem-lista) .conversations-list .conversation {
+  align-items: flex-start !important;
+  min-height: 72px;
+  margin: 0 8px !important;
+  padding: 0 10px !important;
+  border-bottom: 0 !important;
+  border-radius: 10px !important;
+}
+html body:not(.crm-sem-lista) .conversations-list .conversation > .relative { flex: 0 0 49px; }
+html body:not(.crm-sem-lista) .conversations-list .conversation > .relative > span { margin-top: 11px !important; }
+html body:not(.crm-sem-lista) .conversations-list .conversation > .relative span,
+html body:not(.crm-sem-lista) .conversations-list .conversation > .relative img { border-radius: 50% !important; }
+html body:not(.crm-sem-lista) .conversations-list .conversation > .border-line {
+  display: grid !important;
+  grid-template-columns: minmax(0, auto) minmax(0, 1fr) auto;
+  column-gap: 8px;
+  align-items: center;
+  margin-left: 12px;
+  padding: 14px 0 12px !important;
+}
+html body:not(.crm-sem-lista) .conversations-list .conversation > .border-line > * { margin-right: 0 !important; margin-left: 0 !important; }
+html body:not(.crm-sem-lista) .conversations-list .conversation .conversation--user {
+  grid-area: 1 / 1 / 2 / 2;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 16px !important;
+  line-height: 22px;
+  text-transform: none;
+}
+html body:not(.crm-sem-lista) .conversations-list .conversation > .border-line > :first-child:not(h4) {
+  grid-area: 1 / 2 / 2 / 3;
+  min-width: 0;
+  overflow: hidden;
+  color: var(--ci-text-2);
+  font-size: 11.5px;
+}
+html body:not(.crm-sem-lista) .conversations-list .conversation > .border-line > :first-child:not(h4) span.size-4 { display: none; }
+html body:not(.crm-sem-lista) .conversations-list .conversation > .border-line > :first-child:not(h4) .truncate { color: var(--ci-text-2) !important; font-size: 11.5px !important; font-weight: 400 !important; }
+.crm-task-edit { flex: none; padding: 0; border: 0; background: transparent; color: var(--ci-text-2); font-size: 12px; cursor: pointer; }
+.crm-task-edit:hover { color: var(--ci-text); }
+.crm-task-edit:focus-visible, .crm-inline-edit:focus-visible { outline: 2px solid var(--ci-green); outline-offset: 1px; }
+.crm-list-rename { margin-left: auto; font-size: 14px; }
+.crm-inline-edit { flex: 1 1 auto; width: 100%; min-width: 0; height: 30px; margin: 0; padding: 0 8px; border: 1px solid var(--ci-line); border-radius: 8px; background: var(--wa-search, transparent); color: var(--ci-text); font-size: 14px; }
+body[data-crm-refreshing] main { visibility: hidden; }
+
+.crm-cal-body .ev.is-card::before { content: ""; display: inline-block; width: 6px; height: 6px; margin-right: 4px; border-radius: 1px; background: currentColor; vertical-align: 1px; }
+.crm-make-card { display: flex; align-items: center; gap: 8px; margin: 2px 0; color: var(--ci-text); font-size: 13.5px; cursor: pointer; }
+
+/* Fundo do chat com a arte da Bruna: inteira, sem emendas, e suavizada para o texto seguir legível. */
+html body .conversation-panel.conversation-panel.conversation-panel {
+  background-color: #f5f1eb !important;
+  background-image: linear-gradient(rgba(245, 241, 235, 0.82), rgba(245, 241, 235, 0.82)), url("/crm-industrial/chat-bruna-claro.jpg") !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+html body .conversation-panel .max-w-sm > button.bg-n-alpha-2 { background: var(--ci-surface) !important; }
+html body.dark .conversation-panel.conversation-panel.conversation-panel {
+  background-color: #151515 !important;
+  background-image: linear-gradient(rgba(21, 21, 21, 0.35), rgba(21, 21, 21, 0.35)), url("/crm-industrial/chat-bruna-escuro.jpg") !important;
+}
+
+/* Tarefas: as demandas da lista têm prioridade de espaço. O painel Andamento já traz os números. */
+@media (min-width: 768px) {
+  section:has(> .crm-performance) > div.min-w-0 > section.shrink-0.border-b { display: none; }
+}
+section:has(> aside.w-72) li button { opacity: 1 !important; }
+.crm-list-grid { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: 2px; align-content: start; }
+.crm-list-grid > :not(button):not(.crm-list-tools) { grid-column: 1 / -1; }
+.crm-list-tools { display: inline-flex; margin-bottom: 4px; }
+.crm-list-tools button { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border: 0; border-radius: 6px; background: transparent; color: var(--ci-text-2); cursor: pointer; }
+.crm-list-tools button:hover { background: var(--wa-hover); color: var(--ci-text); }
+.crm-list-tools button:focus-visible { outline: 2px solid var(--ci-green); outline-offset: -1px; }
+.crm-list-tools svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Mensagens: nome só onde informa algo; origem do envio discreta. */
+[data-crm-origin="contact"] .message-sender-name, [data-crm-origin="phone"] .message-sender-name { display: none !important; }
+html body [data-crm-origin="agent"] .message-sender-name {
+  display: inline-flex;
+  align-self: flex-end;
+  align-items: center;
+  gap: 3px;
+  color: var(--ci-text-2) !important;
+  font-size: 11px;
+  font-weight: 400;
+}
+html body [data-crm-origin="agent"] .message-sender-name::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 21a8 8 0 1 0-16 0M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 21a8 8 0 1 0-16 0M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+[data-crm-origin="agent"] [class*="grid-area:avatar"], [data-crm-origin="phone"] [class*="grid-area:avatar"] { display: none; }
+[data-crm-origin="agent"] > .grid, [data-crm-origin="phone"] > .grid { grid-template-columns: minmax(0, 1fr) 0 !important; column-gap: 0 !important; }
+.crm-msg-phone { display: inline-flex; flex: none; color: inherit; opacity: 0.75; }
+.crm-msg-phone svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Caixa de escrever com altura ajustável. */
+.reply-box { position: relative; }
+.crm-reply-grip { position: absolute; top: -7px; left: 50%; z-index: 5; display: flex; align-items: center; justify-content: center; width: 64px; height: 14px; transform: translateX(-50%); cursor: ns-resize; touch-action: none; }
+.crm-reply-grip::before { content: ""; width: 38px; height: 4px; border-radius: 2px; background: var(--ci-line); transition: background 0.15s ease; }
+.crm-reply-grip:hover::before, .crm-reply-grip:focus-visible::before { background: var(--ci-green); }
+.crm-reply-grip:focus-visible { outline: none; }
+html body[data-crm-reply-sized] .reply-box .ProseMirror { min-height: var(--crm-reply-h) !important; max-height: var(--crm-reply-h) !important; overflow-y: auto; }
+section:has(> aside.w-72) > div.min-w-0 { overflow-y: auto; }
+section:has(> aside.w-72) > div.min-w-0 > div.min-h-0.flex-1 { min-height: 220px; flex-shrink: 0; }
+html body:not(.crm-sem-lista) .conversations-list .conversation .conversation--user + * {
+  grid-area: 2 / 1 / 3 / 3;
+  height: 20px !important;
+  padding-right: 0 !important;
+  color: var(--ci-text-2);
+  font-size: 14px !important;
+  line-height: 20px !important;
+}
+html body:not(.crm-sem-lista) .conversations-list .conversation > .border-line > .absolute {
+  position: static !important;
+  grid-area: 1 / 3 / 3 / 4;
+  justify-self: end;
+  align-self: start;
+  align-items: flex-end;
+  gap: 3px;
+  padding-top: 3px;
+}
+html body:not(.crm-sem-lista) .conversations-list .conversation > .border-line > .absolute ~ :not(.work-activity-pin) { grid-column: 1 / -1; margin-top: 4px !important; }
+.conversations-list .conversation [data-crm-time] { font-size: 0 !important; }
+.conversations-list .conversation [data-crm-time]::after { content: attr(data-crm-time); color: var(--ci-text-2); font-size: 12px; }
+.conversations-list .conversation:has(span.bg-n-teal-9) [data-crm-time]::after { color: var(--ci-green); font-weight: 500; }
+
+/* Lembretes na lista: uma linha discreta, sem pintar a conversa. */
+html body .conversations-list .conversation.conversation.conversation:has(.work-activity-pin__row[data-priority]) { background: transparent !important; box-shadow: none !important; }
+html body .conversations-list .conversation.conversation.conversation:has(.work-activity-pin__row[data-priority]):hover { background: var(--wa-hover) !important; }
+html body .conversations-list .conversation.conversation.conversation:has(.work-activity-pin__row[data-priority]).active,
+html body .conversations-list .conversation.conversation.conversation:has(.work-activity-pin__row[data-priority]).selected { background: var(--wa-active) !important; }
+html body:not(.crm-sem-lista) .conversations-list .conversation > .border-line > .work-activity-pin {
+  grid-column: 1 / -1;
+  gap: 1px !important;
+  width: 100%;
+  margin: 3px 0 0 !important;
+}
+html body .conversations-list .work-activity-pin--compact.work-activity-pin--compact .work-activity-pin__row {
+  gap: 6px;
+  min-height: 22px;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: var(--ci-text-2) !important;
+}
+html body .conversations-list .work-activity-pin--compact.work-activity-pin--compact .work-activity-pin__text { color: var(--ci-text-2) !important; font-size: 12.5px; font-weight: 400; }
+html body .conversations-list .work-activity-pin--compact.work-activity-pin--compact .work-activity-pin__done.work-activity-pin__done {
+  height: 22px !important;
+  padding: 0 8px !important;
+  border: 0 !important;
+  border-radius: 11px !important;
+  background: transparent !important;
+  color: var(--ci-green) !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  opacity: 0;
+}
+html body .conversations-list .conversation:hover .work-activity-pin__done.work-activity-pin__done,
+html body .conversations-list .work-activity-pin__done.work-activity-pin__done:focus-visible { opacity: 1; }
+@media (hover: none) {
+  html body .conversations-list .work-activity-pin__done.work-activity-pin__done { opacity: 1; }
+}
+html body .work-activity-pin.work-activity-pin .work-activity-pin__label.work-activity-pin__label { font-size: 11.5px; font-weight: 600; letter-spacing: 0; text-transform: none; }
+html body .work-activity-pin.work-activity-pin [data-priority="low"] .work-activity-pin__label.work-activity-pin__label { color: #00805f !important; }
+html body .work-activity-pin.work-activity-pin [data-priority="medium"] .work-activity-pin__label.work-activity-pin__label { color: #9a6b00 !important; }
+html body .work-activity-pin.work-activity-pin [data-priority="high"] .work-activity-pin__label.work-activity-pin__label { color: #c5283d !important; }
+html body.dark .work-activity-pin.work-activity-pin [data-priority="low"] .work-activity-pin__label.work-activity-pin__label { color: #21c063 !important; }
+html body.dark .work-activity-pin.work-activity-pin [data-priority="medium"] .work-activity-pin__label.work-activity-pin__label { color: #e8b44a !important; }
+html body.dark .work-activity-pin.work-activity-pin [data-priority="high"] .work-activity-pin__label.work-activity-pin__label { color: #f15c6d !important; }
+
+/* Lembretes na conversa: faixa colada ao cabeçalho, como mensagem fixada. */
+html body .conversation-details-wrap > .work-activity-pin.work-activity-pin {
+  gap: 0 !important;
+  max-height: 116px;
+  margin: 0 !important;
+  border-bottom: 1px solid var(--ci-line) !important;
+  background: var(--ci-surface) !important;
+}
+html body .conversation-details-wrap .work-activity-pin.work-activity-pin.work-activity-pin:not(.work-activity-pin--compact) .work-activity-pin__row[data-priority] {
+  flex: 0 0 38px;
+  gap: 10px;
+  height: 38px;
+  padding: 0 60px 0 16px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: var(--ci-text) !important;
+}
+html body .conversation-details-wrap .work-activity-pin.work-activity-pin .work-activity-pin__text { font-size: 13.5px; font-weight: 400; }
+html body .conversation-details-wrap .work-activity-pin.work-activity-pin .work-activity-pin__done.work-activity-pin__done {
+  height: 26px !important;
+  padding: 0 12px !important;
+  border: 0 !important;
+  border-radius: 13px !important;
+  background: transparent !important;
+  color: var(--ci-green) !important;
+  font-size: 12.5px !important;
+  font-weight: 500 !important;
+}
+html body .conversation-details-wrap .work-activity-pin.work-activity-pin .work-activity-pin__done.work-activity-pin__done:hover { background: var(--wa-hover) !important; filter: none; }
+
+/* Margem que sobrava ao esconder o avatar das mensagens enviadas. */
+[data-crm-origin="agent"] [class*="grid-area:bubble"], [data-crm-origin="phone"] [class*="grid-area:bubble"], [data-crm-origin="private"] [class*="grid-area:bubble"] { margin-left: 0 !important; }
+
+/* Mensagem privada: cor própria e marca em toda nota. */
+[data-crm-origin="private"] .message-sender-name { display: none !important; }
+[data-crm-origin="private"] [class*="grid-area:avatar"] { display: none; }
+[data-crm-origin="private"] > .grid { grid-template-columns: minmax(0, 1fr) 0 !important; column-gap: 0 !important; }
+html body .conversation-panel .bg-n-solid-amber.bg-n-solid-amber.bg-n-solid-amber:not([data-bubble-name="activity"]) {
+  border: 1px solid #e0b64a !important;
+  background: #fff3c9 !important;
+  color: #4d3800 !important;
+}
+html body.dark .conversation-panel .bg-n-solid-amber.bg-n-solid-amber.bg-n-solid-amber:not([data-bubble-name="activity"]) {
+  border: 1px solid #8a6a1f !important;
+  background: #3f3214 !important;
+  color: #fbecc2 !important;
+}
+.bg-n-solid-amber::before, .bg-n-solid-amber::after { display: none !important; }
+.crm-private-tag { display: flex; align-items: center; gap: 5px; margin-bottom: 4px; color: #8a6200; font-size: 11.5px; font-weight: 600; }
+html body.dark .crm-private-tag { color: #f0c55e; }
+.crm-private-tag svg { flex: none; width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Grupos: foto ou iniciais de quem enviou, como no WhatsApp. */
+.message-bubble-container[data-crm-author] { position: relative; padding-left: 38px; }
+.crm-group-avatar { position: absolute; top: 0; left: 0; display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; overflow: hidden; border-radius: 50%; color: #10201c; font-size: 11.5px; font-weight: 700; }
+.crm-group-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.crm-group-name { display: block; margin-bottom: 2px; font-size: 12.5px; font-weight: 600; }
+[data-crm-run="next"] .crm-group-avatar, [data-crm-run="next"] .crm-group-name { display: none; }
+p[data-crm-prefix] { display: none !important; }
+
+/* A janela de emojis fica acima da barra da caixa de escrever. */
+html body .reply-box .reply-box__top:has(.emoji-dialog) { position: relative !important; z-index: 40 !important; }
+.reply-box .emoji-dialog { z-index: 40 !important; }
+
+/* Faixa de grupos com setas quando não cabe. */
+.conversations-list-wrap { position: relative; }
+.conversations-list-wrap > div[data-crm-tabs] { scrollbar-width: none; }
+.conversations-list-wrap > div[data-crm-tabs]::-webkit-scrollbar { display: none; }
+.crm-tabs-arrow { position: absolute; z-index: 6; display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border: 1px solid var(--ci-line); border-radius: 50%; background: var(--ci-surface); color: var(--ci-text); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28); cursor: pointer; }
+.crm-tabs-arrow[hidden] { display: none; }
+.crm-tabs-arrow:hover { background: var(--wa-hover); }
+.crm-tabs-arrow:focus-visible { outline: 2px solid var(--ci-green); outline-offset: 1px; }
+.crm-tabs-arrow.is-left { left: 4px; }
+.crm-tabs-arrow.is-right { right: 4px; }
+.crm-tabs-arrow.is-left svg { transform: rotate(90deg); }
+.crm-tabs-arrow.is-right svg { transform: rotate(-90deg); }
+
+/* Tela de entrada com a identidade da logo. */
+main.min-h-screen { background: radial-gradient(920px 520px at 50% -8%, #1a6d78 0%, #0f3d47 48%, #07242b 100%) !important; }
+main.min-h-screen > section.p-11 { background: rgba(4, 26, 32, 0.46) !important; }
+[data-testid="submit_button"] { background: #12a67c !important; }
+[data-testid="submit_button"]:hover { background: #17bd8e !important; }
+main.min-h-screen a,
+main.min-h-screen a.text-link,
+main.min-h-screen a.text-n-brand,
+:is(html.dark, body.dark) main.min-h-screen a.text-link,
+:is(html.dark, body.dark) main.min-h-screen a.text-n-brand { color: #a9efd8 !important; }
+main.min-h-screen input:focus { border-color: #35d6a4 !important; }
+main.min-h-screen > section img { width: auto !important; height: 104px !important; max-width: min(340px, 88vw); padding: 0 !important; border-radius: 0 !important; background: transparent !important; }
+main.min-h-screen > section img.dark\:hidden { display: none !important; }
+main.min-h-screen > section img.dark\:block { display: block !important; }
+
+/* Caixa de escrever sem texto de orientação e com o texto alinhado. */
+html body .reply-box .ProseMirror p.empty-node::before,
+html body .reply-box .ProseMirror p[data-placeholder]::before { content: none !important; }
+html body .reply-box .ProseMirror, html body .reply-box .ProseMirror p { text-align: left !important; }
+
+/* Telas de Lembretes e Tarefas: mesma linguagem visual, nos dois temas. */
+.crm-reminders, [data-crm-checklist] {
+  --rem-late: #e5484d;
+  --rem-today: #e8a33d;
+  --rem-next: #4b9fe0;
+  --rem-done: #21b573;
+}
+html body[data-crm-view] [data-crm-checklist][data-crm-reminders="on"] > :not(.crm-reminders) { display: none !important; }
+html body[data-crm-view] [data-crm-checklist][data-crm-reminders="on"] > .crm-reminders { display: grid !important; align-content: start; overflow-x: hidden !important; overflow-y: auto !important; overscroll-behavior: contain; }
+[data-crm-reminders="off"] > .crm-reminders { display: none; }
+.crm-reminders { display: grid; flex: 1 1 auto; grid-template-columns: minmax(0, 1fr) 300px; gap: 16px; width: 100%; height: 100%; min-height: 0; overflow: auto; padding: 20px 24px; color: var(--ci-text); }
+.crm-rem-page { display: flex; flex-direction: column; min-width: 0; gap: 14px; }
+.crm-rem-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+.crm-rem-head h1 { margin: 0; font-size: 24px; font-weight: 700; }
+.crm-rem-head p { margin: 2px 0 0; color: var(--ci-text-2); font-size: 13px; }
+.crm-rem-search { display: flex; align-items: center; gap: 8px; width: 240px; max-width: 100%; height: 36px; margin: 0; padding: 0 12px; border: 1px solid var(--ci-line); border-radius: 10px; background: var(--wa-search, var(--ci-surface-2)); color: var(--ci-text-2); }
+.crm-rem-search svg { flex: none; width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+html body .crm-rem-search input.crm-rem-search-input, html body .crm-rem-search input { flex: 1 1 auto; min-width: 0; height: 100% !important; min-height: 0 !important; margin: 0 !important; padding: 0 !important; border: 0 !important; border-radius: 0 !important; outline: 0; box-shadow: none !important; background: transparent !important; color: var(--ci-text); font-size: 13.5px; }
+.crm-rem-chips { display: flex; flex-wrap: wrap; gap: 8px; padding: 8px; border: 1px solid var(--ci-line); border-radius: 12px; background: var(--ci-surface-2); }
+.crm-rem-chips button { display: inline-flex; align-items: center; gap: 7px; height: 32px; padding: 0 13px; border: 1px solid var(--ci-line); border-radius: 16px; background: transparent; color: var(--ci-text); font-size: 13px; cursor: pointer; }
+.crm-rem-chips button:not([data-tone="all"])::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--chip); }
+.crm-rem-chips [data-tone="late"] { --chip: var(--rem-late); }
+.crm-rem-chips [data-tone="today"] { --chip: var(--rem-today); }
+.crm-rem-chips [data-tone="next"] { --chip: var(--rem-next); }
+.crm-rem-chips [data-tone="none"] { --chip: var(--ci-text-2); }
+.crm-rem-chips [data-tone="done"] { --chip: var(--rem-done); }
+.crm-rem-chips button:hover { background: var(--wa-hover); }
+.crm-rem-chips button.is-on { border-color: var(--ci-green); background: rgba(33, 181, 115, 0.16); font-weight: 600; }
+.crm-rem-chips button:focus-visible, .crm-rem-actions :focus-visible, .crm-task-new:focus-visible, .crm-task-done:focus-visible { outline: 2px solid var(--ci-green); outline-offset: 1px; }
+.crm-rem-list { display: flex; flex-direction: column; gap: 8px; }
+.crm-rem-section { display: flex; align-items: center; gap: 12px; margin: 8px 0 2px; color: var(--tone); font-size: 13.5px; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; }
+.crm-rem-section::after { content: ""; flex: 1 1 auto; height: 1px; background: var(--tone); opacity: 0.45; }
+[data-bucket="late"] { --tone: var(--rem-late); --tint: rgba(229, 72, 77, 0.12); }
+[data-bucket="today"] { --tone: var(--rem-today); --tint: rgba(232, 163, 61, 0.11); }
+[data-bucket="next"] { --tone: var(--rem-next); --tint: rgba(75, 159, 224, 0.1); }
+[data-bucket="none"] { --tone: var(--ci-text-2); --tint: rgba(134, 150, 160, 0.09); }
+[data-bucket="done"] { --tone: var(--rem-done); --tint: rgba(33, 181, 115, 0.1); }
+.crm-rem { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 11px 14px; border: 1px solid var(--ci-line); border-left: 3px solid var(--tone); border-radius: 12px; background: linear-gradient(90deg, var(--tint), transparent 70%), var(--ci-surface-2); }
+.crm-rem-main { flex: 1 1 260px; min-width: 0; }
+.crm-rem-title { margin: 0; color: var(--ci-text); font-size: 14.5px; font-weight: 600; overflow-wrap: anywhere; }
+.crm-rem-meta { display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 3px 0 0; color: var(--ci-text-2); font-size: 12.5px; }
+.crm-rem-prio { font-weight: 600; }
+.crm-rem[data-priority="high"] .crm-rem-prio { color: var(--rem-late); }
+.crm-rem-due { color: var(--tone); font-weight: 500; }
+.crm-rem-ring { display: inline-flex; flex: none; align-items: center; justify-content: center; width: 44px; height: 44px; border: 3px solid var(--rem-late); border-radius: 50%; color: var(--rem-late); font-size: 12.5px; font-weight: 700; }
+.crm-rem-actions { display: flex; flex: none; align-items: center; gap: 6px; }
+.crm-rem-actions button, .crm-rem-actions a { display: inline-flex; align-items: center; justify-content: center; height: 32px; padding: 0 12px; border: 1px solid var(--ci-line); border-radius: 9px; background: transparent; color: var(--ci-text); font-size: 12.5px; font-weight: 500; text-decoration: none; cursor: pointer; }
+.crm-rem-actions button:hover, .crm-rem-actions a:hover { background: var(--wa-hover); }
+.crm-rem-actions .is-done { border-color: var(--ci-green); color: var(--ci-green); }
+.crm-rem-actions .is-icon { width: 32px; padding: 0; font-size: 18px; line-height: 1; }
+.crm-rem-empty { margin: 4px 0 0; color: var(--ci-text-2); font-size: 13px; }
+.crm-rem-empty.is-main { padding: 32px 0; text-align: center; }
+.crm-rem-side { position: sticky; top: 0; max-height: calc(100vh - 40px); overflow-y: auto; display: flex; flex-direction: column; gap: 14px; align-self: start; padding: 16px; border: 1px solid var(--ci-line); border-radius: 14px; background: var(--ci-surface-2); }
+.crm-rem-side h2 { margin: 0; font-size: 16px; font-weight: 700; }
+.crm-rem-stats { display: flex; flex-direction: column; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.crm-rem-stats li { display: flex; align-items: center; gap: 9px; font-size: 13.5px; }
+.crm-rem-stats i { width: 11px; height: 11px; border-radius: 50%; background: var(--tone-s); }
+.crm-rem-stats b { min-width: 22px; font-size: 18px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.crm-rem-stats [data-tone="late"] { --tone-s: var(--rem-late); }
+.crm-rem-stats [data-tone="today"] { --tone-s: var(--rem-today); }
+.crm-rem-stats [data-tone="next"] { --tone-s: var(--rem-next); }
+.crm-rem-stats [data-tone="done"] { --tone-s: var(--rem-done); }
+.crm-rem-next, .crm-rem-chart { padding-top: 12px; border-top: 1px solid var(--ci-line); }
+.crm-rem-next p, .crm-rem-chart p:first-child { margin: 0 0 4px; color: var(--ci-text-2); font-size: 11.5px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+.crm-rem-next strong { display: block; font-size: 14px; overflow-wrap: anywhere; }
+.crm-rem-next span { color: var(--ci-text-2); font-size: 12.5px; }
+.crm-rem-spark { display: block; width: 100%; height: auto; }
+.crm-rem-spark polyline { fill: none; stroke: var(--ci-green); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.crm-rem-spark polygon { fill: var(--ci-green); opacity: 0.13; }
+.crm-rem-spark circle { fill: var(--ci-green); stroke: var(--ci-surface-2); stroke-width: 2; }
+@media (max-width: 960px) {
+  .crm-reminders { grid-template-columns: minmax(0, 1fr); padding: 14px 12px 84px; }
+  .crm-rem-side { order: -1; position: static; max-height: none; overflow-y: visible; }
+  .crm-rem-actions { width: 100%; }
+}
+
+/* Tarefas e Checklist */
+html body [data-crm-checklist] aside.w-72 > div > button { position: relative; overflow: hidden; min-height: 44px; margin: 0 0 6px; padding: 8px 12px; border: 1px solid var(--ci-line); border-radius: 11px; background: linear-gradient(90deg, rgba(33, 181, 115, 0.16) var(--crm-list-p, 0%), transparent var(--crm-list-p, 0%)), var(--ci-surface-2); color: var(--ci-text); }
+html body [data-crm-checklist] aside.w-72 > div > button.font-semibold { border-color: var(--ci-green); box-shadow: 0 0 0 1px var(--ci-green) inset; }
+html body [data-crm-checklist] aside.w-72 > div > button:hover { border-color: var(--ci-text-2); }
+.crm-list-tools { margin-bottom: 6px; }
+.crm-task-bar { display: flex; flex: none; flex-direction: column; gap: 10px; padding: 14px 24px 10px; }
+.crm-task-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; }
+.crm-task-new { height: 36px; padding: 0 16px; border: 0; border-radius: 10px; background: var(--ci-green); color: #fff; font-size: 13.5px; font-weight: 600; cursor: pointer; }
+.crm-task-new:hover { filter: brightness(1.08); }
+html body [data-crm-checklist] > div.min-w-0 > header { padding: 4px 24px 10px; border-bottom: 0; }
+html body [data-crm-checklist] > div.min-w-0 > header h2 { font-size: 15.5px; font-weight: 600; }
+html body [data-crm-checklist] > div.min-w-0 > header h2::before { content: "Lista atual: "; color: var(--ci-green); font-size: 12px; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; }
+html body [data-crm-checklist] > div.min-w-0 > div.flex-1 { padding: 0 24px 16px; }
+html body [data-crm-checklist] > div.min-w-0 li[data-crm-off], html body [data-crm-checklist] > div.min-w-0 .mt-6[data-crm-off] { display: none !important; }
+html body [data-crm-checklist] > div.min-w-0 ul { gap: 8px; }
+html body [data-crm-checklist] > div.min-w-0 li:has(input[type="checkbox"]) { min-height: 52px; padding: 8px 14px !important; border: 1px solid var(--ci-line) !important; border-left: 3px solid var(--rem-today) !important; border-radius: 12px !important; background: linear-gradient(90deg, rgba(232, 163, 61, 0.1), transparent 70%), var(--ci-surface-2) !important; }
+html body [data-crm-checklist] > div.min-w-0 li:has(input[type="checkbox"]:checked) { border-left-color: var(--rem-done) !important; background: linear-gradient(90deg, rgba(33, 181, 115, 0.09), transparent 70%), var(--ci-surface-2) !important; }
+html body [data-crm-checklist] li .crm-task-edit, html body [data-crm-checklist] li .crm-task-done, html body [data-crm-checklist] li > button:last-child { flex: none; height: 30px; padding: 0 11px; border: 1px solid var(--ci-line); border-radius: 9px; background: transparent; color: var(--ci-text); font-size: 12.5px; }
+html body [data-crm-checklist] li .crm-task-done { border-color: var(--ci-green); color: var(--ci-green); font-weight: 500; cursor: pointer; }
+html body [data-crm-checklist] li > button:hover { background: var(--wa-hover); }
+html body [data-crm-checklist] li .crm-chip { height: 24px; padding: 0 10px; font-size: 12px; }
+html body [data-crm-checklist] > div.min-w-0 > form { padding: 12px 24px; border-top: 1px solid var(--ci-line); }
+html body [data-crm-checklist] > .crm-performance .crm-dash-card, html body [data-crm-checklist] > .crm-performance .crm-dash-hero { border: 1px solid var(--ci-line); border-radius: 14px; background: var(--ci-surface-2); }
+
+/* Lista de conversas: o contato ganha a cor da maior prioridade aberta, e o card aparece no avatar */
+html body .conversations-list .conversation[data-crm-prio="low"] { --crm-contact: #00805f; }
+html body .conversations-list .conversation[data-crm-prio="medium"] { --crm-contact: #9a6b00; }
+html body .conversations-list .conversation[data-crm-prio="high"] { --crm-contact: #c5283d; }
+html body.dark .conversations-list .conversation[data-crm-prio="low"] { --crm-contact: #21c063; }
+html body.dark .conversations-list .conversation[data-crm-prio="medium"] { --crm-contact: #e8b44a; }
+html body.dark .conversations-list .conversation[data-crm-prio="high"] { --crm-contact: #f15c6d; }
+html body .conversations-list .conversation.conversation[data-crm-prio] h4.conversation--user.conversation--user { color: var(--crm-contact) !important; font-weight: 600 !important; }
+html body .conversations-list .conversation.conversation[data-crm-prio] > .relative span[role="img"] { box-shadow: 0 0 0 2px var(--crm-contact) !important; }
+html body .conversations-list .conversation.conversation[data-crm-card] > .relative::after {
+  content: ""; position: absolute; right: -4px; bottom: 0; width: 18px; height: 18px; border-radius: 6px; z-index: 2; pointer-events: none;
+  background: #00a884 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='M6 5v11M12 5v7M18 5v14'/%3E%3C/svg%3E") center / 13px no-repeat;
+  box-shadow: 0 0 0 2px var(--crm-list-bg, #fff);
+}
+html body.dark .conversations-list .conversation.conversation[data-crm-card] > .relative::after { box-shadow: 0 0 0 2px var(--crm-list-bg, #161717); }
+.crm-ctx-contact { margin: 0 0 4px; font-weight: 600; }
+
+/* Calendário: o que foi concluído fica registrado em verde no dia em que aconteceu. */
+html body.crm-shell .crm-cal-body .ev.is-done.is-done { border-left-color: var(--ci-green); background: rgba(33, 181, 115, 0.16); color: #00805f; }
+html body.dark.crm-shell .crm-cal-body .ev.is-done.is-done { color: #21c063; }
+html body .crm-cal-body .ev.is-done::before, html body .crm-cal-body .ev.is-card.is-done::before { content: "✓"; display: inline; width: auto; height: auto; margin-right: 4px; border-radius: 0; background: none; font-weight: 700; vertical-align: baseline; }
+
+/* Anexos: clipe discreto na linha e visualização limpa. */
+.crm-clip { display: inline-flex; flex: none; align-items: center; justify-content: center; gap: 3px; min-width: 28px; height: 28px; padding: 0 5px; border: 0; border-radius: 8px; background: transparent; color: var(--ci-text-2); cursor: pointer; }
+.crm-clip:hover { background: var(--wa-hover); color: var(--ci-text); }
+.crm-clip:focus-visible { outline: 2px solid var(--ci-green); outline-offset: 1px; }
+.crm-clip svg, .crm-view-add svg, .crm-view-doc svg, .crm-ctx-attach svg { flex: none; width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.crm-clip b { font-size: 11.5px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.crm-clip b:empty { display: none; }
+.crm-rem-actions .crm-clip.is-icon { width: auto; min-width: 32px; border: 0; font-size: 12.5px; }
+.crm-rem-title[data-rem-files] { cursor: pointer; }
+.crm-rem-title[data-rem-files]:hover { text-decoration: underline; }
+.work-activity-pin__row .crm-clip { align-self: center; }
+.crm-view-meta { display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 0 0 12px; color: var(--kb-muted, #8696a0); font-size: 13px; }
+.crm-view-files { display: flex; flex-direction: column; gap: 8px; min-height: 28px; transition: opacity 0.15s ease; }
+.crm-view-files.is-busy { opacity: 0.5; }
+.crm-view-empty { margin: 0; color: var(--kb-muted, #8696a0); font-size: 13px; }
+.crm-view-pics { display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: 8px; }
+.crm-view-pic { position: relative; }
+.crm-view-pic > button:first-child { display: block; width: 100%; padding: 0; border: 0; border-radius: 10px; background: none; overflow: hidden; cursor: zoom-in; aspect-ratio: 1; }
+.crm-view-pic img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.crm-view-doc { display: flex; align-items: center; gap: 6px; padding: 8px 10px; border-radius: 10px; background: rgba(134, 150, 160, 0.12); }
+.crm-view-doc a { display: flex; flex: 1 1 auto; align-items: center; gap: 8px; min-width: 0; color: inherit; font-size: 13.5px; text-decoration: none; }
+.crm-view-doc a:hover span { text-decoration: underline; }
+.crm-view-doc span { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.crm-view-doc small { flex: none; color: var(--kb-muted, #8696a0); font-size: 12px; }
+.crm-view-del { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; padding: 0; border: 0; border-radius: 50%; background: transparent; color: var(--kb-muted, #8696a0); font-size: 16px; line-height: 1; cursor: pointer; }
+.crm-view-del:hover { color: #e5484d; }
+.crm-view-pic .crm-view-del { position: absolute; top: 4px; right: 4px; background: rgba(0, 0, 0, 0.6); color: #fff; }
+.crm-view-add { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 12px; color: var(--kb-muted, #8696a0); font-size: 12.5px; }
+.crm-view-add button { display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 12px; border: 1px solid rgba(134, 150, 160, 0.35); border-radius: 9px; background: transparent; color: inherit; font-size: 13px; cursor: pointer; }
+.crm-view-add button:hover { border-color: #21b573; color: #21b573; }
+form.crm-view footer [data-close].kb-btn { display: none; }
+.crm-picture { display: flex; align-items: center; justify-content: center; padding: 24px; background: rgba(0, 0, 0, 0.82); cursor: zoom-out; }
+.crm-picture img { max-width: 100%; max-height: 100%; border-radius: 8px; object-fit: contain; }
+.crm-ctx-attach { display: flex; align-items: center; gap: 8px; margin-top: 8px; color: var(--kb-muted, #8696a0); font-size: 13px; cursor: pointer; }
+.crm-ctx-attach:hover { color: #21b573; }
+.crm-ctx-attach span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Recursos (Configurações) e aviso de saúde do sistema, só para o administrador. */
+.crm-module-list { display: flex; flex-direction: column; gap: 6px; margin-top: 12px; }
+.crm-module-row { padding: 9px 12px; border-radius: 10px; background: rgba(134, 150, 160, 0.12); }
+.crm-health { position: fixed; top: 10px; left: 50%; z-index: 10005; display: flex; align-items: flex-start; gap: 10px; max-width: min(560px, calc(100vw - 32px)); padding: 9px 10px 9px 14px; border: 1px solid var(--crm-amber, #e8b44a); border-radius: 10px; background: var(--ci-surface, #fff); color: var(--ci-text, #111b21); font-size: 13.5px; line-height: 1.45; transform: translateX(-50%); box-shadow: 0 4px 16px rgba(11, 20, 26, 0.12); }
+.crm-health-dot { flex: none; width: 8px; height: 8px; margin-top: 6px; border-radius: 50%; background: var(--crm-amber, #e8b44a); }
+.crm-health button { flex: none; width: 24px; height: 24px; border: 0; border-radius: 6px; background: transparent; color: var(--ci-text-2, #667781); font-size: 18px; line-height: 1; cursor: pointer; }
+.crm-health button:hover { background: rgba(134, 150, 160, 0.16); }
+
+/* Filtros: Atividades (responsável e prioridade) e Calendário (o que mostrar). */
+.crm-rem-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+html body .crm-rem-select { flex: none; width: auto !important; max-width: 220px; height: 36px; margin: 0; padding: 0 30px 0 12px; border: 1px solid var(--ci-line); border-radius: 10px; background-color: var(--wa-search, var(--ci-surface-2)); color: var(--ci-text); font-size: 13px; cursor: pointer; }
+.crm-cal-filters { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 8px 0 0; color: var(--ci-text-2, #667781); font-size: 12.5px; }
+.crm-cal-filters button { height: 28px; padding: 0 12px; border: 1px solid var(--ci-line, rgba(134, 150, 160, 0.35)); border-radius: 14px; background: transparent; color: var(--ci-text-2, #667781); font-size: 12.5px; cursor: pointer; }
+.crm-cal-filters button.is-on { border-color: var(--ci-green, #1daa61); background: rgba(33, 181, 115, 0.14); color: var(--ci-text, #111b21); font-weight: 600; }
+html body [data-crm-bulk-read] { flex: none; min-width: max-content !important; margin-right: 10px; white-space: nowrap; }
+html body [data-crm-bulk-read] * { overflow: visible; text-overflow: clip; }
+@media (max-width: 767px) { .crm-rem-tools { width: 100%; } html body .crm-rem-select { flex: 1 1 140px; max-width: none; } }
+
+/* API de envio (recurso opcional): chaves em Configurações → Recursos. */
+.crm-api-keys { display: flex; flex-direction: column; gap: 8px; margin: 0 0 12px; padding: 0; list-style: none; }
+.crm-api-key { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border: 1px solid var(--kb-line); border-radius: 10px; }
+.crm-api-key > div { flex: 1 1 auto; min-width: 0; }
+.crm-api-key strong { color: var(--kb-text); font-size: 14px; }
+.crm-api-key code { margin-left: 8px; padding: 1px 6px; border-radius: 6px; background: var(--kb-input); color: var(--kb-muted); font-size: 12px; }
+.crm-api-key small { display: block; margin-top: 3px; color: var(--kb-muted); font-size: 12px; line-height: 1.45; }
+.crm-api-key.is-off { opacity: 0.6; }
+.crm-api-recent { margin: 0 0 12px; color: var(--kb-muted); font-size: 12.5px; }
+.crm-api-new { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr) 130px; align-items: start; gap: 12px; margin: 0 0 12px; padding: 12px; border: 1px solid var(--kb-line); border-radius: 10px; }
+.crm-api-new legend { padding: 0 6px; color: var(--kb-text); font-size: 13px; font-weight: 600; }
+.crm-api-new .kb-check-list { max-height: 110px; }
+.crm-api-help { color: var(--kb-muted); font-size: 12.5px; line-height: 1.5; }
+.crm-api-help summary { color: var(--kb-text); font-weight: 600; cursor: pointer; }
+.crm-api-help code, .crm-api-help pre { padding: 1px 5px; border-radius: 6px; background: var(--kb-input); color: var(--kb-text); font-size: 12px; }
+.crm-api-help pre { margin: 6px 0; padding: 8px 10px; white-space: pre-wrap; word-break: break-word; }
+.crm-api-secret { display: flex; align-items: center; gap: 8px; }
+.crm-api-secret code { flex: 1 1 auto; min-width: 0; padding: 9px 10px; border: 1px solid var(--kb-line); border-radius: 8px; background: var(--kb-input); color: var(--kb-text); font-family: ui-monospace, Consolas, monospace; font-size: 12.5px; line-height: 1.6; word-break: break-all; user-select: all; }
+@media (max-width: 767px) { .crm-api-new { grid-template-columns: 1fr; } .crm-api-key { flex-wrap: wrap; } }
+
+/* Salas da equipe (recurso opcional): botão na linha de filtros e painel lateral. */
+.crm-team-tab { display: inline-flex; flex: none; align-items: center; gap: 5px; height: 26px; margin: auto 6px auto 0; padding: 0 9px; border: 1px solid var(--ci-line); border-radius: 13px; background: transparent; color: var(--ci-text); font-size: 12.5px; font-weight: 500; white-space: nowrap; cursor: pointer; }
+.crm-team-tab:hover { background: var(--wa-hover, rgba(134, 150, 160, 0.12)); }
+.crm-team-tab svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.crm-team-badge { min-width: 17px; height: 17px; padding: 0 5px; border-radius: 9px; background: var(--ci-green, #1daa61); color: #fff; font-size: 10.5px; font-weight: 700; line-height: 17px; text-align: center; }
+.crm-team-badge[hidden] { display: none; }
+.crm-team [hidden] { display: none !important; }
+.crm-team-layer { position: fixed; inset: 0; z-index: 10000; display: flex; justify-content: flex-end; background: rgba(11, 20, 26, 0.35); }
+.crm-team { display: flex; flex-direction: column; width: min(860px, 100vw); height: 100%; background: var(--kb-surface, var(--ci-surface, #fff)); color: var(--kb-text); box-shadow: -12px 0 32px rgba(0, 0, 0, 0.25); }
+.crm-team-head { display: flex; align-items: center; gap: 8px; padding: 12px 16px; border-bottom: 1px solid var(--kb-line); }
+.crm-team-head h2 { margin: 0; font-size: 17px; font-weight: 600; }
+.crm-team .crm-grow { flex: 1 1 auto; }
+.crm-team-head .kb-icon-btn svg, .crm-team-back svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+.crm-team-body { display: flex; flex: 1 1 auto; min-height: 0; }
+.crm-team-rooms { flex: 0 0 270px; overflow-y: auto; padding: 8px; border-right: 1px solid var(--kb-line); }
+.crm-team-rooms h3 { margin: 10px 8px 6px; color: var(--kb-muted); font-size: 11.5px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+.crm-team-room-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 8px; width: 100%; padding: 8px 10px; border: 0; border-radius: 10px; background: transparent; color: var(--kb-text); text-align: left; cursor: pointer; }
+.crm-team-room-row:hover { background: var(--kb-hover); }
+.crm-team-room-row.is-on { background: rgba(33, 181, 115, 0.14); }
+.crm-team-room-name { overflow: hidden; font-size: 13.5px; text-overflow: ellipsis; white-space: nowrap; }
+.crm-team-room-name i { font-style: normal; font-size: 11px; }
+.crm-team-room-row.is-unread .crm-team-room-name { font-weight: 700; }
+.crm-team-room-row b { min-width: 18px; height: 18px; padding: 0 5px; border-radius: 9px; background: var(--ci-green, #1daa61); color: #fff; font-size: 11px; line-height: 18px; text-align: center; }
+.crm-team-room-row small { grid-column: 1 / -1; overflow: hidden; color: var(--kb-muted); font-size: 12px; text-overflow: ellipsis; white-space: nowrap; }
+.crm-team-room { display: flex; flex: 1 1 auto; flex-direction: column; min-width: 0; }
+.crm-team-room > .crm-view-empty { margin: auto; padding: 24px; text-align: center; }
+.crm-team-room-head { display: flex; align-items: center; gap: 8px; padding: 10px 16px; border-bottom: 1px solid var(--kb-line); }
+.crm-team-room-head strong { font-size: 15px; }
+.crm-team-room-head small { color: var(--kb-muted); font-size: 12px; }
+.crm-team-back { display: none; }
+.crm-team-msgs { display: flex; flex: 1 1 auto; flex-direction: column; gap: 6px; overflow-y: auto; padding: 14px 16px; }
+.crm-team-msg { max-width: 78%; padding: 7px 11px; border-radius: 10px; background: var(--kb-input); }
+.crm-team-msg.is-mine { align-self: flex-end; background: rgba(33, 181, 115, 0.16); }
+.crm-team-meta { display: flex; align-items: baseline; gap: 8px; font-size: 12px; }
+.crm-team-meta time { color: var(--kb-muted); font-size: 11.5px; }
+.crm-team-meta button { margin-left: auto; padding: 0; border: 0; background: none; color: var(--kb-muted); font-size: 11.5px; cursor: pointer; opacity: 0; }
+.crm-team-msg:hover .crm-team-meta button, .crm-team-meta button:focus-visible { opacity: 1; }
+.crm-team-msg p { margin: 3px 0 0; font-size: 13.5px; line-height: 1.45; overflow-wrap: anywhere; }
+.crm-team-msg p.is-deleted { color: var(--kb-muted); font-style: italic; }
+.crm-team-older { align-self: center; padding: 4px 12px; border: 1px solid var(--kb-line); border-radius: 14px; background: transparent; color: var(--kb-muted); font-size: 12px; cursor: pointer; }
+.crm-team-compose { display: flex; align-items: flex-end; gap: 8px; padding: 10px 16px 14px; border-top: 1px solid var(--kb-line); }
+html body .crm-team-compose textarea { flex: 1 1 auto; min-height: 44px; max-height: 160px; margin: 0; padding: 9px 11px; border: 1px solid var(--kb-line); border-radius: 10px; background: var(--kb-input); color: var(--kb-text); font-size: 13.5px; resize: vertical; }
+.crm-team-people { display: flex; flex-direction: column; gap: 6px; }
+.crm-team-people button { padding: 9px 12px; border: 1px solid var(--kb-line); border-radius: 10px; background: transparent; color: var(--kb-text); font-size: 13.5px; text-align: left; cursor: pointer; }
+.crm-team-people button:hover { background: var(--kb-hover); }
+@media (max-width: 767px) {
+  .crm-team-rooms { flex: 1 1 auto; border-right: 0; }
+  .crm-team-room { display: none; }
+  .crm-team.is-room .crm-team-rooms { display: none; }
+  .crm-team.is-room .crm-team-room { display: flex; }
+  .crm-team-back { display: inline-flex; }
+  .crm-team-head .kb-btn { padding: 0 8px; }
+  .crm-team-msg { max-width: 90%; }
+  .crm-team-meta button { opacity: 1; }
+}
+
+/* Assistente de IA (recurso opcional): painel aberto pelo menu do perfil, com o estilo do painel da Equipe. */
+.crm-team.crm-ai { width: min(620px, 100vw); }
+.crm-ai-note { margin: 0; padding: 8px 16px; border-bottom: 1px solid var(--kb-line); color: var(--kb-muted); font-size: 12px; line-height: 1.5; }
+.crm-ai-note button { padding: 0; border: 0; background: none; color: var(--ci-green, #1daa61); font-size: 12px; font-weight: 600; cursor: pointer; }
+.crm-ai-budget { color: var(--kb-text); }
+.crm-ai-start { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin: auto 0; }
+.crm-ai-start p { margin: 0; color: var(--kb-muted); font-size: 13px; }
+html body .crm-ai-start button { padding: 8px 12px; border: 1px solid var(--kb-line); border-radius: 16px; background: transparent; color: var(--kb-text); font-size: 13px; text-align: left; cursor: pointer; }
+.crm-ai-start button:hover { background: var(--kb-hover); }
+.crm-ai-answer { max-width: 92%; }
+.crm-ai-answer a { color: var(--ci-green, #1daa61); font-weight: 600; text-decoration: none; }
+.crm-ai-answer.is-error p { color: #d9534f; }
+.crm-ai-answer.is-busy p { color: var(--kb-muted); font-style: italic; }
+
+/* Cores do Kanban (--kb-*) também nos painéis que ficam fora dele: Equipe, Assistente e Ferramentas da conversa. */
+.crm-tools,
+.crm-team-layer {
+  --kb-surface: var(--ci-surface);
+  --kb-hover: var(--wa-hover, var(--ci-surface-2));
+  --kb-input: var(--wa-search, var(--ci-surface-2));
+  --kb-line: var(--ci-line);
+  --kb-text: var(--ci-text);
+  --kb-muted: var(--ci-text-2);
+  --kb-green: var(--ci-green);
+  --kb-on-green: var(--ci-on-green);
+  --kb-red: var(--crm-red, #f15c6d);
+}
+
+/* Ferramentas da conversa (recurso opcional): botão + no campo de digitação e painel compacto. */
+.crm-tools-open svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; }
+.crm-tools { position: fixed; z-index: 10005; display: flex; flex-direction: column; max-height: min(74vh, 620px); border: 1px solid var(--kb-line); border-radius: 14px; background: var(--kb-surface, var(--ci-surface, #fff)); color: var(--kb-text); box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28); }
+.crm-tools [hidden] { display: none !important; }
+.crm-tools-tabs { display: flex; align-items: center; gap: 2px; padding: 6px 6px 0; border-bottom: 1px solid var(--kb-line); }
+html body .crm-tools-tabs button { height: 34px; padding: 0 10px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--kb-muted); font-size: 13px; font-weight: 600; cursor: pointer; }
+html body .crm-tools-tabs button.is-on { border-bottom-color: var(--ci-green, #1daa61); color: var(--kb-text); }
+.crm-tools-title { display: inline-flex; align-items: center; height: 34px; padding: 0 8px; color: var(--kb-text); font-size: 14px; }
+html body .crm-tools-tabs .crm-tools-close { display: inline-flex; align-items: center; margin-left: auto; padding: 0 6px; border: 0; }
+.crm-tools-close svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+.crm-tools-body { display: flex; flex-direction: column; gap: 10px; overflow-y: auto; padding: 12px; }
+.crm-tools-note { margin: 0; color: var(--kb-muted); font-size: 12.5px; line-height: 1.5; }
+.crm-tools-note strong { color: var(--kb-text); }
+.crm-tools-row { display: flex; gap: 8px; }
+.crm-tools-row > * { flex: 1 1 0; min-width: 0; }
+.crm-tools-field { display: flex; flex-direction: column; gap: 4px; margin: 0; color: var(--kb-muted); font-size: 12px; }
+html body .crm-tools-field input, html body .crm-tools-field select, html body .crm-tools-search { width: 100%; height: 34px; margin: 0; padding: 0 9px; border: 1px solid var(--kb-line); border-radius: 8px; background: var(--kb-input); color: var(--kb-text); font-size: 13.5px; }
+.crm-tools-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; }
+html body .crm-tools-link { padding: 0; border: 0; background: none; color: var(--ci-green, #1daa61); font-size: 12.5px; font-weight: 600; cursor: pointer; }
+.crm-pix-result { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.crm-pix-result:empty { display: none; }
+.crm-pix-result img { width: 150px; height: 150px; border-radius: 8px; image-rendering: pixelated; }
+html body .crm-pix-result textarea { width: 100%; margin: 0; padding: 8px; border: 1px solid var(--kb-line); border-radius: 8px; background: var(--kb-input); color: var(--kb-text); font-family: ui-monospace, Consolas, monospace; font-size: 11.5px; word-break: break-all; resize: none; }
+.crm-pix-result .crm-tools-actions { align-self: stretch; }
+/* Copiar código e Enviar PIX presos no rodapé do painel: aparecem mesmo em tela baixa, sem precisar rolar. */
+.crm-tools .crm-pix-actions { position: sticky; bottom: -12px; z-index: 1; margin: 0 -12px -12px; padding: 10px 12px 12px; border-top: 1px solid var(--kb-line); background: var(--kb-surface, var(--ci-surface, #fff)); }
+.crm-tools-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+html body .crm-tools-chips button { height: 28px; padding: 0 11px; border: 1px solid var(--kb-line); border-radius: 14px; background: transparent; color: var(--kb-muted); font-size: 12.5px; cursor: pointer; }
+html body .crm-tools-chips button.is-on { border-color: var(--ci-green, #1daa61); background: rgba(33, 181, 115, 0.14); color: var(--kb-text); font-weight: 600; }
+.crm-tools-result { margin: 0; padding: 10px 12px; border-radius: 10px; background: var(--kb-input); color: var(--kb-text); font-size: 14px; font-weight: 600; line-height: 1.45; }
+.crm-tools-result.is-empty { color: var(--kb-muted); font-weight: 400; }
+.crm-tools-preview { margin: 0; padding: 10px 12px; border-radius: 10px; background: var(--kb-input); color: var(--kb-text); font-family: inherit; font-size: 13px; line-height: 1.5; white-space: pre-wrap; }
+.crm-tools-list { display: flex; flex-direction: column; gap: 4px; }
+html body .crm-tools-list button { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; padding: 8px 10px; border: 1px solid var(--kb-line); border-radius: 10px; background: transparent; color: var(--kb-text); text-align: left; cursor: pointer; }
+html body .crm-tools-list button:hover { background: var(--kb-hover); }
+.crm-tools-list small { color: var(--kb-muted); font-size: 12px; }
+html body .crm-calc-head .crm-calc-insert { width: auto; margin-left: auto; padding: 0 10px; color: var(--ci-green, #1daa61); font-size: 12.5px; font-weight: 600; }
+@media (max-width: 767px) { .crm-tools-row { flex-wrap: wrap; } .crm-tools-row > * { flex-basis: calc(50% - 4px); } }
+
+/* Mensagens agendadas (recurso opcional): janela de agendar e lista no Calendário. */
+form.crm-sched { width: min(560px, calc(100vw - 24px)); max-width: none; }
+form.crm-sched [data-sched-ends][hidden] { display: none; }
+.crm-sched-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 6px; }
+.crm-sched-chip { display: inline-flex; align-items: center; gap: 4px; height: 26px; padding: 0 4px 0 10px; border-radius: 13px; background: rgba(33, 181, 115, 0.16); font-size: 13px; }
+.crm-sched-chip button { width: 20px; height: 20px; padding: 0; border: 0; border-radius: 50%; background: transparent; color: inherit; font-size: 15px; line-height: 1; cursor: pointer; }
+.crm-sched-search { position: relative; }
+.crm-sched-suggest { position: absolute; top: calc(100% + 4px); right: 0; left: 0; z-index: 5; display: flex; flex-direction: column; max-height: 240px; overflow-y: auto; padding: 4px; border: 1px solid var(--ci-line, rgba(134, 150, 160, 0.35)); border-radius: 10px; background: var(--ci-surface, #fff); box-shadow: 0 6px 18px rgba(11, 20, 26, 0.14); }
+.crm-sched-suggest[hidden] { display: none; }
+.crm-sched-suggest button { display: flex; flex-direction: column; align-items: flex-start; padding: 7px 10px; border: 0; border-radius: 8px; background: transparent; color: inherit; font-size: 13.5px; text-align: left; cursor: pointer; }
+.crm-sched-suggest button:hover { background: rgba(134, 150, 160, 0.14); }
+.crm-sched-suggest small { color: var(--ci-text-2, #667781); font-size: 12px; }
+.crm-cal-body button.ev { width: 100%; font: inherit; text-align: left; cursor: pointer; }
+html body .crm-cal-body .ev.sched { border-left-color: var(--ci-green, #1daa61); background: rgba(33, 181, 115, 0.14); color: var(--ci-text, #111b21); font-size: 12px; font-weight: 600; }
+html body .crm-cal-body .ev.sched.is-done { opacity: 0.6; }
+html body.crm-shell .crm-cal-body .nav button.crm-sched-new, .crm-cal-body .nav button.crm-sched-new { width: auto; height: 32px; margin-left: 6px; padding: 0 14px; border-radius: 16px; background: var(--ci-green, #1daa61); color: var(--ci-on-green, #fff); font-size: 13px; font-weight: 600; }
+.crm-cal-body aside li.crm-sched-item { flex-direction: column; align-items: stretch; gap: 2px; }
+.crm-sched-item strong { overflow: hidden; font-size: 13.5px; text-overflow: ellipsis; white-space: nowrap; }
+.crm-sched-item small { color: var(--ci-text-2, #667781); font-size: 12px; }
+.crm-sched-item .crm-sched-why { color: #d99a2b; }
+.crm-sched-item.is-paused strong, .crm-sched-item.is-canceled strong { opacity: 0.6; }
+.crm-sched-actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.crm-sched-actions button { height: 26px; padding: 0 10px; border: 1px solid rgba(134, 150, 160, 0.35); border-radius: 13px; background: transparent; color: inherit; font-size: 12px; cursor: pointer; }
+.crm-sched-actions button:hover { border-color: var(--ci-green, #1daa61); color: var(--ci-green, #1daa61); }
+
+/* Modo apresentação (recurso opcional): borra o que identifica o cliente; a estrutura da tela continua visível. */
+body[data-crm-presenting] :is(
+  .conversations-list .conversation--user, .conversations-list .text-ellipsis, .conversations-list img,
+  .conversations-list [class~="group/avatar"], .conversation-details-wrap [class~="group/avatar"],
+  .conversation-panel .message-bubble-container, .conversation-details-wrap .items-start.min-w-0, .conversation-details-wrap img,
+  .kb-card-top h4, .kb-customer, .kb-card-person, .kb-card-desc, .kb-list-title, .kb-table tbody td:nth-child(2), .kb-table tbody td:nth-child(3),
+  .kb-chat-head, section:has(> nav[aria-label="Caixas de e-mail"]) > :not(nav), nav[aria-label="Caixas de e-mail"] button
+) { filter: blur(6px); user-select: none; }
+body[data-crm-presenting][data-crm-module="contacts"] main :is(h3, h4, p, span, a, td, img) { filter: blur(6px); user-select: none; }
+.crm-presenting { position: fixed; bottom: 14px; left: 50%; z-index: 10004; display: flex; align-items: center; gap: 10px; padding: 6px 6px 6px 14px; border: 1px solid var(--ci-line, rgba(134, 150, 160, 0.35)); border-radius: 18px; background: var(--ci-surface, #fff); color: var(--ci-text, #111b21); font-size: 13px; transform: translateX(-50%); box-shadow: 0 4px 16px rgba(11, 20, 26, 0.12); }
+.crm-presenting button { height: 26px; padding: 0 12px; border: 0; border-radius: 13px; background: var(--ci-green, #1daa61); color: var(--ci-on-green, #fff); font-size: 12.5px; font-weight: 600; cursor: pointer; }
+@media (max-width: 767px) { .crm-presenting { bottom: 76px; } }
+
+/* Conexão de e-mail. */
+.crm-mail-list { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+.crm-mail-box { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; padding: 9px 12px; border-radius: 10px; background: rgba(134, 150, 160, 0.12); font-size: 13.5px; }
+.crm-mail-box span { flex: 1 1 140px; min-width: 0; overflow: hidden; color: var(--kb-muted, #8696a0); text-overflow: ellipsis; white-space: nowrap; }
+.crm-mail-box em { color: #d99a2b; font-size: 12px; font-style: normal; font-weight: 600; }
+.crm-mail-box em.is-on { color: #21b573; }
+.crm-mail-box a { color: inherit; font-size: 12.5px; }
+.crm-mail-tabs { display: flex; flex-wrap: wrap; gap: 6px; }
+.crm-mail-tabs button { height: 32px; padding: 0 13px; border: 1px solid rgba(134, 150, 160, 0.35); border-radius: 16px; background: transparent; color: inherit; font-size: 13px; cursor: pointer; }
+.crm-mail-tabs button.is-on { border-color: #21b573; background: rgba(33, 181, 115, 0.16); font-weight: 600; }
+.crm-mail-help { margin: 10px 0 12px; color: var(--kb-muted, #8696a0); font-size: 12.5px; line-height: 1.45; }
+.crm-mail-help a { color: #21b573; }
+
+/* Configurações > Conexões. */
+form.crm-conn { width: min(640px, calc(100vw - 24px)); max-width: none; }
+.crm-conn-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 12px; }
+.crm-conn-head p { margin: 0; color: var(--kb-muted, #8696a0); font-size: 13px; }
+.crm-conn-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; padding: 11px 12px; margin-bottom: 8px; border-radius: 12px; background: rgba(134, 150, 160, 0.12); }
+.crm-conn-main { display: flex; flex: 1 1 240px; flex-direction: column; gap: 2px; min-width: 0; }
+.crm-conn-main p { display: flex; align-items: center; gap: 8px; margin: 0; font-size: 14.5px; }
+.crm-conn-main small { color: var(--kb-muted, #8696a0); font-size: 12.5px; }
+.crm-conn-tag { padding: 1px 8px; border-radius: 10px; background: rgba(75, 159, 224, 0.18); color: #4b9fe0; font-size: 11px; font-weight: 600; }
+.crm-conn-state { flex: none; font-size: 12.5px; font-style: normal; font-weight: 600; }
+.crm-conn-state[data-tone="ok"] { color: #21b573; }
+.crm-conn-state[data-tone="wait"] { color: #d99a2b; }
+.crm-conn-state[data-tone="off"] { color: var(--kb-muted, #8696a0); }
+.crm-conn-state[data-tone="bad"], .crm-conn-error { color: #e5484d !important; }
+.crm-conn-actions { display: flex; flex: none; gap: 6px; }
+.crm-conn-actions button { height: 30px; padding: 0 11px; border: 1px solid rgba(134, 150, 160, 0.35); border-radius: 8px; background: transparent; color: inherit; font-size: 12.5px; cursor: pointer; }
+.crm-conn-actions button:hover { border-color: #21b573; color: #21b573; }
+.crm-conn-actions button.is-danger:hover { border-color: #e5484d; color: #e5484d; }
+.crm-conn-back { padding: 0; border: 0; background: none; color: var(--kb-muted, #8696a0); font-size: 13px; cursor: pointer; }
+.crm-conn-row-actions { display: flex; align-items: center; justify-content: space-between; margin-top: 10px; }
+.crm-conn-pair { display: flex; flex-wrap: wrap; gap: 16px; }
+.crm-conn-qr { display: flex; flex: none; align-items: center; justify-content: center; width: 240px; height: 240px; padding: 8px; border-radius: 12px; background: #fff; color: #111; }
+.crm-conn-qr svg, .crm-conn-qr img { display: block; width: 100%; height: 100%; }
+.crm-conn-pair > div:last-child { flex: 1 1 200px; min-width: 0; font-size: 13.5px; }
+.crm-conn-pair ol { margin: 8px 0; padding-left: 18px; }
+.crm-conn-status { margin: 8px 0; color: #d99a2b; font-weight: 600; }
+.crm-conn-done { padding: 16px 0; text-align: center; }
+.crm-conn-done strong { color: #21b573; font-size: 18px; }
+/* crm-icones-inicio */
+/* Ícones no estilo do WhatsApp: Material Symbols Rounded, Apache-2.0, Google. Gerado; não editar à mão. */
+.crm-mi path { fill: currentColor !important; stroke: none !important; }
+.crm-mi .f { display: none; }
+.nv.on .crm-mi .o, .is-on .crm-mi .o { display: none; }
+.nv.on .crm-mi .f, .is-on .crm-mi .f { display: inline; }
+html body .i-lucide-search { --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M378-329q-108.16 0-183.08-75Q120-479 120-585t75-181q75-75 181.5-75t181 75Q632-691 632-584.85 632-542 618-502q-14 40-42 75l242 240q9 8.56 9 21.78T818-143q-9 9-22.22 9-13.22 0-21.78-9L533-384q-30 26-69.96 40.5Q423.08-329 378-329Zm-1-60q81.25 0 138.13-57.5Q572-504 572-585t-56.87-138.5Q458.25-781 377-781q-82.08 0-139.54 57.5Q180-666 180-585t57.46 138.5Q294.92-389 377-389Z'/%3E%3C/svg%3E"); }
+html body .i-lucide-more-vertical, html body .i-lucide-ellipsis-vertical { --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M479.86-160Q460-160 446-174.14t-14-34Q432-228 446.14-242t34-14Q500-256 514-241.86t14 34Q528-188 513.86-174t-34 14Zm0-272Q460-432 446-446.14t-14-34Q432-500 446.14-514t34-14Q500-528 514-513.86t14 34Q528-460 513.86-446t-34 14Zm0-272Q460-704 446-718.14t-14-34Q432-772 446.14-786t34-14Q500-800 514-785.86t14 34Q528-732 513.86-718t-34 14Z'/%3E%3C/svg%3E"); }
+html body .i-lucide-message-circle, html body .i-lucide-messages-square { --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M240-240 131-131q-14 14-32.5 6.34Q80-132.31 80-152v-668q0-24 18-42t42-18h680q24 0 42 18t18 42v520q0 24-18 42t-42 18H240Zm-26-60h606v-520H140v600l74-80Zm-74 0v-520 520Zm130-99h253q12.75 0 21.38-8.68 8.62-8.67 8.62-21.5 0-12.82-8.62-21.32-8.63-8.5-21.38-8.5H270q-12.75 0-21.37 8.68-8.63 8.67-8.63 21.5 0 12.82 8.63 21.32 8.62 8.5 21.37 8.5Zm0-130h420q12.75 0 21.38-8.68 8.62-8.67 8.62-21.5 0-12.82-8.62-21.32-8.63-8.5-21.38-8.5H270q-12.75 0-21.37 8.68-8.63 8.67-8.63 21.5 0 12.82 8.63 21.32 8.62 8.5 21.37 8.5Zm0-130h420q12.75 0 21.38-8.68 8.62-8.67 8.62-21.5 0-12.82-8.62-21.32-8.63-8.5-21.38-8.5H270q-12.75 0-21.37 8.68-8.63 8.67-8.63 21.5 0 12.82 8.63 21.32 8.62 8.5 21.37 8.5Z'/%3E%3C/svg%3E"); }
+html body .i-lucide-mail, html body .i-woot-mail { --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M140-160q-24 0-42-18t-18-42v-520q0-24 18-42t42-18h680q24 0 42 18t18 42v520q0 24-18 42t-42 18H140Zm680-525L496-473q-4 2-7.5 3.5T480-468q-5 0-8.5-1.5T464-473L140-685v465h680v-465ZM480-522l336-218H145l335 218ZM140-685v7-39.32.73V-740v23-.91V-678v-7 465-465Z'/%3E%3C/svg%3E"); }
+html body .i-ph-smiley-sticker, html body .i-lucide-smile, html body .i-ph-smiley { --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M626-533q22.5 0 38.25-15.75T680-587q0-22.5-15.75-38.25T626-641q-22.5 0-38.25 15.75T572-587q0 22.5 15.75 38.25T626-533Zm-292 0q22.5 0 38.25-15.75T388-587q0-22.5-15.75-38.25T334-641q-22.5 0-38.25 15.75T280-587q0 22.5 15.75 38.25T334-533ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-400Zm0 340q142.38 0 241.19-98.81Q820-337.63 820-480q0-142.38-98.81-241.19T480-820q-142.37 0-241.19 98.81Q140-622.38 140-480q0 142.37 98.81 241.19Q337.63-140 480-140Zm-.5-121q57.5 0 106-26t78.5-72.4q6-11.6-.75-22.6-6.75-11-20.25-11H316.92q-13.92 0-20.42 11-6.5 11-.5 22.6 30 46.4 78.5 72.4 48.5 26 105 26Z'/%3E%3C/svg%3E"); }
+html body .i-ph-paperclip, html body .i-lucide-paperclip, html body .i-ph-paperclip-bold { --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M728-326q0 103-72.18 174.5-72.17 71.5-175 71.5Q378-80 305.5-151.5T233-326v-380q0-72.5 51.5-123.25T408-880q72 0 123.5 50.75T583-706v360q0 42-30 72t-72.5 30q-42.5 0-72.5-29.67-30-29.68-30-72.33v-340q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v340q0 17 12.5 29.5t30.64 12.5q18.14 0 30-12.5T523-346v-360q0-48-33.5-81t-81.71-33q-48.21 0-81.5 33.06T293-706v380q0 78 54.97 132T481-140q77.92 0 132.46-54Q668-248 668-326v-360q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v360Z'/%3E%3C/svg%3E"); }
+html body .i-ph-microphone, html body .i-ph-microphone-bold, html body .i-lucide-mic { --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M480-423q-43 0-72-30.92-29-30.91-29-75.08v-251q0-41.67 29.44-70.83Q437.88-880 479.94-880t71.56 29.17Q581-821.67 581-780v251q0 44.17-29 75.08Q523-423 480-423Zm0-228Zm-30 501v-106q-96-11-166.5-77.5T202-498q-2-12.85 6.59-21.93 8.6-9.07 21.5-9.07 12.91 0 21.41 9t10.5 22q12 81 74.71 132.5Q399.42-314 479.65-314q81.35 0 143.85-51.5T698-498q2-13 10.68-22 8.67-9 21.5-9 12.82 0 21.32 9.07 8.5 9.08 6.5 21.93-11 97-81 164t-167 78v106q0 12.75-8.68 21.37-8.67 8.63-21.5 8.63-12.82 0-21.32-8.63-8.5-8.62-8.5-21.37Zm30-333q18 0 29.5-13.5T521-529v-251q0-17-11.79-28.5T480-820q-17.42 0-29.21 11.5T439-780v251q0 19 11.5 32.5T480-483Z'/%3E%3C/svg%3E"); }
+html body .i-lucide-phone, html body .i-ph-phone, html body .i-ph-phone-bold { --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M795-120q-116 0-236.5-56T335-335Q232-438 176-558.5T120-795q0-19.29 12.86-32.14Q145.71-840 165-840h140q14 0 24 10t14 25l26.93 125.64Q372-665 369.5-653.5t-10.73 19.73L259-533q26 44 55 82t64 72q37 38 78 69.5t86 55.5l95-98q10-11 23.15-15 13.15-4 25.85-2l119 26q15 4 25 16.04 10 12.05 10 26.96v135q0 19.29-12.86 32.14Q814.29-120 795-120ZM229-588l81-82-23-110H180q2 42 13.5 88.5T229-588Zm369 363q41 19 89 31t93 14v-107l-103-21-79 83ZM229-588Zm369 363Z'/%3E%3C/svg%3E"); }
+html body .i-lucide-video, html body .i-ph-video-camera { --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M140-160q-24 0-42-18t-18-42v-520q0-24 18-42t42-18h520q24 0 42 18t18 42v215l134-134q7-7 16.5-3.46T880-649v338q0 9.92-9.5 13.46Q861-294 854-301L720-435v215q0 24-18 42t-42 18H140Zm0-60h520v-520H140v520Zm0 0v-520 520Z'/%3E%3C/svg%3E"); }
+html body .i-lucide-list-filter { --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M430-240q-12.75 0-21.37-8.68-8.63-8.67-8.63-21.5 0-12.82 8.63-21.32 8.62-8.5 21.37-8.5h100q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5H430ZM270-450q-12.75 0-21.37-8.68-8.63-8.67-8.63-21.5 0-12.82 8.63-21.32 8.62-8.5 21.37-8.5h420q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5H270ZM150-660q-12.75 0-21.37-8.68-8.63-8.67-8.63-21.5 0-12.82 8.63-21.32 8.62-8.5 21.37-8.5h660q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5H150Z'/%3E%3C/svg%3E"); }
+html body .i-lucide-bell, html body .i-ph-bell { --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M190-200q-12.75 0-21.37-8.68-8.63-8.67-8.63-21.5 0-12.82 8.63-21.32 8.62-8.5 21.37-8.5h50v-304q0-84 49.5-150.5T420-798v-22q0-25 17.5-42.5T480-880q25 0 42.5 17.5T540-820v22q81 17 130.5 83.5T720-564v304h50q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5H190Zm290-302Zm0 422q-33 0-56.5-23.5T400-160h160q0 33-23.5 56.5T480-80ZM300-260h360v-304q0-75-52.5-127.5T480-744q-75 0-127.5 52.5T300-564v304Z'/%3E%3C/svg%3E"); }
+html body .i-lucide-contact { --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M174-40q-12.75 0-21.37-8.68-8.63-8.67-8.63-21.5 0-12.82 8.63-21.32 8.62-8.5 21.37-8.5h612q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32Q798.75-40 786-40H174Zm0-820q-12.75 0-21.37-8.68-8.63-8.67-8.63-21.5 0-12.82 8.63-21.32 8.62-8.5 21.37-8.5h612q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5H174Zm306 416q50 0 84-34t34-84q0-50-34-84t-84-34q-50 0-84 34t-34 84q0 50 34 84t84 34ZM132-160q-24 0-42-18t-18-42v-520q0-26 18-43t42-17h696q24 0 42 18t18 42v520q0 24-18 42t-42 18H132Zm88-60q51-63 121-94.5T479.5-346q68.5 0 140 31.5T740-220h88v-520H132v520h88Zm94 0h334q-31-30-72.5-48T480-286q-54 0-94.5 18T314-220Zm166.16-284q-24.16 0-40.66-17-16.5-17-16.5-41t16.34-41q16.34-17 40.5-17t40.66 17q16.5 17 16.5 41t-16.34 41q-16.34 17-40.5 17Zm-.16 24Z'/%3E%3C/svg%3E"); }
+html body .i-lucide-group, html body .i-lucide-users { --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M38-254q0-35 18-63.5t50-42.5q73-32 131.5-46T358-420q62 0 120 14t131 46q32 14 50.5 42.5T678-254v34q0 24.75-17.62 42.37Q642.75-160 618-160H98q-24.75 0-42.37-17.63Q38-195.25 38-220v-34Zm824 94H724q5-15 9.5-29.5T738-220v-34q0-63-29-101.5T622-420q69 8 130 22t99 34q33 19 52 47t19 63v34q0 24.75-17.62 42.37Q886.75-160 862-160ZM358-481q-66 0-108-42t-42-108q0-66 42-108t108-42q66 0 108 42t42 108q0 66-42 108t-108 42Zm360-150q0 66-42 108t-108 42q-11 0-24.5-1.5T519-488q24-25 36.5-61.5T568-631q0-45-12.5-79.5T519-774q11-3 24.5-5t24.5-2q66 0 108 42t42 108ZM98-220h520v-34q0-16-9.5-31T585-306q-72-32-121-43t-106-11q-57 0-106.5 11T130-306q-14 6-23 21t-9 31v34Zm260-321q39 0 64.5-25.5T448-631q0-39-25.5-64.5T358-721q-39 0-64.5 25.5T268-631q0 39 25.5 64.5T358-541Zm0 321Zm0-411Z'/%3E%3C/svg%3E"); }
+html body .i-lucide-chart-spline { --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M690-160q-12.75 0-21.37-8.63Q660-177.25 660-190v-220q0-12.75 8.63-21.38Q677.25-440 690-440h80q12.75 0 21.38 8.62Q800-422.75 800-410v220q0 12.75-8.62 21.37Q782.75-160 770-160h-80Zm-250 0q-12.75 0-21.37-8.63Q410-177.25 410-190v-580q0-12.75 8.63-21.38Q427.25-800 440-800h80q12.75 0 21.38 8.62Q550-782.75 550-770v580q0 12.75-8.62 21.37Q532.75-160 520-160h-80Zm-250 0q-12.75 0-21.37-8.63Q160-177.25 160-190v-380q0-12.75 8.63-21.38Q177.25-600 190-600h80q12.75 0 21.38 8.62Q300-582.75 300-570v380q0 12.75-8.62 21.37Q282.75-160 270-160h-80Z'/%3E%3C/svg%3E"); }
+html body .i-lucide-pen-line, html body .i-lucide-pencil { --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M180-180h44l472-471-44-44-472 471v44Zm-30 60q-13 0-21.5-8.5T120-150v-73q0-12 5-23.5t13-19.5l557-556q8-8 19-12.5t23-4.5q11 0 22 4.5t20 12.5l44 44q9 9 13 20t4 22q0 11-4.5 22.5T823-694L266-138q-8 8-19.5 13t-23.5 5h-73Zm629-617-41-41 41 41Zm-105 64-22-22 44 44-22-22Z'/%3E%3C/svg%3E"); }
+html body .i-lucide-trash, html body .i-lucide-trash-2 { --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M261-120q-24.75 0-42.37-17.63Q201-155.25 201-180v-570h-11q-12.75 0-21.37-8.68-8.63-8.67-8.63-21.5 0-12.82 8.63-21.32 8.62-8.5 21.37-8.5h158q0-13 8.63-21.5 8.62-8.5 21.37-8.5h204q12.75 0 21.38 8.62Q612-822.75 612-810h158q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5h-11v570q0 24.75-17.62 42.37Q723.75-120 699-120H261Zm438-630H261v570h438v-570ZM397.18-266q12.82 0 21.32-8.63 8.5-8.62 8.5-21.37v-339q0-12.75-8.68-21.38-8.67-8.62-21.5-8.62-12.82 0-21.32 8.62-8.5 8.63-8.5 21.38v339q0 12.75 8.68 21.37 8.67 8.63 21.5 8.63Zm166 0q12.82 0 21.32-8.63 8.5-8.62 8.5-21.37v-339q0-12.75-8.68-21.38-8.67-8.62-21.5-8.62-12.82 0-21.32 8.62-8.5 8.63-8.5 21.38v339q0 12.75 8.68 21.37 8.67 8.63 21.5 8.63ZM261-750v570-570Z'/%3E%3C/svg%3E"); }
+html body .i-lucide-send, html body .i-ph-paper-plane-tilt, html body .i-ph-paper-plane-right { --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M814-452 162-178q-15 6-28.5-2.5T120-205v-550q0-16 13.5-24.5T162-782l652 274q18 8 18 28t-18 28ZM180-253l544-227-544-230v168l242 62-242 60v167Zm0 0v-457 457Z'/%3E%3C/svg%3E"); }
+html body .i-lucide-plus { --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960'%3E%3Cpath d='M450-450H230q-12.75 0-21.37-8.68-8.63-8.67-8.63-21.5 0-12.82 8.63-21.32 8.62-8.5 21.37-8.5h220v-220q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v220h220q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5H510v220q0 12.75-8.68 21.37-8.67 8.63-21.5 8.63-12.82 0-21.32-8.63-8.5-8.62-8.5-21.37v-220Z'/%3E%3C/svg%3E"); }
+/* crm-icones-fim */
+
+/* Fotos e vídeos nas conversas, no tamanho do WhatsApp.
+ * Mensagem de grupo e mensagem com legenda vêm com texto; nesses casos o Chatwoot mostrava a mídia como
+ * miniatura quadrada de 72px. Aqui ela aparece como foto, com a proporção original e altura limitada. */
+html body .conversation-panel .size-\[72px\].contain-content.cursor-pointer {
+  width: min(280px, 66vw);
+  height: auto;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.08);
+}
+html body .conversation-panel .size-\[72px\].contain-content.cursor-pointer > img,
+html body .conversation-panel .size-\[72px\].contain-content.cursor-pointer > video {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 80px;
+  max-height: 340px;
+  object-fit: cover;
+}
+/* O balão com foto pode ser mais largo que o de texto (62%), senão a foto fica estreita no celular. */
+html body .left-bubble:has(.size-\[72px\].contain-content.cursor-pointer),
+html body .right-bubble:has(.size-\[72px\].contain-content.cursor-pointer),
+html body .left-bubble.left-bubble[data-bubble-name="image"],
+html body .right-bubble.right-bubble[data-bubble-name="image"],
+html body .left-bubble.left-bubble[data-bubble-name="video"],
+html body .right-bubble.right-bubble[data-bubble-name="video"] {
+  max-width: min(92%, 620px) !important;
+}
+/* Erro ao carregar: o aviso ocupa uma faixa, e não a altura de uma foto. */
+html body .conversation-panel .size-\[72px\].contain-content.cursor-pointer > div:first-child:not(.absolute) {
+  min-height: 72px;
+}
+/* Botão de play do vídeo maior, como no WhatsApp. */
+html body .conversation-panel .size-\[72px\].contain-content.cursor-pointer .size-7 {
+  width: 48px;
+  height: 48px;
+}
+/* Várias fotos na mesma mensagem: grade de duas por linha, quadradas, como o álbum do WhatsApp. */
+html body .conversation-panel .flex-wrap:has(> .size-\[72px\].contain-content ~ .size-\[72px\].contain-content) {
+  width: min(284px, 68vw);
+  gap: 4px;
+}
+html body .conversation-panel .flex-wrap:has(> .size-\[72px\].contain-content ~ .size-\[72px\].contain-content) > .size-\[72px\].contain-content {
+  width: calc(50% - 2px);
+  height: auto;
+  aspect-ratio: 1;
+}
+html body .conversation-panel .flex-wrap:has(> .size-\[72px\].contain-content ~ .size-\[72px\].contain-content) > .size-\[72px\].contain-content > img,
+html body .conversation-panel .flex-wrap:has(> .size-\[72px\].contain-content ~ .size-\[72px\].contain-content) > .size-\[72px\].contain-content > video {
+  height: 100%;
+  min-height: 0;
+}
+/* Reações: os emojis abrem só ao clicar na carinha, como no WhatsApp (antes abriam ao passar o mouse). */
+html body .message-bubble-container:hover .crm-reaction-picker:not(.is-open),
+html body .crm-reaction-anchor:hover .crm-reaction-picker:not(.is-open),
+html body .crm-reaction-picker:focus-within:not(.is-open) {
+  display: none;
+}
+html body .crm-reaction-picker.is-open {
+  display: flex;
+}
+/* Selo com as reações de outras pessoas e as suas, embaixo da mensagem reagida. */
+html body .crm-reaction-badge .crm-reaction-count {
+  margin-left: 3px;
+  font-size: 12px;
+  font-weight: 600;
+  opacity: 0.75;
+}
+/* Foto ou vídeo sem texto: limita o tamanho para uma foto em pé não ocupar a tela inteira. */
+html body .conversation-panel [data-bubble-name="image"] img,
+html body .conversation-panel [data-bubble-name="video"] video {
+  width: auto;
+  height: auto;
+  max-width: min(300px, 100%);
+  max-height: 380px;
+}

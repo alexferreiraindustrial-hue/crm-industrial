@@ -1,0 +1,17 @@
+{
+  "name": "BRUNA LOGISTICA CRM",
+  "short_name": "BRUNA LOGISTICA CRM",
+  "start_url": "/app/login",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#111B21",
+  "theme_color": "#111B21",
+  "icons": [
+    {
+      "src": "/brand-assets/logo.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+---
+description: Ameaça do CRM Industrial é invasão externa. Auditar a borda antes de mexer em permissão interna.
+alwaysApply: true
+---
+
+# Segurança contra invasão externa
+
+A prioridade é impedir que alguém de fora da internet entre no CRM, leia conversas do WhatsApp, contatos ou dados dos colaboradores. Permissão entre setores não é o alvo desta proteção.
+
+Antes de alterar produção, separar auditoria de correção. Não imprimir segredo, token, senha ou endereço interno. Não reiniciar Postgres, Redis ou WhatsApp quando a mudança é só do site. Não recrear o projeto Compose inteiro.
+
+## Política da borda
+
+Quem está fora encontra o site, o login e a recusa do que exige sessão. A política da borda é esta:
+
+- Cada endereço novo fica limitado a 50 pedidos por segundo, com folga de 100, para a tela carregar e um volume de ataque cair.
+- O navegador recebe proibição de câmera, microfone, localização e pagamento, e não abre a página dentro de outro site.
+- O cookie de sessão só sai no HTTPS. A senha de pessoa continua com limite próprio no aplicativo.
+- Não se publica banco, Redis, WhatsApp nem o socket do Docker.
+
+## Já fechado na borda
+
+- Internet só entra por 22, 80 e 443. Banco, Redis, WhatsApp e o proxy do Docker não têm porta publicada.
+- HTTPS obrigatório no proxy, cookie de sessão `secure` e `httponly`, cadastro público fechado.
+- API, plataforma e conversas sem login respondem 401. Painel interno do Traefik e do Sidekiq não abrem de fora.
+- O Traefik não monta o socket do Docker; o proxy só deixa leitura e bloqueia criação de contêiner.
+- Backup do banco é cifrado, modo 600, e a restauração de teste bateu a contagem de contatos, conversas e mensagens.
+- SSH recusa senha. Fail2ban prende o IP depois de 5 falhas em 10 minutos, por 1 hora.
+- Traefik está em v3.7.13. A falha crítica e os três desvios de autorização achados em v3.6.25 saíram na nova varredura. Ainda restam 10 achados altos em bibliotecas dessa imagem.
+
+## Lembrete do que ainda não foi feito
+
+- OWASP ZAP ativo contra o site no ar. Só com janela combinada, porque o teste dispara o bloqueio de login e pode atingir conversa real.
+- Content-Security-Policy estrita. Pode quebrar a tela. Medir antes.
+- Cópia do backup para fora do servidor. Falta o destino.
+- Varredura completa de CVE da imagem do CRM. Trivy na imagem grande fica para uma janela; a imagem da borda vem primeiro.
+- Não desligar o login root por chave: é o único usuário da máquina. Não mudar a porta SSH no escuro.

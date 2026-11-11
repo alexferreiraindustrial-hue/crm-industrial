@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 96" role="img" aria-label="Bruna Logística">
+  <g transform="translate(4 8) scale(1.25)">
+  <rect width="64" height="64" rx="15" fill="#0F3D47"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20 14v36M20 14h13.5a9 9 0 0 1 0 18H20M20 32h16a9 9 0 0 1 0 18H20" stroke="#FFFFFF" stroke-width="6.4"/>
+    <path d="M32 32h22M47 25l7 7-7 7" stroke="#35D6A4" stroke-width="5.6"/>
+  </g>
+  </g>
+  <g transform="translate(104 -6)" fill="none" stroke="#FFFFFF" stroke-width="6.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16V62M3 46a16 16 0 1 0 32 0a16 16 0 1 0-32 0M47 30V62M47 46a14 14 0 0 1 14-16M71 30V48a14 14 0 0 0 28 0V30M99 30V62M111 62V30M111 46a14 14 0 0 1 28 0V62M151 46a16 16 0 1 0 32 0a16 16 0 1 0-32 0M183 30V62"/></g>
+  <g transform="translate(107 75)" fill="none" stroke="#9FE3CF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path transform="translate(0 0)" d="M0 0V12H8"/><path transform="translate(19 0)" d="M0 6a6 6 0 1 0 12 0a6 6 0 1 0-12 0"/><path transform="translate(42 0)" d="M11 2.2A6 6 0 1 0 12 6.5H7"/><path transform="translate(65 0)" d="M1 0V12M.2-3.2L2.6-5.6"/><path transform="translate(77 0)" d="M9 1.6C8 .4 6.6 0 5 0 2.6 0 .8 1.2 .8 3.2c0 4.2 8.6 1.6 8.6 5.6 0 2.1-1.9 3.2-4.4 3.2-1.9 0-3.6-.6-4.6-2"/><path transform="translate(98 0)" d="M0 0H10M5 0V12"/><path transform="translate(119 0)" d="M1 0V12"/><path transform="translate(131 0)" d="M11 2.2A6 6 0 1 0 11 9.8"/><path transform="translate(154 0)" d="M0 12L5.5 0L11 12M2.2 8H8.8"/></g>
+</svg>

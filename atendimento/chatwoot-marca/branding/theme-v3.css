@@ -1,0 +1,1188 @@
+/* =====================================================================
+   CRM Industrial · tema verde v3 “natural” (claro + escuro)
+   Carregar DEPOIS de /crm-industrial/theme.css.
+   Seletores começam com "html body.crm-shell" de propósito: assim vencem as regras
+   :is(html.dark, body.dark) ... !important do theme.css sem precisar apagá-lo.
+   Sem @layer, para vencer as utilidades do Chatwoot.
+   Claro = padrão (:root). Escuro = body.dark (classe que o Chatwoot já usa).
+   ===================================================================== */
+
+/* ---------- 1. Paleta: variáveis do Chatwoot (RGB sem vírgula; alpha com vírgula) ---------- */
+:root {
+  color-scheme: light;
+  --slate-1: 255 255 255; --slate-2: 240 242 245; --slate-3: 233 237 239; --slate-4: 255 255 255;
+  --slate-5: 209 215 219; --slate-6: 174 186 193; --slate-7: 134 150 160; --slate-8: 102 119 129;
+  --slate-9: 102 119 129; --slate-10: 84 101 111; --slate-11: 84 101 111; --slate-12: 17 27 33;
+  --blue-1: 240 252 247; --blue-2: 217 253 211; --blue-3: 182 245 196; --blue-4: 127 232 176; --blue-5: 37 211 102;
+  --blue-6: 0 168 132; --blue-7: 0 148 116; --blue-8: 0 128 105; --blue-9: 0 168 132; --blue-10: 0 128 105;
+  --blue-11: 0 128 105; --blue-12: 17 27 33;
+  --teal-9: 0 168 132; --teal-10: 0 128 105; --teal-11: 0 128 105;
+  --background-color: 240 242 245;
+  --surface-1: 255 255 255; --surface-2: 240 242 245; --surface-active: 240 242 245;
+  --solid-1: 255 255 255; --solid-2: 255 255 255; --solid-3: 240 242 245; --solid-active: 240 242 245;
+  --solid-blue: 217 253 211; --solid-blue-2: 240 242 245; --solid-iris: 217 253 211; --solid-amber: 253 243 214;
+  --card-color: 255 255 255; --button-color: 255 255 255; --label-background: 240 242 245;
+  --border-container: 233 237 239; --border-strong: 209 215 219; --border-weak: 240 242 245;
+  --background-input-box: 255, 255, 255, 1;
+  --text-blue: 17 27 33;
+  --alpha-1: 17, 27, 33, 0.04; --alpha-2: 17, 27, 33, 0.08; --alpha-3: 255, 255, 255, 0.96;
+  --black-alpha-1: 11, 20, 26, 0.08; --black-alpha-2: 11, 20, 26, 0.04;
+  --overlay: 11, 20, 26, 0.36; --border-blue: 0, 168, 132, 0.45;
+
+  --ci-bg: #f0f2f5; --ci-glow: #f0f2f5; --ci-surface: #ffffff; --ci-surface-2: #f0f2f5; --ci-surface-3: #f5f6f6; --ci-bg2: #f0f2f5; --ci-input: #ffffff; --ci-header: #f0f2f5;
+  --ci-line: #e9edef; --ci-line-2: #d1d7db; --ci-text: #111b21; --ci-text-2: #667781; --ci-text-3: #8696a0;
+  --ci-green: #00a884; --ci-green-2: #25d366; --ci-on-green: #ffffff; --ci-ink: #008069;
+  --ci-green-soft: #e7f8f3; --ci-green-line: #b7e4d6;
+  --ci-chip-ok-bg: #e7f8f3; --ci-chip-ok-t: #008069;
+  --ci-amber: #F5C04A; --ci-amber-t: #3A2A00; --ci-amber-soft: #FDF4DC; --ci-amber-line: #F0D58E; --ci-amber-text: #7A5300;
+  --ci-red: #ea0038; --ci-blue: #53bdeb;
+  --ci-sent: #d9fdd3; --ci-recv: #ffffff; --ci-chat: #efeae2; --ci-chat-dot: rgba(17,27,33,.04); --ci-meta: #667781;
+  --ci-cv-on: #f0f2f5; --ci-track: #e9edef; --ci-done-a: #f0f2f5; --ci-done-b: #f0f2f5;
+  --ci-shadow: 0 1px 0.5px rgba(11,20,26,.13);
+  --ci-shadow-hover: 0 1px 1px rgba(11,20,26,.12);
+  --ci-focus: rgba(0,168,132,.22);
+}
+
+body.dark {
+  color-scheme: dark;
+  --slate-1: 17 27 33; --slate-2: 32 44 51; --slate-3: 42 57 66; --slate-4: 32 44 51;
+  --slate-5: 42 57 66; --slate-6: 86 99 109; --slate-7: 134 150 160; --slate-8: 134 150 160;
+  --slate-9: 174 186 193; --slate-10: 174 186 193; --slate-11: 233 237 239; --slate-12: 233 237 239;
+  --blue-1: 10 36 32; --blue-2: 0 50 42; --blue-3: 0 70 58; --blue-4: 0 92 75; --blue-5: 0 128 105;
+  --blue-6: 0 168 132; --blue-7: 6 207 156; --blue-8: 6 207 156; --blue-9: 0 168 132; --blue-10: 6 207 156;
+  --blue-11: 6 207 156; --blue-12: 233 237 239;
+  --teal-9: 0 168 132; --teal-10: 6 207 156; --teal-11: 6 207 156;
+  --background-color: 11 20 26;
+  --surface-1: 17 27 33; --surface-2: 32 44 51; --surface-active: 42 57 66;
+  --solid-1: 17 27 33; --solid-2: 32 44 51; --solid-3: 42 57 66; --solid-active: 42 57 66;
+  --solid-blue: 0 92 75; --solid-blue-2: 32 44 51; --solid-iris: 0 92 75; --solid-amber: 58 48 22;
+  --card-color: 17 27 33; --button-color: 32 44 51; --label-background: 32 44 51;
+  --border-container: 42 57 66; --border-strong: 42 57 66; --border-weak: 32 44 51;
+  --background-input-box: 42, 57, 66, 1;
+  --text-blue: 233 237 239;
+  --alpha-1: 233, 237, 239, 0.04; --alpha-2: 233, 237, 239, 0.08; --alpha-3: 17, 27, 33, 0.96;
+  --black-alpha-1: 0, 0, 0, 0.28; --black-alpha-2: 0, 0, 0, 0.14;
+  --overlay: 11, 20, 26, 0.72; --border-blue: 0, 168, 132, 0.45;
+
+  --ci-bg: #0b141a; --ci-glow: #0b141a; --ci-surface: #111b21; --ci-surface-2: #202c33; --ci-surface-3: #2a3942; --ci-bg2: #0b141a; --ci-input: #2a3942; --ci-header: #202c33;
+  --ci-line: #222d34; --ci-line-2: #2a3942; --ci-text: #e9edef; --ci-text-2: #8696a0; --ci-text-3: #667781;
+  --ci-green: #00a884; --ci-green-2: #00a884; --ci-on-green: #ffffff; --ci-ink: #06cf9c;
+  --ci-green-soft: rgba(0,168,132,.16); --ci-green-line: rgba(0,168,132,.4);
+  --ci-chip-ok-bg: rgba(0,168,132,.16); --ci-chip-ok-t: #06cf9c;
+  --ci-amber: #E8B44A; --ci-amber-t: #2A1D00; --ci-amber-soft: rgba(232,180,74,.12); --ci-amber-line: rgba(232,180,74,.38); --ci-amber-text: #EDC266;
+  --ci-red: #f15c6d; --ci-blue: #53bdeb;
+  --ci-sent: #005c4b; --ci-recv: #202c33; --ci-chat: #0b141a; --ci-chat-dot: rgba(233,237,239,.035); --ci-meta: #8696a0;
+  --ci-cv-on: #2a3942; --ci-track: #2a3942; --ci-done-a: #111b21; --ci-done-b: #111b21;
+  --ci-shadow: 0 1px 0.5px rgba(11,20,26,.13);
+  --ci-shadow-hover: 0 1px 0.5px rgba(11,20,26,.25);
+  --ci-focus: rgba(0,168,132,.28);
+}
+
+/* ---------- 2. Base ---------- */
+html, body, body.dark {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+}
+html body.crm-shell { background: radial-gradient(1200px 700px at 20% 0%, var(--ci-glow) 0%, var(--ci-bg) 60%) !important; color: var(--ci-text); }
+html body.crm-shell #app > #app,
+html body.crm-shell #app > div > .crm-row { background: transparent !important; }
+html body.crm-shell .crm-row { gap: 16px; padding: 16px 16px 16px 14px; }
+html body.crm-shell main.crm-col { background: transparent !important; display: flex; flex-direction: column; gap: 14px; }
+html body.crm-shell .tabular-nums, html body.crm-shell time { font-variant-numeric: tabular-nums; }
+
+/* ---------- 3. Menu lateral (sidebar.js) ---------- */
+html body.crm-shell .crm-side { width: 264px !important; display: flex; flex-direction: column; gap: 6px; padding: 8px 0 4px; background: transparent !important; border: 0 !important; overflow-y: auto; }
+html body.crm-shell .crm-side .logo { display: flex; align-items: center; gap: 12px; padding: 0 8px 18px; }
+html body.crm-shell .crm-side .logo img { width: 54px; height: 54px; object-fit: contain; }
+html body.crm-shell .crm-side .logo strong { display: block; font-size: 22px; font-weight: 700; letter-spacing: -.02em; color: var(--ci-text); line-height: 1.2; }
+html body.crm-shell .crm-side .logo small { display: block; font-size: 11px; color: var(--ci-text-2); white-space: nowrap; margin-top: 2px; }
+html body.crm-shell .crm-side .nv { display: flex; align-items: center; gap: 14px; height: 52px; padding: 0 14px; border-radius: 12px; border: 0; background: transparent; color: var(--ci-text); font-size: 16px; font-weight: 500; text-decoration: none; width: 100%; text-align: left; cursor: pointer; flex: none; }
+html body.crm-shell .crm-side .nv .ic { width: 26px; height: 26px; display: grid; place-items: center; color: var(--ci-text-2); }
+html body.crm-shell .crm-side .nv .ic svg { width: 24px; height: 24px; }
+html body.crm-shell .crm-side .nv .lbl { flex: 1; }
+html body.crm-shell .crm-side .nv .chev { color: var(--ci-text-2); display: grid; place-items: center; }
+html body.crm-shell .crm-side .nv:hover { background: var(--ci-surface-2); }
+html body.crm-shell .crm-side .nv.on { background: var(--ci-green-soft) !important; color: var(--ci-ink) !important; font-weight: 600; box-shadow: inset 3px 0 0 var(--ci-green); }
+html body.crm-shell .crm-side .nv.on .ic, html body.crm-shell .crm-side .nv.on .chev { color: var(--ci-green); }
+html body.crm-shell .crm-side .badge { min-width: 24px; height: 24px; border-radius: 12px; padding: 0 7px; display: grid; place-items: center; font-size: 13px; font-weight: 700; background: var(--ci-green-2); color: var(--ci-on-green); }
+html body.crm-shell .crm-side .nv.on .badge { background: var(--ci-green); color: var(--ci-on-green); }
+html body.crm-shell .crm-side .subnav { display: flex; flex-direction: column; gap: 2px; padding: 4px 0 6px 40px; }
+html body.crm-shell .crm-side .subnav a { height: 38px; display: flex; align-items: center; padding: 0 14px; border-radius: 10px; color: var(--ci-text-2); text-decoration: none; font-size: 14.5px; font-weight: 500; }
+html body.crm-shell .crm-side .subnav a:hover { background: var(--ci-surface-2); color: var(--ci-text); }
+html body.crm-shell .crm-side .subnav a.on, html body.crm-shell .crm-side .subnav a.router-link-active, html body.crm-shell .crm-side .subnav a[aria-current] { background: var(--ci-green-soft); color: var(--ci-green); font-weight: 600; }
+html body.crm-shell .crm-side .sp { flex: 1; min-height: 12px; }
+html body.crm-shell .crm-side .online { border: 1px solid var(--ci-line); background: var(--ci-surface); border-radius: 12px; padding: 14px 16px; margin-bottom: 8px; box-shadow: var(--ci-shadow); }
+html body.crm-shell .crm-side .online b { display: flex; align-items: center; gap: 8px; color: var(--ci-green); font-weight: 600; font-size: 15px; }
+html body.crm-shell .crm-side .online b i { width: 14px; height: 14px; border-radius: 50%; background: var(--ci-green); display: block; }
+html body.crm-shell .crm-side .online span { display: block; color: var(--ci-text-2); font-size: 13.5px; margin-top: 4px; }
+html body.crm-shell .crm-side .me { display: flex; align-items: center; gap: 12px; padding: 6px 8px 2px; border: 0; background: none; width: 100%; text-align: left; color: var(--ci-text); cursor: pointer; }
+html body.crm-shell .crm-side .me .photo { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; background: var(--ci-surface-2); flex: none; }
+html body.crm-shell .crm-side .me div { flex: 1; min-width: 0; }
+html body.crm-shell .crm-side .me strong { display: block; font-size: 15px; font-weight: 600; }
+html body.crm-shell .crm-side .me span { display: block; font-size: 13.5px; color: var(--ci-text-2); }
+
+/* ---------- 4. Topo ---------- */
+html body.crm-shell .crm-top { display: flex; align-items: center; gap: 12px; height: 50px; flex: none; background: transparent !important; border: 0 !important; padding: 0 !important; }
+html body.crm-shell .crm-top .sbar { flex: 1; max-width: 900px; height: 50px; border-radius: 12px; background: var(--ci-surface); border: 1px solid var(--ci-line); display: flex; align-items: center; gap: 14px; padding: 0 18px; color: var(--ci-text-2); box-shadow: var(--ci-shadow); margin-right: auto; }
+html body.crm-shell .crm-top .sbar input { flex: 1; min-width: 0; border: 0 !important; background: none !important; outline: 0; box-shadow: none !important; font-size: 15.5px; color: var(--ci-text); margin: 0; height: auto; padding: 0; }
+html body.crm-shell .crm-top .sbar input::placeholder { color: var(--ci-text-3); }
+html body.crm-shell .crm-top .pill { height: 46px; border-radius: 12px; background: var(--ci-surface); border: 1px solid var(--ci-line); display: flex; align-items: center; gap: 8px; padding: 0 14px; font-size: 14px; font-weight: 500; color: var(--ci-text); box-shadow: var(--ci-shadow); }
+html body.crm-shell .crm-top .pill .ic { color: var(--ci-text-2); }
+html body.crm-shell .crm-top .icbtn { width: 44px; height: 44px; border-radius: 12px; border: 0; background: transparent; display: grid; place-items: center; color: var(--ci-text-2); font-size: 22px; line-height: 1; }
+html body.crm-shell .crm-top .icbtn:hover { background: var(--ci-surface-2); color: var(--ci-text); }
+html body.crm-shell .crm-top .conn { height: 44px; border-radius: 12px; background: var(--ci-green-soft); border: 1px solid var(--ci-green-line); display: flex; align-items: center; gap: 8px; padding: 0 14px; color: var(--ci-green); font-weight: 600; font-size: 14px; }
+html body.crm-shell .crm-top .conn i { width: 10px; height: 10px; border-radius: 50%; background: var(--ci-green); display: block; }
+
+/* ---------- 5. Painéis: cada coluna vira cartão ---------- */
+html body.crm-shell main.crm-col > section {
+  background: transparent !important; gap: 16px; min-height: 0;
+}
+html body.crm-shell .conversations-list-wrap,
+html body.crm-shell .conversation-details-wrap,
+html body.crm-shell main.crm-col > section > aside,
+html body.crm-shell main.crm-col > section > div,
+html body.crm-shell main.crm-col > section > section {
+  background: var(--ci-surface) !important;
+  border: 1px solid var(--ci-line) !important;
+  border-radius: 14px !important;
+  box-shadow: var(--ci-shadow);
+  overflow: hidden;
+}
+
+/* ---------- 6. Conversas: lista ---------- */
+html body.crm-shell .conversations-list-wrap { width: 380px !important; }
+html body.crm-shell .conversations-list-wrap h1 { font-size: 22px !important; font-weight: 700 !important; color: var(--ci-text) !important; }
+html body.crm-shell .conversations-list-wrap > div:first-child { height: 64px !important; padding: 0 16px !important; }
+html body.crm-shell .conversations-list-wrap > div:nth-child(2) { height: 46px !important; padding: 0 12px !important; border-color: var(--ci-line) !important; scrollbar-width: none; }
+html body.crm-shell .conversations-list-wrap > div:nth-child(2) button { color: var(--ci-text-2) !important; font-size: 14.5px; font-weight: 500; }
+html body.crm-shell .conversations-list-wrap > div:nth-child(2) button[class*="border-[#008069]"],
+html body.crm-shell .conversations-list-wrap > div:nth-child(2) > div[class*="border-n-brand"] button { color: var(--ci-green) !important; border-color: var(--ci-green) !important; font-weight: 600; }
+html body.crm-shell .conversations-list-wrap > div:nth-child(2) button[class*="border-[#008069]"] { border-bottom-width: 3px !important; }
+html body.crm-shell .conversation {
+  padding: 4px 16px 4px 18px !important; border-bottom: 1px solid var(--ci-line) !important; position: relative;
+  align-items: center !important; min-height: 78px;
+}
+html body.crm-shell .conversation:hover { background: var(--ci-surface-2) !important; }
+html body.crm-shell .conversation.active, html body.crm-shell .conversation.selected { background: var(--ci-cv-on) !important; }
+html body.crm-shell .conversation.active::before, html body.crm-shell .conversation.selected::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--ci-green); }
+html body.crm-shell .conversation > div:first-child > span { margin-top: 0 !important; }
+html body.crm-shell .conversation > div:first-child > span > span { width: 48px !important; height: 48px !important; font-size: 17px !important; }
+html body.crm-shell .conversation > div:first-child > span img { width: 48px !important; height: 48px !important; }
+html body.crm-shell .conversation .conversation--user { font-size: 16px !important; font-weight: 600 !important; color: var(--ci-text) !important; margin-left: 12px !important; }
+html body.crm-shell .conversation .conversation--user + div { font-size: 14.5px !important; color: var(--ci-text-2) !important; margin-left: 12px !important; }
+html body.crm-shell .conversation [class*="ltr:ml-2"] { margin-left: 12px !important; }
+html body.crm-shell .conversation .text-xxs { font-size: 12.5px !important; color: var(--ci-text-2) !important; }
+
+/* pino de atividade na lista (work-activity-pin) */
+html body.crm-shell .work-activity-pin { margin: 6px 0 4px 12px !important; display: flex; flex-direction: column; gap: 4px; }
+html body.crm-shell .work-activity-pin__row { display: flex; align-items: center; gap: 8px; background: var(--ci-bg2); border: 1px solid var(--ci-line); border-radius: 8px; padding: 4px 6px 4px 10px; }
+html body.crm-shell .work-activity-pin__title { flex: 1; min-width: 0; display: flex; gap: 6px; align-items: center; text-align: left; color: var(--ci-text); font-size: 13px; background: none; border: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+html body.crm-shell .work-activity-pin__label { font-size: 10.5px; font-weight: 700; letter-spacing: .04em; color: var(--ci-text-2); text-transform: uppercase; }
+html body.crm-shell .work-activity-pin__done { height: 24px; padding: 0 10px; border-radius: 12px; border: 1px solid var(--ci-green-line); background: var(--ci-green-soft); color: var(--ci-green); font-size: 12px; font-weight: 600; flex: none; }
+html body.crm-shell .work-activity-pin__done:hover { background: var(--ci-green); color: var(--ci-on-green); }
+
+/* ---------- 7. Conversa aberta ---------- */
+html body.crm-shell .conversation-details-wrap { background: var(--ci-chat) !important; }
+html body.crm-shell .conversation-details-wrap > div:first-child { min-height: 72px; background: var(--ci-surface) !important; border-bottom: 1px solid var(--ci-line) !important; }
+html body.crm-shell .conversation-panel {
+  background-color: var(--ci-chat) !important;
+  background-image: radial-gradient(var(--ci-chat-dot) 1px, transparent 1px) !important;
+  background-size: 22px 22px !important;
+  padding: 16px 24px !important;
+}
+html body.crm-shell .left-bubble {
+  background: var(--ci-recv) !important; color: var(--ci-text) !important;
+  border-radius: 14px !important; border-top-left-radius: 4px !important;
+  font-size: 15.5px !important; line-height: 1.45 !important; padding: 10px 14px !important;
+  box-shadow: var(--ci-shadow); max-width: min(62%, 620px) !important;
+}
+html body.crm-shell .right-bubble {
+  background: var(--ci-sent) !important; color: var(--ci-text) !important;
+  border-radius: 14px !important; border-top-right-radius: 4px !important;
+  font-size: 15.5px !important; line-height: 1.45 !important; padding: 10px 14px !important;
+  max-width: min(62%, 620px) !important;
+}
+html body.crm-shell .left-bubble .prose-bubble, html body.crm-shell .right-bubble .prose-bubble { color: inherit !important; font-size: inherit !important; }
+html body.crm-shell .message-bubble-container [class*="grid-area:bubble"] { max-width: 100% !important; width: auto !important; }
+
+/* caixa de resposta */
+html body.crm-shell .reply-box {
+  margin: 10px 14px 14px !important; border: 1px solid var(--ci-line-2) !important; border-radius: 16px !important;
+  background: var(--ci-input) !important; box-shadow: var(--ci-shadow); overflow: hidden;
+}
+html body.crm-shell .reply-box .ProseMirror, html body.crm-shell .reply-box [contenteditable="true"] { min-height: 44px !important; max-height: 180px; font-size: 15.5px !important; color: var(--ci-text) !important; }
+html body.crm-shell .reply-box .ProseMirror p.is-editor-empty:first-child::before { color: var(--ci-text-3) !important; }
+
+/* ---------- 8. Botões e campos do Chatwoot ---------- */
+html body.crm-shell .bg-n-brand { background: var(--ci-green) !important; color: var(--ci-on-green) !important; }
+html body.crm-shell .bg-n-brand:hover { filter: brightness(1.07); }
+html body.crm-shell .text-n-brand { color: var(--ci-green) !important; }
+html body.crm-shell input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+html body.crm-shell textarea, html body.crm-shell select {
+  border-color: var(--ci-line-2) !important; border-radius: 12px !important; background-color: var(--ci-input) !important; color: var(--ci-text) !important;
+}
+html body.crm-shell input:focus, html body.crm-shell textarea:focus, html body.crm-shell select:focus { border-color: var(--ci-green) !important; box-shadow: 0 0 0 3px var(--ci-focus) !important; outline: 0 !important; }
+html body.crm-shell input[type="checkbox"] { accent-color: var(--ci-green); }
+
+/* ---------- 9. Tarefas Checklist ---------- */
+html body.crm-shell section:has(> .crm-performance) { gap: 16px !important; background: transparent !important; border: 0 !important; box-shadow: none !important; }
+/* coluna de listas */
+html body.crm-shell section:has(> .crm-performance) > aside { width: 322px !important; }
+html body.crm-shell section:has(> .crm-performance) > aside > header { padding: 20px 20px 14px !important; }
+html body.crm-shell section:has(> .crm-performance) > aside > header h1 { font-size: 20px !important; font-weight: 700 !important; }
+html body.crm-shell section:has(> .crm-performance) > aside > header p { font-size: 13.5px !important; color: var(--ci-text-2) !important; }
+html body.crm-shell section:has(> .crm-performance) > aside > div { padding: 0 !important; overflow-x: hidden !important; }
+html body.crm-shell section:has(> .crm-performance) > aside > div > button {
+  height: 60px !important; margin: 0 !important; padding: 0 22px !important; border-radius: 0 !important;
+  border-bottom: 1px solid var(--ci-line) !important; font-size: 16px !important; font-weight: 500 !important; color: var(--ci-text) !important; background: transparent !important; width: 100% !important;
+}
+html body.crm-shell section:has(> .crm-performance) > aside > div > button:hover { background: var(--ci-surface-2) !important; }
+html body.crm-shell section:has(> .crm-performance) > aside > div > button.bg-n-alpha-2 {
+  background: var(--ci-green-soft) !important; color: var(--ci-ink) !important; font-weight: 600 !important; box-shadow: inset 3px 0 0 var(--ci-green);
+  margin: 4px 12px !important; width: calc(100% - 24px) !important; border-radius: 10px !important; border: 0 !important; position: relative;
+}
+html body.crm-shell section:has(> .crm-performance) > aside > div > button.bg-n-alpha-2 > span:last-child { background: var(--ci-surface); color: var(--ci-ink) !important; border: 1px solid var(--ci-green-line); border-radius: 8px; padding: 3px 10px; font-size: 14px !important; }
+html body.crm-shell section:has(> .crm-performance) > aside > div > button > span:last-child { font-size: 15px !important; color: var(--ci-text-2) !important; font-variant-numeric: tabular-nums; }
+html body.crm-shell section:has(> .crm-performance) > aside > form,
+html body.crm-shell section:has(> .crm-performance) > div > form { padding: 14px !important; gap: 10px !important; border-color: var(--ci-line) !important; align-items: center; }
+html body.crm-shell section:has(> .crm-performance) form input { height: 52px !important; font-size: 15.5px !important; padding: 0 16px !important; }
+html body.crm-shell section:has(> .crm-performance) form button { height: 52px !important; border-radius: 12px !important; padding: 0 22px !important; font-size: 16px !important; background: var(--ci-green) !important; color: var(--ci-on-green) !important; }
+/* lista aberta */
+html body.crm-shell section:has(> .crm-performance) > div > header { padding: 20px 22px 16px !important; border-color: var(--ci-line) !important; }
+html body.crm-shell section:has(> .crm-performance) > div > header h2 { font-size: 25px !important; font-weight: 700 !important; letter-spacing: -.02em; }
+html body.crm-shell section:has(> .crm-performance) > div > header p { font-size: 15px !important; color: var(--ci-text-2) !important; }
+html body.crm-shell section:has(> .crm-performance) > div > header > button {
+  height: 44px; padding: 0 16px; border-radius: 12px; border: 1px solid var(--ci-line-2); background: var(--ci-bg2); color: var(--ci-text) !important; font-size: 15px !important; font-weight: 500;
+}
+html body.crm-shell section:has(> .crm-performance) > div > header > button:hover { border-color: var(--ci-red); color: var(--ci-red) !important; }
+html body.crm-shell section:has(> .crm-performance) > div > div { padding: 14px !important; }
+html body.crm-shell section:has(> .crm-performance) > div > div ul { gap: 8px !important; }
+html body.crm-shell section:has(> .crm-performance) > div > div li {
+  background: var(--ci-surface-2); border-radius: 12px !important; padding: 14px 16px !important; gap: 16px !important; min-height: 64px;
+}
+html body.crm-shell section:has(> .crm-performance) > div > div li:hover { background: var(--ci-surface-3) !important; }
+html body.crm-shell section:has(> .crm-performance) > div > div li > input[type="checkbox"] {
+  width: 26px !important; height: 26px !important; border-radius: 6px; flex: none;
+}
+html body.crm-shell section:has(> .crm-performance) > div > div li > span:nth-of-type(1) { font-size: 16.5px !important; font-weight: 600; }
+html body.crm-shell section:has(> .crm-performance) > div > div .mt-6 li { background: var(--ci-done-a); }
+html body.crm-shell section:has(> .crm-performance) > div > div .mt-6 li > span:nth-of-type(1) { font-weight: 500; }
+html body.crm-shell section:has(> .crm-performance) > div > div .mt-6 > p { color: var(--ci-green) !important; font-size: 14px !important; font-weight: 700 !important; letter-spacing: .03em; padding: 4px 6px 6px; }
+html body.crm-shell section:has(> .crm-performance) > div > div li > button { opacity: 0; transition: opacity .15s; font-size: 13.5px !important; padding: 6px 10px; border-radius: 8px; }
+html body.crm-shell section:has(> .crm-performance) > div > div li:hover > button,
+html body.crm-shell section:has(> .crm-performance) > div > div li:focus-within > button { opacity: 1; }
+html body.crm-shell section:has(> .crm-performance) > div > div li > button:hover { color: var(--ci-red) !important; background: rgba(239,75,85,.1); }
+html body.crm-shell .crm-chip { display: inline-flex; align-items: center; height: 28px; padding: 0 12px; border-radius: 14px; font-size: 13.5px; font-weight: 600; white-space: nowrap; flex: none; }
+html body.crm-shell .crm-chip.is-pend { background: var(--ci-amber); color: #2A1D00; border: 0; }
+html body.crm-shell .crm-chip.is-ok { background: var(--ci-chip-ok-bg); color: var(--ci-chip-ok-t); border: 1px solid var(--ci-green-line); }
+/* andamento */
+html body.crm-shell .crm-performance { width: 380px !important; padding: 16px 14px !important; display: flex; flex-direction: column; gap: 10px; overflow-y: auto; }
+html body.crm-shell .crm-performance-kicker { font-size: 13px !important; font-weight: 700 !important; color: var(--ci-text-2) !important; letter-spacing: .04em; text-transform: uppercase; margin: 0; }
+html body.crm-shell .crm-performance-focus { font-size: 22px !important; font-weight: 700 !important; color: var(--ci-text) !important; margin: 0 0 4px; }
+html body.crm-shell .crm-performance-grid { display: grid !important; grid-template-columns: repeat(3, minmax(0,1fr)) !important; gap: 8px !important; }
+html body.crm-shell .crm-performance-card { background: var(--ci-bg2) !important; border: 1px solid var(--ci-line) !important; border-radius: 12px !important; padding: 12px 14px !important; }
+html body.crm-shell .crm-performance-rate { grid-column: 1 / -1; }
+html body.crm-shell .crm-performance-label { font-size: 13px !important; color: var(--ci-text-2) !important; margin: 0; }
+html body.crm-shell .crm-performance-value { font-size: 28px !important; font-weight: 700 !important; color: var(--ci-text) !important; line-height: 1.15; margin: 2px 0; font-variant-numeric: tabular-nums; }
+html body.crm-shell .crm-performance-accent { color: var(--ci-green) !important; font-size: 34px !important; }
+html body.crm-shell .crm-performance-empty { font-size: 12.5px !important; color: var(--ci-text-2) !important; line-height: 1.4; margin: 2px 0 0; }
+html body.crm-shell .crm-performance-split { display: grid !important; grid-template-columns: repeat(2, minmax(0,1fr)) !important; gap: 8px !important; }
+html body.crm-shell .crm-performance-row { display: flex; justify-content: space-between; gap: 10px; font-size: 14px; color: var(--ci-text); padding: 4px 0; }
+html body.crm-shell .crm-performance-row > span:last-child { color: var(--ci-text-2); font-size: 13px; text-align: right; }
+html body.crm-shell .crm-performance [class*="bar"], html body.crm-shell .crm-performance progress { accent-color: var(--ci-green); }
+
+/* ---------- 10. Páginas de configuração (Contatos, Relatórios, Campanhas, Ajuda, Ajustes) ---------- */
+html body.crm-shell main.crm-col table { border-collapse: separate; border-spacing: 0; }
+html body.crm-shell main.crm-col table th { font-size: 12.5px !important; font-weight: 700 !important; text-transform: uppercase; letter-spacing: .05em; color: var(--ci-text-2) !important; }
+html body.crm-shell main.crm-col table td { border-color: var(--ci-line) !important; }
+html body.crm-shell main.crm-col table tbody tr:hover td { background: var(--ci-surface-2); }
+
+/* ---------- 11. Barras de rolagem discretas ---------- */
+html body.crm-shell * { scrollbar-width: thin; scrollbar-color: var(--ci-line-2) transparent; }
+html body.crm-shell *::-webkit-scrollbar { width: 8px; height: 8px; }
+html body.crm-shell *::-webkit-scrollbar-thumb { background: var(--ci-line-2); border-radius: 8px; }
+html body.crm-shell *::-webkit-scrollbar-track { background: transparent; }
+
+/* ---------- 12. Ajustes medidos no sistema em produção ---------- */
+/* bolhas: o grid do Chatwoot se ajusta ao conteúdo; limitar pela linha, não pela bolha */
+html body.crm-shell .left-bubble, html body.crm-shell .right-bubble { max-width: 640px !important; }
+html body.crm-shell .message-bubble-container > .grid { max-width: min(72%, 700px) !important; }
+/* caixa de resposta mais baixa (era 240 px) */
+html body.crm-shell .reply-box .resizable-editor-split, html body.crm-shell .reply-box .reply-box__top { min-height: 0 !important; height: auto !important; }
+html body.crm-shell .reply-box .ProseMirror { min-height: 48px !important; max-height: 200px !important; overflow-y: auto; padding: 10px 16px !important; }
+html body.crm-shell .reply-box > div:first-child { height: 46px !important; border-bottom: 1px solid var(--ci-line) !important; }
+html body.crm-shell .reply-box .flex.justify-between.p-3 { padding: 8px 12px !important; }
+/* avatar da lista: o Chatwoot põe 32 px inline no span e no pai */
+html body.crm-shell .conversation > div:first-child > span { width: 48px !important; height: 48px !important; }
+/* conversa com atividade pendente: barra âmbar à esquerda, não o cartão inteiro amarelo */
+html body.crm-shell .conversations-list .conversation.conversation:has(.work-activity-pin) { background: var(--ci-surface) !important; box-shadow: inset 4px 0 0 var(--ci-amber); }
+html body.crm-shell .conversations-list .conversation.conversation:has(.work-activity-pin):hover { background: var(--ci-surface-2) !important; }
+html body.crm-shell .conversations-list .conversation.conversation.active { background: var(--ci-cv-on) !important; }
+
+/* checklist: barras, chips e checkbox próprios */
+html body.crm-shell .crm-performance-track { height: 6px !important; border-radius: 3px !important; background: var(--ci-track) !important; overflow: hidden; margin: 4px 0 8px !important; border: 0 !important; }
+html body.crm-shell .crm-performance-rate .crm-performance-track { height: 10px !important; border-radius: 5px !important; }
+html body.crm-shell .crm-performance-fill { height: 100% !important; background: var(--ci-green) !important; border-radius: inherit !important; }
+html body.crm-shell .crm-chip.is-ok { background: var(--ci-chip-ok-bg) !important; color: var(--ci-chip-ok-t) !important; border: 1px solid var(--ci-green-line) !important; }
+html body.crm-shell .crm-chip.is-pend { background: var(--ci-amber) !important; color: #2A1D00 !important; border: 0 !important; }
+html body.crm-shell section:has(> .crm-performance) li > input[type=checkbox] { appearance: none !important; -webkit-appearance: none !important; width: 26px !important; height: 26px !important; border: 2px solid var(--ci-text-3) !important; border-radius: 6px !important; background: transparent !important; cursor: pointer; margin: 0; }
+html body.crm-shell section:has(> .crm-performance) li > input[type=checkbox]:checked { background: var(--ci-green) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><path d='M5 12.5l4.5 4.5L19 7'/></svg>") center/18px no-repeat !important; border-color: var(--ci-green) !important; }
+html body.crm-shell.dark section:has(> .crm-performance) li > input[type=checkbox]:checked { background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2307241A' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><path d='M5 12.5l4.5 4.5L19 7'/></svg>") !important; }
+html body.crm-shell section:has(> .crm-performance) li > input[type=checkbox]:focus-visible { outline: 0; box-shadow: 0 0 0 3px var(--ci-focus); }
+
+/* lembretes das conversas (crm-activities) */
+html body.crm-shell .crm-activities { margin-top: 6px; background: var(--ci-done-a) !important; border: 1px solid var(--ci-line) !important; border-radius: 12px !important; padding: 12px 14px !important; display: flex; flex-direction: column; gap: 8px; }
+html body.crm-shell .crm-activities-head h2 { font-size: 13px !important; font-weight: 700 !important; letter-spacing: .04em; text-transform: uppercase; color: var(--ci-text) !important; margin: 0; }
+html body.crm-shell .crm-activities-head p { font-size: 12.5px !important; color: var(--ci-text-2) !important; margin: 2px 0 0; }
+html body.crm-shell .crm-activity { background: var(--ci-surface) !important; border: 1px solid var(--ci-line) !important; border-radius: 10px !important; padding: 10px 12px !important; display: flex; gap: 10px; align-items: center; justify-content: space-between; }
+html body.crm-shell .crm-activity > div { min-width: 0; flex: 1; }
+html body.crm-shell .crm-activity-title { font-size: 14px !important; font-weight: 600 !important; color: var(--ci-text) !important; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+html body.crm-shell .crm-activity-meta { font-size: 12px !important; color: var(--ci-text-2) !important; margin: 3px 0 0; display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+html body.crm-shell .crm-activity-chip { height: 20px; padding: 0 8px; border-radius: 10px; font-size: 11px; font-weight: 700; display: inline-flex; align-items: center; background: var(--ci-surface-2); color: var(--ci-text-2); border: 1px solid var(--ci-line-2); }
+html body.crm-shell .crm-activity[data-priority=high] .crm-activity-chip { background: rgba(239,75,85,.14); color: var(--ci-red); border-color: rgba(239,75,85,.4); }
+html body.crm-shell .crm-activity > a { height: 32px; padding: 0 12px; border-radius: 10px; background: var(--ci-green) !important; color: var(--ci-on-green) !important; font-weight: 600; font-size: 13px; white-space: nowrap; display: inline-flex; align-items: center; text-decoration: none; flex: none; }
+
+/* ---------- 13. Acabamento “natural”: transições, foco, hover com elevação ---------- */
+html body.crm-shell { background: var(--ci-bg) !important; }
+html body.crm-shell .crm-side .nv, html body.crm-shell .crm-side .subnav a, html body.crm-shell .conversation,
+html body.crm-shell .crm-top .icbtn, html body.crm-shell .crm-top .pill, html body.crm-shell button, html body.crm-shell a {
+  transition: background-color .15s ease, color .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+html body.crm-shell :focus-visible { outline: 2px solid var(--ci-green) !important; outline-offset: 2px; }
+html body.crm-shell .crm-top .pill:hover, html body.crm-shell .crm-top .sbar:focus-within { box-shadow: var(--ci-shadow-hover); border-color: var(--ci-line-2); }
+html body.crm-shell section:has(> .crm-performance) > div > div li { border: 1px solid var(--ci-line); background: var(--ci-surface) !important; }
+html body.crm-shell section:has(> .crm-performance) > div > div li:hover { box-shadow: var(--ci-shadow-hover); background: var(--ci-surface) !important; }
+html body.crm-shell section:has(> .crm-performance) > div > div .mt-6 li { background: var(--ci-surface-2) !important; }
+html body.crm-shell section:has(> .crm-performance) > div > div .mt-6 li > span:nth-of-type(1) { color: var(--ci-text-3) !important; }
+html body.crm-shell .crm-performance { background: var(--ci-surface) !important; }
+html body.crm-shell .crm-performance-card { background: var(--ci-surface-2) !important; border-color: transparent !important; }
+html body.crm-shell .crm-performance-value { letter-spacing: -.02em; }
+html body.crm-shell h1, html body.crm-shell h2 { letter-spacing: -.015em; }
+html body.crm-shell .crm-activities { background: var(--ci-surface-2) !important; }
+html body.crm-shell .conversation-details-wrap > div:first-child { box-shadow: 0 1px 0 var(--ci-line); }
+html body.crm-shell .crm-top .conn { background: var(--ci-surface) !important; }
+html body.crm-shell .crm-side .online { background: var(--ci-surface); }
+
+/* ---------- 14. Ajustes do teste ao vivo (v3) ---------- */
+html body.crm-shell .crm-side { overflow-x: hidden !important; }
+html body.crm-shell .crm-performance > * { flex: none !important; }
+html body.crm-shell .crm-performance-row + .crm-performance-track { margin: 2px 0 10px !important; }
+html body.crm-shell .crm-performance-split .crm-performance-row { flex-direction: column; gap: 1px; padding: 5px 0; border-top: 1px solid var(--ci-line); }
+html body.crm-shell .crm-performance-split .crm-performance-row > span:last-child { text-align: left; font-size: 12px; }
+
+
+/* Menu recolhido: ficam os icones. O restante do tema nao muda. */
+html body.crm-shell .crm-side .logo-tools {
+  margin-left: auto;
+  display: flex;
+  gap: 2px;
+  flex: none;
+}
+html body.crm-shell .crm-side .crm-fold {
+  position: static;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--ci-text-2);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  flex: none;
+}
+html body.crm-shell .crm-side .logo {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding-right: 0;
+  overflow: hidden;
+}
+html body.crm-shell .crm-side .logo img {
+  width: 36px;
+  height: 36px;
+}
+html body.crm-shell .crm-side .logo div {
+  min-width: 0;
+  flex: 1;
+}
+html body.crm-shell .crm-side .logo strong,
+html body.crm-shell .crm-side .logo small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+html body.crm-shell .crm-side .logo strong {
+  font-size: 16px;
+}
+html body.crm-shell .crm-side .crm-fold svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+html body.crm-shell .crm-side .crm-fold:hover {
+  background: var(--ci-surface-2);
+  color: var(--ci-text);
+}
+html body.crm-shell .crm-top .icbtn svg,
+html body.crm-shell .crm-tema svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+html body.crm-shell .crm-row {
+  gap: 8px !important;
+  padding: 8px !important;
+}
+html body.crm-shell .crm-col,
+html body.crm-shell main.crm-col {
+  gap: 0 !important;
+}
+html body.crm-shell .crm-top {
+  display: none !important;
+}
+html body.crm-shell[data-crm-menu="fechado"] .crm-side {
+  width: 48px !important;
+  align-items: center;
+  gap: 4px !important;
+  padding: 4px 0 !important;
+  overflow-x: hidden !important;
+}
+html body.crm-shell[data-crm-menu="fechado"] .crm-side .logo {
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  padding: 0;
+}
+html body.crm-shell[data-crm-menu="fechado"] .crm-side .logo img {
+  width: 28px;
+  height: 28px;
+}
+html body.crm-shell[data-crm-menu="fechado"] .crm-side .logo-tools {
+  margin-left: 0;
+  flex-direction: column;
+}
+html body.crm-shell[data-crm-menu="fechado"] .crm-side .logo div,
+html body.crm-shell[data-crm-menu="fechado"] .crm-side .lbl,
+html body.crm-shell[data-crm-menu="fechado"] .crm-side .chev,
+html body.crm-shell[data-crm-menu="fechado"] .crm-side .subnav,
+html body.crm-shell[data-crm-menu="fechado"] .crm-side .online span,
+html body.crm-shell[data-crm-menu="fechado"] .crm-side .me div {
+  display: none !important;
+}
+html body.crm-shell[data-crm-menu="fechado"] .crm-side .crm-fold {
+  position: static;
+  margin: 0;
+}
+html body.crm-shell[data-crm-menu="fechado"] .crm-side [data-crm-fold] svg {
+  transform: rotate(180deg);
+}
+html body.crm-shell[data-crm-menu="fechado"] .crm-side .nv {
+  position: relative;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  margin: 0 auto;
+}
+html body.crm-shell[data-crm-menu="fechado"] .crm-side .badge {
+  position: absolute;
+  top: 8px;
+  right: 6px;
+  min-width: 8px;
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  font-size: 0;
+}
+html body.crm-shell[data-crm-menu="fechado"] .crm-side .online,
+html body.crm-shell[data-crm-menu="fechado"] .crm-side .sp {
+  display: none !important;
+}
+html body.crm-shell[data-crm-menu="fechado"] .crm-side .me {
+  justify-content: center;
+  width: 40px;
+  padding: 0;
+}
+html body.crm-shell[data-crm-menu="fechado"] .crm-side .me .photo {
+  width: 28px;
+  height: 28px;
+}
+
+/* O theme.css marca body.dark.crm-shell com mais peso. Estas regras empatam e vencem. */
+html body.dark.crm-shell {
+  background: var(--ci-bg) !important;
+}
+html body.dark.crm-shell .left-bubble:not([data-bubble-name="activity"]) {
+  background: var(--ci-recv) !important;
+  color: var(--ci-text) !important;
+}
+html body.dark.crm-shell .right-bubble:not([data-bubble-name="activity"]) {
+  background: var(--ci-sent) !important;
+  color: var(--ci-text) !important;
+}
+
+/* WhatsApp Web: painéis colados, cores da captura, folga dentro da lista e do chat. */
+html body.crm-shell {
+  background: var(--ci-bg) !important;
+}
+html body.crm-shell .crm-row {
+  gap: 0 !important;
+  padding: 0 !important;
+}
+html body.crm-shell .crm-side {
+  background: var(--ci-surface) !important;
+  border-right: 1px solid var(--ci-line) !important;
+}
+html body.dark.crm-shell .crm-side {
+  background: #0b141a !important;
+}
+html body.crm-shell .crm-side .nv.on {
+  background: var(--ci-cv-on) !important;
+  color: var(--ci-text) !important;
+  box-shadow: none !important;
+}
+html body.crm-shell .crm-side .nv.on .ic,
+html body.crm-shell .crm-side .nv.on .chev {
+  color: var(--ci-green) !important;
+}
+html body.crm-shell main.crm-col > section:has(.conversations-list-wrap) {
+  gap: 0 !important;
+}
+html body.crm-shell .conversations-list-wrap,
+html body.crm-shell .conversation-details-wrap {
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+html body.crm-shell .conversations-list-wrap {
+  width: 430px !important;
+  max-width: 430px !important;
+  min-width: 430px !important;
+  flex: 0 0 430px !important;
+  background: var(--ci-surface) !important;
+  border-right: 1px solid var(--ci-line) !important;
+}
+html body.crm-shell .conversations-list-wrap > div:first-child,
+html body.crm-shell .conversation-details-wrap > div:first-child,
+html body.crm-shell .conversation-details-wrap > div:first-child.flex {
+  min-height: 60px;
+  height: 60px !important;
+  background-color: var(--ci-header) !important;
+  border-bottom: 0 !important;
+  padding: 0 16px !important;
+}
+html body.crm-shell .conversations-list-wrap h1 {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+}
+html body.crm-shell .conversations-list-wrap input {
+  height: 38px !important;
+  border: 0 !important;
+  border-radius: 8px !important;
+  background: var(--ci-surface-2) !important;
+  box-shadow: none !important;
+  padding: 0 14px !important;
+  font-size: 14.5px !important;
+}
+html body.crm-shell .conversations-list-wrap > div:nth-child(2) {
+  height: auto !important;
+  min-height: 48px;
+  padding: 6px 12px !important;
+  gap: 8px;
+}
+html body.crm-shell .conversations-list-wrap > div:nth-child(2) button {
+  height: 32px !important;
+  border-radius: 16px !important;
+  border: 1px solid var(--ci-line-2) !important;
+  padding: 0 12px !important;
+  background: transparent !important;
+}
+html body.crm-shell .conversations-list-wrap > div:nth-child(2) button[class*="border-[#008069]"],
+html body.crm-shell .conversations-list-wrap > div:nth-child(2) > div[class*="border-n-brand"] button {
+  background: var(--ci-green) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+  border-bottom-width: 1px !important;
+}
+html body.crm-shell .conversation {
+  min-height: 76px;
+  padding: 10px 16px !important;
+  border-bottom-color: var(--ci-line) !important;
+}
+html body.crm-shell .conversation.active::before,
+html body.crm-shell .conversation.selected::before {
+  display: none !important;
+}
+html body.crm-shell .conversation > div:first-child > span > span,
+html body.crm-shell .conversation > div:first-child > span img {
+  width: 49px !important;
+  height: 49px !important;
+}
+html body.crm-shell .conversation-details-wrap {
+  background: var(--ci-chat) !important;
+}
+html body.crm-shell .conversation-panel {
+  background-color: #efeae2 !important;
+  background-image: url("/crm-industrial/chat-claro.jpg") !important;
+  background-repeat: repeat !important;
+  background-size: 480px auto !important;
+  padding: 22px 8% 18px !important;
+}
+html body.dark.crm-shell .conversation-panel {
+  background-color: #0b141a !important;
+  background-image: linear-gradient(rgba(11, 20, 26, 0.62), rgba(11, 20, 26, 0.62)), url("/crm-industrial/chat-escuro.jpg") !important;
+}
+html body.crm-shell .message-bubble-container {
+  margin-top: 10px !important;
+  margin-bottom: 2px !important;
+}
+html body.crm-shell .left-bubble:not([data-bubble-name="activity"]),
+html body.dark.crm-shell .left-bubble:not([data-bubble-name="activity"]) {
+  background: var(--ci-recv) !important;
+  color: var(--ci-text) !important;
+  border-radius: 8px !important;
+  border-top-left-radius: 0 !important;
+  font-size: 14.5px !important;
+  line-height: 1.45 !important;
+  padding: 8px 12px 9px !important;
+  box-shadow: var(--ci-shadow) !important;
+  max-width: min(68%, 720px) !important;
+}
+html body.crm-shell .right-bubble:not([data-bubble-name="activity"]),
+html body.dark.crm-shell .right-bubble:not([data-bubble-name="activity"]) {
+  background: var(--ci-sent) !important;
+  color: var(--ci-text) !important;
+  border-radius: 8px !important;
+  border-top-right-radius: 0 !important;
+  font-size: 14.5px !important;
+  line-height: 1.45 !important;
+  padding: 8px 12px 9px !important;
+  box-shadow: var(--ci-shadow) !important;
+  max-width: min(68%, 720px) !important;
+}
+html body.crm-shell .reply-box {
+  margin: 10px 16px 14px !important;
+  border: 0 !important;
+  border-radius: 8px !important;
+  background: var(--ci-input) !important;
+  box-shadow: none !important;
+}
+html body.crm-shell .reply-box .ProseMirror {
+  min-height: 42px !important;
+  padding: 10px 14px !important;
+  font-size: 15px !important;
+}
+
+/* Nota privada: o fundo é amarelo. A letra tem de ser escura, senão some ao escrever. */
+html body .reply-box.is-private,
+html body.dark .reply-box.is-private {
+  background: #fff3c4 !important;
+  color: #3b2a00 !important;
+}
+html body .reply-box.is-private .ProseMirror,
+html body .reply-box.is-private .ProseMirror p,
+html body .reply-box.is-private [contenteditable="true"],
+html body.dark .reply-box.is-private .ProseMirror,
+html body.dark .reply-box.is-private .ProseMirror p,
+html body.dark .reply-box.is-private [contenteditable="true"] {
+  color: #3b2a00 !important;
+  -webkit-text-fill-color: #3b2a00 !important;
+  caret-color: #3b2a00 !important;
+}
+html body .reply-box.is-private .ProseMirror p.is-editor-empty:first-child::before,
+html body.dark .reply-box.is-private .ProseMirror p.is-editor-empty:first-child::before {
+  color: #8a6a22 !important;
+  -webkit-text-fill-color: #8a6a22 !important;
+}
+
+@media (max-width: 767px) {
+  html body[data-crm-mobile="true"] aside:has(nav) {
+    display: none !important;
+  }
+  html body[data-crm-mobile="true"] .crm-mobile-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 40;
+    display: flex !important;
+    height: calc(64px + env(safe-area-inset-bottom));
+    padding: 6px 4px calc(6px + env(safe-area-inset-bottom));
+    background: #ffffff !important;
+    border-top: 1px solid #e9edef;
+    color: #111b21;
+  }
+  html body.dark[data-crm-mobile="true"] .crm-mobile-bar {
+    background: #111b21 !important;
+    border-top-color: #222d34;
+    color: #e9edef;
+  }
+  html body[data-crm-mobile="true"] .crm-mobile-bar a,
+  html body[data-crm-mobile="true"] .crm-mobile-bar button {
+    color: #667781 !important;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  html body.dark[data-crm-mobile="true"] .crm-mobile-bar a,
+  html body.dark[data-crm-mobile="true"] .crm-mobile-bar button {
+    color: #8696a0 !important;
+  }
+  html body[data-crm-mobile="true"] .crm-mobile-bar .is-on {
+    color: #111b21 !important;
+  }
+  html body.dark[data-crm-mobile="true"] .crm-mobile-bar .is-on {
+    color: #e9edef !important;
+  }
+  html body[data-crm-mobile="true"] .crm-mobile-bar .is-on svg {
+    background: #d9fdd3;
+    color: #008069;
+    border-radius: 16px;
+    padding: 4px;
+  }
+  html body.dark[data-crm-mobile="true"] .crm-mobile-bar .is-on svg {
+    background: #103529;
+    color: #25d366;
+  }
+  html body[data-crm-mobile="true"]:not([data-crm-conversation-open="true"]) .h-screen {
+    height: calc(100dvh - 64px - env(safe-area-inset-bottom)) !important;
+  }
+  html body[data-crm-conversation-open="true"] .crm-mobile-bar,
+  html body[data-crm-conversation-open="true"] .crm-mobile-more {
+    display: none !important;
+  }
+  html body[data-crm-conversation-open="true"] .conversations-list-wrap {
+    display: none !important;
+  }
+  html body[data-crm-conversation-open="true"] .conversation-details-wrap {
+    display: flex !important;
+    width: 100% !important;
+    max-width: none !important;
+  }
+  html body[data-crm-mobile="true"] .conversations-list-wrap {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+  }
+  html body[data-crm-mobile="true"] .reply-box .ProseMirror,
+  html body[data-crm-mobile="true"] .reply-box [contenteditable="true"] {
+    color: #111b21 !important;
+    -webkit-text-fill-color: #111b21 !important;
+    caret-color: #111b21 !important;
+    font-size: 16px !important;
+  }
+  html body.dark[data-crm-mobile="true"] .reply-box .ProseMirror,
+  html body.dark[data-crm-mobile="true"] .reply-box [contenteditable="true"] {
+    color: #e9edef !important;
+    -webkit-text-fill-color: #e9edef !important;
+    caret-color: #e9edef !important;
+  }
+  html body[data-crm-mobile="true"] .reply-box.is-private .ProseMirror,
+  html body[data-crm-mobile="true"] .reply-box.is-private [contenteditable="true"],
+  html body.dark[data-crm-mobile="true"] .reply-box.is-private .ProseMirror,
+  html body.dark[data-crm-mobile="true"] .reply-box.is-private [contenteditable="true"] {
+    color: #3b2a00 !important;
+    -webkit-text-fill-color: #3b2a00 !important;
+    caret-color: #3b2a00 !important;
+  }
+}
+
+/* Navegador: mesmas medidas da captura do WhatsApp Web. */
+@media (min-width: 768px) {
+  html body.crm-shell .conversations-list-wrap {
+    width: clamp(300px, 30vw, 480px) !important;
+    min-width: 300px !important;
+    max-width: 480px !important;
+    flex: 0 0 clamp(300px, 30vw, 480px) !important;
+  }
+  html body.crm-shell .conversations-list-wrap > div:first-child,
+  html body.crm-shell .conversation-details-wrap > div:first-child,
+  html body.crm-shell .conversation-details-wrap > div:first-child.flex {
+    height: 59px !important;
+    min-height: 59px !important;
+    padding: 0 16px !important;
+  }
+  html body.crm-shell .conversations-list-wrap h1 {
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    line-height: 21px !important;
+  }
+  html body.crm-shell .conversations-list-wrap input {
+    height: 35px !important;
+    font-size: 14px !important;
+    border-radius: 8px !important;
+  }
+  html body.crm-shell .conversations-list-wrap > div:nth-child(2) {
+    min-height: 0 !important;
+    padding: 4px 12px 8px !important;
+  }
+  html body.crm-shell .conversations-list-wrap > div:nth-child(2) button {
+    height: 32px !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+  }
+  html body.crm-shell .conversation {
+    min-height: 72px !important;
+    padding: 0 12px !important;
+  }
+  html body.crm-shell .conversation > .py-3 {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  html body.crm-shell .conversation > div:first-child > span,
+  html body.crm-shell .conversation > div:first-child > span > span,
+  html body.crm-shell .conversation > div:first-child > span img {
+    width: 49px !important;
+    height: 49px !important;
+  }
+  html body.crm-shell .conversation .conversation--user {
+    font-size: 16px !important;
+    font-weight: 400 !important;
+    line-height: 21px !important;
+  }
+  html body.crm-shell .conversation .conversation--user + div {
+    font-size: 14px !important;
+    line-height: 20px !important;
+    font-weight: 400 !important;
+  }
+  html body.crm-shell .conversation .text-xxs {
+    font-size: 12px !important;
+    line-height: 16px !important;
+  }
+  html body.crm-shell .conversation-panel {
+    padding: 8px 6% 6px !important;
+  }
+  html body.crm-shell .message-bubble-container {
+    margin-top: 2px !important;
+    margin-bottom: 0 !important;
+  }
+  html body.crm-shell .message-bubble-container > .grid {
+    max-width: 65% !important;
+  }
+  html body.crm-shell .left-bubble:not([data-bubble-name="activity"]),
+  html body.dark.crm-shell .left-bubble:not([data-bubble-name="activity"]),
+  html body.crm-shell .right-bubble:not([data-bubble-name="activity"]),
+  html body.dark.crm-shell .right-bubble:not([data-bubble-name="activity"]) {
+    font-size: 14.2px !important;
+    line-height: 19px !important;
+    padding: 6px 7px 8px 9px !important;
+    border-radius: 7.5px !important;
+    max-width: 65% !important;
+  }
+  html body.crm-shell .left-bubble:not([data-bubble-name="activity"]) {
+    border-top-left-radius: 0 !important;
+  }
+  html body.crm-shell .right-bubble:not([data-bubble-name="activity"]) {
+    border-top-right-radius: 0 !important;
+  }
+}
+
+/* Botões do chat: mesma família. Primário verde, ícone neutro, foco visível. */
+html body.crm-shell .conversations-list .work-activity-pin--compact .work-activity-pin__done,
+html body.dark.crm-shell .conversations-list .work-activity-pin--compact .work-activity-pin__done {
+  height: 22px !important;
+  padding: 0 8px !important;
+  border: 0 !important;
+  border-radius: 11px !important;
+  background: #00a884 !important;
+  color: #ffffff !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  line-height: 22px !important;
+}
+html body.crm-shell .conversations-list .work-activity-pin--compact .work-activity-pin__done:hover,
+html body.dark.crm-shell .conversations-list .work-activity-pin--compact .work-activity-pin__done:hover {
+  filter: brightness(1.08);
+}
+html body.crm-shell .conversation-details-wrap > div:first-child button:not(.text-label-small) {
+  height: 32px !important;
+  background: transparent !important;
+  color: var(--ci-text) !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+}
+html body.crm-shell .conversation-details-wrap > div:first-child button[class*="rounded-r-none"] {
+  padding: 0 12px !important;
+  border-radius: 8px 0 0 8px !important;
+}
+html body.crm-shell .conversation-details-wrap > div:first-child button[class*="rounded-l-none"] {
+  width: 28px !important;
+  min-width: 28px !important;
+  padding: 0 !important;
+  border-radius: 0 8px 8px 0 !important;
+}
+html body.crm-shell .conversation-details-wrap > div:first-child button:not(.text-label-small):hover {
+  background: var(--ci-surface-3) !important;
+}
+html body.crm-shell .reply-box {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  gap: 0 !important;
+  margin: 8px 12px 10px !important;
+  padding: 0 !important;
+  border-radius: 16px !important;
+  overflow: visible !important;
+  box-shadow: none !important;
+}
+html body.crm-shell .reply-box:not(.is-private) {
+  background: #f4efe8 !important;
+  border: 1px solid #e6dfd6 !important;
+}
+html body.dark.crm-shell .reply-box:not(.is-private) {
+  background: #1c282f !important;
+  border: 1px solid #243038 !important;
+}
+html body.crm-shell .reply-box > div:first-child {
+  display: flex !important;
+  flex: 0 0 auto !important;
+  width: 100% !important;
+  height: 40px !important;
+  min-height: 40px !important;
+  align-items: center !important;
+  padding: 0 14px !important;
+  border-bottom: 1px solid #e6dfd6 !important;
+}
+html body.dark.crm-shell .reply-box > div:first-child {
+  border-bottom-color: #2a3942 !important;
+}
+html body.crm-shell .reply-box:not(.is-private) > div:first-child::after {
+  content: "Modo de envio";
+  margin-left: auto;
+  font-size: 12px;
+  font-weight: 500;
+  color: #8696a0;
+  white-space: nowrap;
+}
+html body.crm-shell .reply-box button.rounded-full {
+  width: auto !important;
+  max-width: none !important;
+  height: 32px !important;
+  min-height: 32px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  gap: 16px !important;
+  color: #667781 !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+}
+html body.dark.crm-shell .reply-box button.rounded-full {
+  color: #8696a0 !important;
+}
+html body.crm-shell .reply-box button.rounded-full > div:not(.absolute) {
+  font-size: 14px !important;
+  line-height: 20px !important;
+  padding: 0 2px 4px !important;
+  background: transparent !important;
+}
+html body.crm-shell .reply-box button.rounded-full > div.absolute {
+  height: 2px !important;
+  top: auto !important;
+  bottom: 2px !important;
+  border-radius: 2px !important;
+  box-shadow: none !important;
+  background: #008069 !important;
+}
+html body.dark.crm-shell .reply-box button.rounded-full > div.absolute {
+  background: #25d366 !important;
+}
+html body.crm-shell .reply-box button.rounded-full:has([style*="--translate-x: 0px"]) > div:nth-child(1),
+html body.crm-shell .reply-box button.rounded-full:not(:has([style*="--translate-x: 0px"])) > div:nth-child(2) {
+  color: #008069 !important;
+  font-weight: 600 !important;
+}
+html body.dark.crm-shell .reply-box button.rounded-full:has([style*="--translate-x: 0px"]) > div:nth-child(1),
+html body.dark.crm-shell .reply-box button.rounded-full:not(:has([style*="--translate-x: 0px"])) > div:nth-child(2) {
+  color: #25d366 !important;
+}
+html body.crm-shell .reply-box .reply-box__top {
+  flex: 1 1 auto !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  min-height: 56px !important;
+  padding: 2px 14px 0 !important;
+  border-bottom: 1px solid #e6dfd6 !important;
+}
+html body.dark.crm-shell .reply-box .reply-box__top {
+  border-bottom-color: #2a3942 !important;
+}
+html body.crm-shell .reply-box .ProseMirror,
+html body.crm-shell .reply-box [contenteditable="true"] {
+  min-height: 48px !important;
+  max-height: 160px !important;
+  padding: 8px 2px !important;
+  font-size: 15px !important;
+  line-height: 22px !important;
+  background: transparent !important;
+}
+html body.crm-shell .reply-box > .flex.justify-between {
+  display: flex !important;
+  flex-flow: row nowrap !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 6px 10px 8px !important;
+  border-bottom: 0 !important;
+  gap: 8px !important;
+}
+html body.crm-shell .reply-box > div.flex.justify-between:first-child {
+  height: 40px !important;
+  min-height: 40px !important;
+  padding: 0 14px !important;
+  border-bottom: 1px solid #e6dfd6 !important;
+}
+html body.dark.crm-shell .reply-box > div.flex.justify-between:first-child {
+  border-bottom-color: #2a3942 !important;
+}
+html body.crm-shell .reply-box .left-wrap,
+html body.crm-shell .reply-box .right-wrap {
+  display: flex !important;
+  align-items: center !important;
+  gap: 2px !important;
+  min-width: 0 !important;
+}
+html body.crm-shell .reply-box .right-wrap {
+  gap: 10px !important;
+  margin-left: auto !important;
+  flex: 0 0 auto !important;
+}
+html body.crm-shell .reply-box .right-wrap::before {
+  content: "Enter para enviar";
+  font-size: 12px;
+  font-weight: 500;
+  color: #8696a0;
+  white-space: nowrap;
+}
+html body.crm-shell .reply-box .left-wrap button {
+  width: 32px !important;
+  min-width: 32px !important;
+  max-width: 32px !important;
+  height: 32px !important;
+  padding: 0 !important;
+  border-radius: 50% !important;
+  background: transparent !important;
+  color: #667781 !important;
+}
+html body.dark.crm-shell .reply-box .left-wrap button {
+  color: #8696a0 !important;
+}
+html body.crm-shell .reply-box .left-wrap button:hover {
+  background: rgba(0, 0, 0, 0.05) !important;
+  color: #111b21 !important;
+}
+html body.dark.crm-shell .reply-box .left-wrap button:hover {
+  background: rgba(255, 255, 255, 0.06) !important;
+  color: #e9edef !important;
+}
+html body.crm-shell .reply-box .left-wrap button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+html body.crm-shell .reply-box .left-wrap button svg {
+  width: 18px !important;
+  height: 18px !important;
+}
+html body.crm-shell .reply-box .left-wrap button:has(span) {
+  width: auto !important;
+  max-width: 140px !important;
+  padding: 0 8px !important;
+  border-radius: 16px !important;
+}
+html body.crm-shell .reply-box:not(.is-private) button.flex-shrink-0 {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  height: 36px !important;
+  min-height: 36px !important;
+  padding: 0 14px 0 12px !important;
+  border: 0 !important;
+  border-radius: 18px !important;
+  background: #00a884 !important;
+  color: #ffffff !important;
+}
+html body.crm-shell .reply-box.is-private button.flex-shrink-0 {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  width: auto !important;
+  max-width: none !important;
+  height: 36px !important;
+  min-height: 36px !important;
+  padding: 0 14px 0 12px !important;
+  border-radius: 18px !important;
+  background: #c58a00 !important;
+  color: #ffffff !important;
+}
+html body.crm-shell .reply-box button.flex-shrink-0 span {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+}
+html body.crm-shell .reply-box button.flex-shrink-0::before {
+  content: "";
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  background: #ffffff;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m22 2-7 20-4-9-9-4Z'/%3E%3Cpath d='M22 2 11 13'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m22 2-7 20-4-9-9-4Z'/%3E%3Cpath d='M22 2 11 13'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+html body.crm-shell .reply-box button.flex-shrink-0::after {
+  content: "Enviar";
+  width: auto;
+  height: auto;
+  margin: 0;
+  border: 0;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  color: #ffffff;
+}
+html body.crm-shell .reply-box button.flex-shrink-0:hover {
+  filter: brightness(1.06);
+}
+html body.crm-shell .reply-box button.flex-shrink-0:disabled {
+  opacity: 0.45;
+  filter: none;
+  cursor: not-allowed;
+}
+html body.crm-shell .reply-box button:focus-visible,
+html body.crm-shell .work-activity-pin__done:focus-visible,
+html body.crm-shell .conversation-details-wrap > div:first-child button:focus-visible {
+  outline: 2px solid #00a884;
+  outline-offset: 2px;
+}
+@media (max-width: 767px) {
+  html body.crm-shell .reply-box .right-wrap::before,
+  html body.crm-shell .reply-box > div:first-child::after {
+    display: none !important;
+  }
+  html body.crm-shell .reply-box .left-wrap button {
+    width: 36px !important;
+    min-width: 36px !important;
+    max-width: 36px !important;
+    height: 36px !important;
+  }
+}

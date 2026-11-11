@@ -1,0 +1,13 @@
+---
+description: Visual do CRM Industrial (tema verde). Use em qualquer mudança de interface do atendimento.
+globs: ["atendimento/chatwoot-marca/**/*.css", "atendimento/chatwoot-marca/**/*.js"]
+alwaysApply: false
+---
+
+# CRM Industrial — visual
+
+A referência do designer está em `C:\Users\anton\Downloads\crm-industrial-visual-cursor-moderno` (`design-industrial/telas/`, `industrial.css`, `ESPECIFICACAO.md`, `alvo/`).
+
+O tema publicado entra por `atendimento/chatwoot-marca/branding/visual.css` e o botão de tema em `sidebar.js`. O escuro usa `body.dark` (o Chatwoot já marca assim). O claro tira essa classe. A escolha fica em `localStorage` na chave `crm-industrial-tema`.
+
+Não mude rotas, API, regras de negócio nem nomes de campo. Não invente CNPJ, pedido, cidade, prazo ou número de gráfico. Esconda o que o sistema não guarda. Verde é a ação principal. Âmbar é pendente. Vermelho é apagar ou alerta. Não troque o logo real pelo desenho provisório da engrenagem.

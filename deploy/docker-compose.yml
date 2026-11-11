@@ -1,0 +1,230 @@
+# CRM Industrial na VPS.
+# A internet entra so pelo Traefik, nas portas 80 e 443.
+# Postgres, Redis e WhatsApp ficam na rede interna.
+# A imagem crm-industrial-chatwoot:v4.19.1 e compilada neste PC e enviada para a VPS.
+name: crm-industrial
+
+x-logging: &logging
+  logging:
+    driver: json-file
+    options:
+      max-size: "20m"
+      max-file: "5"
+
+services:
+  socket-proxy:
+    image: tecnativa/docker-socket-proxy:0.3.0
+    restart: always
+    security_opt:
+      - no-new-privileges:true
+    environment:
+      CONTAINERS: 1
+      NETWORKS: 1
+      EVENTS: 1
+      INFO: 1
+      PING: 1
+      VERSION: 1
+      POST: 0
+      DELETE: 0
+      BUILD: 0
+      COMMIT: 0
+      CONFIGS: 0
+      DISTRIBUTION: 0
+      EXEC: 0
+      IMAGES: 0
+      NODES: 0
+      PLUGINS: 0
+      SECRETS: 0
+      SERVICES: 0
+      SESSION: 0
+      SWARM: 0
+      TASKS: 0
+      VOLUMES: 0
+      AUTH: 0
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - edge
+    <<: *logging
+
+  traefik:
+    image: traefik:v3.7.13
+    restart: always
+    depends_on:
+      - socket-proxy
+    security_opt:
+      - no-new-privileges:true
+    ports:
+      - '80:80'
+      - '443:443'
+    environment:
+      ACME_EMAIL: ${ACME_EMAIL:?defina ACME_EMAIL}
+    volumes:
+      - ./traefik/dynamic.yml:/etc/traefik/dynamic.yml:ro
+      - traefik_certs:/letsencrypt
+    command:
+      - --api.dashboard=false
+      - --providers.docker=true
+      - --providers.docker.endpoint=tcp://socket-proxy:2375
+      - --providers.docker.exposedbydefault=false
+      - --providers.docker.network=crm_edge
+      - --providers.file.filename=/etc/traefik/dynamic.yml
+      - --entrypoints.web.address=:80
+      - --entrypoints.websecure.address=:443
+      - --certificatesresolvers.le.acme.email=${ACME_EMAIL}
+      - --certificatesresolvers.le.acme.storage=/letsencrypt/acme.json
+      - --certificatesresolvers.le.acme.httpchallenge.entrypoint=web
+    networks:
+      - edge
+    <<: *logging
+
+  chatwoot:
+    image: crm-industrial-chatwoot:v4.19.1
+    restart: always
+    security_opt:
+      - no-new-privileges:true
+    env_file: .chatwoot.env
+    volumes:
+      - chatwoot_storage:/app/storage
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    entrypoint: docker/entrypoints/rails.sh
+    command: ['bundle', 'exec', 'rails', 's', '-p', '3009', '-b', '0.0.0.0']
+    networks:
+      - edge
+      - internal
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=crm_edge
+      - traefik.http.routers.crm.rule=Host(`brunalogistica.tech`) || Host(`www.brunalogistica.tech`)
+      - traefik.http.routers.crm.entrypoints=websecure
+      - traefik.http.routers.crm.tls=true
+      - traefik.http.routers.crm.tls.certresolver=le
+      - traefik.http.routers.crm.middlewares=security@file
+      - traefik.http.routers.crm.service=crm
+      - traefik.http.services.crm.loadbalancer.server.port=3009
+      - traefik.http.routers.crm-http.rule=Host(`brunalogistica.tech`) || Host(`www.brunalogistica.tech`)
+      - traefik.http.routers.crm-http.entrypoints=web
+      - traefik.http.routers.crm-http.middlewares=redirect-https
+      - traefik.http.routers.crm-http.service=crm
+      - traefik.http.middlewares.redirect-https.redirectscheme.scheme=https
+      - traefik.http.middlewares.redirect-https.redirectscheme.permanent=true
+    <<: *logging
+
+  chatwoot-sidekiq:
+    image: crm-industrial-chatwoot:v4.19.1
+    labels:
+      - traefik.enable=false
+    restart: always
+    security_opt:
+      - no-new-privileges:true
+    env_file: .chatwoot.env
+    volumes:
+      - chatwoot_storage:/app/storage
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    command: ['bundle', 'exec', 'sidekiq', '-C', 'config/sidekiq.yml']
+    networks:
+      - internal
+    <<: *logging
+
+  postgres:
+    image: pgvector/pgvector:pg16
+    restart: always
+    security_opt:
+      - no-new-privileges:true
+    environment:
+      POSTGRES_DB: chatwoot
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?rode ./gerar-segredos.sh}
+    volumes:
+      - chatwoot_pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres -d chatwoot']
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    networks:
+      - internal
+    <<: *logging
+
+  redis:
+    image: redis:alpine
+    restart: always
+    security_opt:
+      - no-new-privileges:true
+    command:
+      - sh
+      - -c
+      - >
+        redis-server --bind 0.0.0.0 --port 6379 --requirepass
+        "$$REDIS_PASSWORD" --appendonly yes
+    environment:
+      REDIS_PASSWORD: ${REDIS_PASSWORD:?rode ./gerar-segredos.sh}
+    volumes:
+      - chatwoot_redis:/data
+    healthcheck:
+      test: ['CMD-SHELL', 'redis-cli -a "$$REDIS_PASSWORD" ping | grep -q PONG']
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    networks:
+      - internal
+    <<: *logging
+
+  waha:
+    image: crm-industrial-waha:2026.10.1
+    restart: always
+    security_opt:
+      - no-new-privileges:true
+    env_file: .waha.env
+    volumes:
+      - waha_sessions:/app/.sessions
+      - waha_media:/app/.media
+    depends_on:
+      redis:
+        condition: service_healthy
+      chatwoot:
+        condition: service_started
+    networks:
+      - internal
+    <<: *logging
+
+  conector:
+    image: node:22-alpine
+    restart: always
+    security_opt:
+      - no-new-privileges:true
+    working_dir: /app
+    command: ['node', 'conector.mjs']
+    volumes:
+      - ../atendimento/conector:/app:ro
+    env_file:
+      - .waha.env
+      - .conector.env
+    depends_on:
+      - waha
+      - chatwoot
+    networks:
+      - internal
+    <<: *logging
+
+networks:
+  edge:
+    name: crm_edge
+  internal:
+    name: crm_internal
+
+volumes:
+  traefik_certs: {}
+  chatwoot_pg_data: {}
+  chatwoot_redis: {}
+  chatwoot_storage: {}
+  waha_sessions: {}
+  waha_media: {}

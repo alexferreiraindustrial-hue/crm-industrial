@@ -1,0 +1,27 @@
+http:
+  middlewares:
+    security-headers:
+      headers:
+        customFrameOptionsValue: SAMEORIGIN
+        contentTypeNosniff: true
+        browserXssFilter: true
+        referrerPolicy: strict-origin-when-cross-origin
+        stsSeconds: 15552000
+        stsIncludeSubdomains: true
+        forceSTSHeader: true
+        permissionsPolicy: "camera=(), microphone=(self), geolocation=(), payment=()"
+        customResponseHeaders:
+          Server: ""
+          X-Permitted-Cross-Domain-Policies: "none"
+          Cross-Origin-Opener-Policy: same-origin-allow-popups
+          X-DNS-Prefetch-Control: "off"
+    security-flood:
+      rateLimit:
+        average: 50
+        period: 1s
+        burst: 100
+    security:
+      chain:
+        middlewares:
+          - security-headers
+          - security-flood

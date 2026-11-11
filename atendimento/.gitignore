@@ -1,0 +1,8 @@
+# Senhas e dados locais - nunca versionar
+.env
+.waha.env
+.chatwoot.env
+sessions/
+media/
+.conector.env
+.google.env

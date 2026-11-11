@@ -1,0 +1,77 @@
+/* CRM Industrial: cor de destaque laranja industrial (escala Radix "orange") sobre o tema do Twenty.
+   :not(#crm) so aumenta a especificidade para vencer o tema original. */
+.light:not(#crm) {
+  --t-accent-accent1: #fefcfb;
+  --t-accent-accent2: #fff7ed;
+  --t-accent-accent3: #ffefd6;
+  --t-accent-accent4: #ffdfb5;
+  --t-accent-accent5: #ffd19a;
+  --t-accent-accent6: #ffc182;
+  --t-accent-accent7: #f5ae73;
+  --t-accent-accent8: #ec9455;
+  --t-accent-accent9: #f76b15;
+  --t-accent-accent10: #ef5f00;
+  --t-accent-accent11: #cc4e00;
+  --t-accent-accent12: #582d1d;
+  --t-accent-accent3570: #ec9455;
+  --t-accent-accent4060: #ec9455;
+  --t-accent-primary: #ffd19a;
+  --t-accent-secondary: #ffd19a;
+  --t-accent-tertiary: #ffefd6;
+  --t-accent-quaternary: #fff7ed;
+}
+
+.dark:not(#crm) {
+  --t-accent-accent1: #17120e;
+  --t-accent-accent2: #1e160f;
+  --t-accent-accent3: #331e0b;
+  --t-accent-accent4: #462100;
+  --t-accent-accent5: #562800;
+  --t-accent-accent6: #66350c;
+  --t-accent-accent7: #7e451d;
+  --t-accent-accent8: #a35829;
+  --t-accent-accent9: #f76b15;
+  --t-accent-accent10: #ff801f;
+  --t-accent-accent11: #ffa057;
+  --t-accent-accent12: #ffe0c2;
+  --t-accent-accent3570: #a35829;
+  --t-accent-accent4060: #a35829;
+  --t-accent-primary: #562800;
+  --t-accent-secondary: #562800;
+  --t-accent-tertiary: #331e0b;
+  --t-accent-quaternary: #1e160f;
+}
+
+/* O Twenty usa a escala "blue" como cor de interface (botao principal, foco, links, selecao).
+   As etiquetas azuis usam --t-tag-*-blue e continuam azuis. */
+.light:not(#crm) {
+  --t-color-blue: #f76b15;
+  --t-color-blue1: #fefcfb;
+  --t-color-blue2: #fff7ed;
+  --t-color-blue3: #ffefd6;
+  --t-color-blue4: #ffdfb5;
+  --t-color-blue5: #ffd19a;
+  --t-color-blue6: #ffc182;
+  --t-color-blue7: #f5ae73;
+  --t-color-blue8: #ec9455;
+  --t-color-blue9: #f76b15;
+  --t-color-blue10: #ef5f00;
+  --t-color-blue11: #cc4e00;
+  --t-color-blue12: #582d1d;
+}
+
+.dark:not(#crm) {
+  --t-color-blue: #f76b15;
+  --t-color-blue1: #17120e;
+  --t-color-blue2: #1e160f;
+  --t-color-blue3: #331e0b;
+  --t-color-blue4: #462100;
+  --t-color-blue5: #562800;
+  --t-color-blue6: #66350c;
+  --t-color-blue7: #7e451d;
+  --t-color-blue8: #a35829;
+  --t-color-blue9: #f76b15;
+  --t-color-blue10: #ff801f;
+  --t-color-blue11: #ffa057;
+  --t-color-blue12: #ffe0c2;
+}

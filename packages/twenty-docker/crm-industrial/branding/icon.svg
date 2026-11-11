@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="CRM Industrial">
+  <rect width="64" height="64" rx="14" fill="#1C1F24"/>
+  <polygon points="53,32 42.5,50.2 21.5,50.2 11,32 21.5,13.8 42.5,13.8" fill="#F76B15"/>
+  <circle cx="32" cy="32" r="10.5" fill="#1C1F24"/>
+  <rect x="26.5" y="33" width="3" height="5" rx="1" fill="#FFFFFF"/>
+  <rect x="30.5" y="30" width="3" height="8" rx="1" fill="#FFFFFF"/>
+  <rect x="34.5" y="26.5" width="3" height="11.5" rx="1" fill="#FFFFFF"/>
+</svg>

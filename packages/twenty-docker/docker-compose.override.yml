@@ -1,0 +1,10 @@
+# CRM-Industrial: imagem com a marca CRM Industrial e porta local 3020 (a 3000 ja esta em uso no PC do Alex)
+services:
+  server:
+    image: crm-industrial:latest
+    build:
+      context: ./crm-industrial
+      args:
+        TAG: ${TAG:-latest}
+    ports: !override
+      - "3020:3000"

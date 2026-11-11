@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230 48" role="img" aria-label="CRM Industrial">
+  <g transform="translate(0,0)">
+    <rect width="48" height="48" rx="10.5" fill="#1C1F24"/>
+    <polygon points="39.75,24 31.875,37.65 16.125,37.65 8.25,24 16.125,10.35 31.875,10.35" fill="#F76B15"/>
+    <circle cx="24" cy="24" r="7.875" fill="#1C1F24"/>
+    <rect x="19.9" y="24.75" width="2.25" height="3.75" rx="0.75" fill="#FFFFFF"/>
+    <rect x="22.9" y="22.5" width="2.25" height="6" rx="0.75" fill="#FFFFFF"/>
+    <rect x="25.9" y="19.9" width="2.25" height="8.6" rx="0.75" fill="#FFFFFF"/>
+  </g>
+  <text x="58" y="22" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="17" font-weight="800" letter-spacing="0.5" fill="#1C1F24">CRM</text>
+  <text x="58" y="41" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="17" font-weight="800" letter-spacing="0.5" fill="#F76B15">INDUSTRIAL</text>
+</svg>
